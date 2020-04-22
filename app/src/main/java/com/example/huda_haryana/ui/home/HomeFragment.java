@@ -5,19 +5,16 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.huda_haryana.R;
 import com.example.huda_haryana.fragments_bottom.LabelsFragment;
 import com.example.huda_haryana.fragments_bottom.LeadsFragment;
-import com.example.huda_haryana.fragments_bottom.mybusinessFragment;
+import com.example.huda_haryana.mybusiness.mybusinessFragment;
 import com.example.huda_haryana.fragments_bottom.tasksFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
