@@ -96,8 +96,9 @@ public class very_main extends AppCompatActivity {
                         }
                         else{
                             progressBar.setVisibility(View.GONE);
-                            Toast.makeText(very_main.this, "Some error occurred! contact SG", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(very_main.this, Signupcode.class));
+                            Toast.makeText(very_main.this, "Some temporary error occurred!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(very_main.this, MainActivity.class);
+                            startActivity(intent);
                         }
                     }
                 });

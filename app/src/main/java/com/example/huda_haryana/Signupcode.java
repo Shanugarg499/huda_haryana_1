@@ -40,7 +40,8 @@ public class Signupcode extends AppCompatActivity {
 
                 if(username.isEmpty()){ newemail.setError("Email is required"); newemail.requestFocus(); return;}
 
-                if(password.isEmpty()){ newpassword.setError("Password is required"); newpassword.requestFocus(); return; }
+                if(password.isEmpty())
+                { newpassword.setError("Password is required"); newpassword.requestFocus(); return; }
 
                 if(!Patterns.EMAIL_ADDRESS.matcher(username).matches()){ newemail.setError("Please enter a valid email");newemail.requestFocus();return; }
 
