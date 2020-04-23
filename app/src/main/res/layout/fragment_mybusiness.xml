@@ -23,6 +23,7 @@
         <TextView
             android:id="@+id/add_logo"
             android:layout_width="wrap_content"
+            android:clickable="true"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginTop="20dp"
@@ -30,7 +31,8 @@
             android:background="@drawable/round"
             android:gravity="end"
             android:padding="17dp"
-            android:text="ADD \nLOGO" />
+            android:text="ADD \nLOGO"
+            android:focusable="true" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -44,21 +46,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:clickable="true"
                 android:padding="10dp"
                 android:text="EDIT DETAILS"
-                android:textColor="#40A645" />
+                android:textColor="#40A645"
+                android:focusable="true" />
 
 
             <TextView
                 android:id="@+id/send_business"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:clickable="true"
                 android:layout_alignParentEnd="true"
                 android:layout_gravity="center|end"
                 android:background="@drawable/stroke"
                 android:padding="10dp"
                 android:text="SEND BUSINESS CARD"
-                android:textColor="#40A645" />
+                android:textColor="#40A645"
+                android:focusable="true" />
 
         </RelativeLayout>
     </LinearLayout>
