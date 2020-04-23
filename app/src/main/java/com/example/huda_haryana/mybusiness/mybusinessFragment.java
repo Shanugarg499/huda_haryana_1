@@ -24,16 +24,10 @@ public class mybusinessFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         final View view =  inflater.inflate(R.layout.fragment_mybusiness, container, false);
-        ImageView search = view.findViewById(R.id.search);
+
         TextView notes=view.findViewById(R.id.notes);
         TextView details=view.findViewById(R.id.edit_details);
         TextView addlogo=view.findViewById(R.id.add_logo);
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "For search", Toast.LENGTH_SHORT).show();
-            }
-        });
         notes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
