@@ -9,11 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".mybusiness.NewNote"></activity>
         <activity
             android:name=".mybusiness.EditDetails"
             android:theme="@style/business" />
-        <activity android:name=".mybusiness.NotesActivity"
-            android:theme="@style/business"/>
+        <activity
+            android:name=".mybusiness.NotesActivity"
+            android:theme="@style/business" />
         <activity android:name=".mybusiness.BusinessActivity" />
         <activity android:name=".Signupcode" />
         <activity android:name=".ask_details" />
