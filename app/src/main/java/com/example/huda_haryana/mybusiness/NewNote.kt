@@ -19,5 +19,8 @@ class NewNote : AppCompatActivity() {
             ref.child(key!!).setValue(newnotedata)
             onBackPressed()
         }
+        binding.toolbarAddnote.setNavigationOnClickListener {
+            onBackPressed()
+        }
     }
 }

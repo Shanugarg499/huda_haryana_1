@@ -24,13 +24,13 @@
         android:id="@+id/newnote_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@null"
+
         android:baselineAligned="false"
         android:textSize="18sp" />
 
     <Button
         android:id="@+id/ok_newnote"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
