@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -20,10 +20,13 @@
         app:titleTextColor="#fff" />
 
     <ImageView
-        android:id="@+id/imageView4"
+
+        android:id="@+id/no_note_img"
         android:layout_width="65dp"
+        android:layout_centerInParent="true"
         android:layout_height="71dp"
         android:layout_gravity="center"
+        android:visibility="gone"
         android:src="@drawable/ic_event_note_black_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,25 +34,42 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar_notes" />
 
     <TextView
+        android:id="@+id/no_note_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="No Notes yet"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+       android:layout_below="@+id/no_note_img"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/no_note_img"
         app:layout_constraintVertical_bias="0.07" />
 
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/note_recyler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar_notes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="1dp" />
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/floatingActionButton_notes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        android:layout_gravity="end"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
         android:layout_marginBottom="16dp"
         android:clickable="true"
         android:theme="@style/floatingbutton"
         android:src="@drawable/add_white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:focusable="true" />
+</RelativeLayout>
 </layout>
