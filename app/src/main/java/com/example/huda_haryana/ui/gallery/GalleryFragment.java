@@ -4,7 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +19,8 @@ import com.example.huda_haryana.R;
 
 public class GalleryFragment extends Fragment {
 
+    String date;
+
     private GalleryViewModel galleryViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -23,11 +28,21 @@ public class GalleryFragment extends Fragment {
         galleryViewModel =
                 ViewModelProviders.of(this).get(GalleryViewModel.class);
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+        Button send_calender = root.findViewById(R.id.save_calender);
+        CalendarView calendarView = root.findViewById(R.id.calendarView);
+
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                date = (dayOfMonth) + "/" + month + "/" + year;
+            }
+        });
+
+        send_calender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), date +" will be saved", Toast.LENGTH_LONG).show();
             }
         });
         return root;
