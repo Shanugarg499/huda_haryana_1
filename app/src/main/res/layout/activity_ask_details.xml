@@ -128,7 +128,7 @@
                     android:layout_weight="10"
                     android:drawableStart="@drawable/business"
                     android:drawablePadding="10dp"
-                    android:hint="Enter figures"
+                    android:hint="BUDGET"
                     android:textColorHint="@color/Greenshine"
                     android:textSize="@dimen/smalltext" />
             </LinearLayout>
@@ -147,7 +147,7 @@
                     android:layout_weight="10"
                     android:drawableStart="@drawable/phone"
                     android:drawablePadding="10dp"
-                    android:hint="Mobile no."
+                    android:hint="MOBILE NO."
                     android:inputType="number"
                     android:textColorHint="@color/Greenshine"
                     android:textSize="@dimen/smalltext" />
@@ -168,7 +168,7 @@
                     android:drawableStart="@drawable/email"
                     android:drawablePadding="10dp"
                     android:ems="10"
-                    android:hint="Email Id"
+                    android:hint="EMAIL ID"
                     android:inputType="textEmailAddress"
                     android:textColorHint="@color/Greenshine"
                     android:textSize="@dimen/smalltext" />
@@ -189,7 +189,7 @@
                     android:drawableStart="@drawable/address"
                     android:drawablePadding="10dp"
                     android:gravity="center_vertical"
-                    android:hint="Address"
+                    android:hint="ADDRESS"
                     android:textColorHint="@color/Greenshine"
                     android:textSize="@dimen/smalltext" />
             </LinearLayout>
@@ -209,7 +209,7 @@
                     android:drawableStart="@drawable/event"
                     android:drawablePadding="10dp"
                     android:gravity="center_vertical"
-                    android:hint="Event"
+                    android:hint="EVENT"
                     android:textColorHint="@color/Greenshine"
                     android:textSize="@dimen/smalltext" />
             </LinearLayout>
