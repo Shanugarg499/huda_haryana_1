@@ -10,4 +10,5 @@
     <dimen name="margin">10sp</dimen>
     <dimen name="smalltext">15sp</dimen>
     <dimen name="dialogwidth">200sp</dimen>
+    <dimen name="detailheight">40sp</dimen>
 </resources>

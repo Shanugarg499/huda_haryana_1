@@ -28,7 +28,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/standard"
+                android:layout_height="@dimen/detailheight"
                 android:layout_margin="0dp"
                 android:orientation="horizontal">
 
@@ -38,16 +38,24 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/margin"
                     android:layout_weight="10"
+                    android:background="@null"
                     android:drawableStart="@drawable/preson"
                     android:drawablePadding="10dp"
                     android:hint="Lead Name"
-                    android:textSize="@dimen/smalltext" />
+                    android:textSize="@dimen/smalltext"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
+            <View
+                android:layout_width="375sp"
+                android:layout_height="0.5dp"
+                android:layout_gravity="end"
+                android:background="@color/dividers" />
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/standard"
+                android:layout_height="@dimen/detailheight"
                 android:layout_margin="0dp"
                 android:orientation="horizontal">
 
@@ -57,15 +65,23 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/margin"
                     android:layout_weight="10"
+                    android:background="null"
                     android:drawableStart="@drawable/business"
                     android:drawablePadding="10dp"
                     android:hint="Location "
-                    android:textSize="@dimen/smalltext" />
+                    android:textSize="@dimen/smalltext"
+                    android:textStyle="bold" />
             </LinearLayout>
+
+            <View
+                android:layout_width="375sp"
+                android:layout_height="0.5dp"
+                android:layout_gravity="end"
+                android:background="@color/dividers" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/standard"
+                android:layout_height="@dimen/detailheight"
                 android:layout_margin="0dp"
                 android:orientation="horizontal">
 
@@ -74,10 +90,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/margin"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:checked="false"
-                    android:text="Residentials"
-                    android:textSize="@dimen/smalltext"
+                    android:fontFamily="serif"
+                    android:text="Residential"
+                    android:textSize="@dimen/generaltext"
+                    android:textStyle="bold"
                     android:thumbTint="@color/Greenshine" />
 
                 <TextView
@@ -86,16 +104,18 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin"
                     android:layout_weight="1"
+                    android:fontFamily="serif"
                     android:gravity="end"
-                    android:text="Commercials"
+                    android:text="Commercial"
                     android:textColor="@color/textcolor"
-                    android:textSize="@dimen/smalltext" />
+                    android:textSize="@dimen/generaltext"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/standard"
+                android:layout_height="@dimen/detailheight"
                 android:layout_margin="0dp"
                 android:orientation="horizontal"
                 android:visibility="gone">
@@ -116,7 +136,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/standard"
+                android:layout_height="@dimen/detailheight"
                 android:layout_margin="0dp"
                 android:orientation="horizontal">
 
@@ -126,16 +146,23 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/margin"
                     android:layout_weight="10"
+                    android:background="null"
                     android:drawableStart="@drawable/business"
                     android:drawablePadding="10dp"
                     android:hint="BUDGET"
                     android:textColorHint="@color/Greenshine"
-                    android:textSize="@dimen/smalltext" />
+                    android:textSize="@dimen/smalltext"
+                    android:textStyle="bold" />
             </LinearLayout>
+            <View
+                android:layout_width="375sp"
+                android:layout_height="0.5dp"
+                android:layout_gravity="end"
+                android:background="@color/dividers" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/standard"
+                android:layout_height="@dimen/detailheight"
                 android:layout_margin="0dp"
                 android:orientation="horizontal">
 
@@ -145,17 +172,24 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/margin"
                     android:layout_weight="10"
+                    android:background="null"
                     android:drawableStart="@drawable/phone"
                     android:drawablePadding="10dp"
                     android:hint="MOBILE NO."
                     android:inputType="number"
                     android:textColorHint="@color/Greenshine"
-                    android:textSize="@dimen/smalltext" />
+                    android:textSize="@dimen/smalltext"
+                    android:textStyle="bold" />
             </LinearLayout>
+            <View
+                android:layout_width="375sp"
+                android:layout_height="0.5dp"
+                android:layout_gravity="end"
+                android:background="@color/dividers" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/standard"
+                android:layout_height="@dimen/detailheight"
                 android:layout_margin="0dp"
                 android:orientation="horizontal">
 
@@ -165,18 +199,25 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/margin"
                     android:layout_weight="10"
+                    android:background="null"
                     android:drawableStart="@drawable/email"
                     android:drawablePadding="10dp"
                     android:ems="10"
                     android:hint="EMAIL ID"
                     android:inputType="textEmailAddress"
                     android:textColorHint="@color/Greenshine"
-                    android:textSize="@dimen/smalltext" />
+                    android:textSize="@dimen/smalltext"
+                    android:textStyle="bold" />
             </LinearLayout>
+            <View
+                android:layout_width="375sp"
+                android:layout_height="0.5dp"
+                android:layout_gravity="end"
+                android:background="@color/dividers" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/standard"
+                android:layout_height="@dimen/detailheight"
                 android:layout_margin="0dp"
                 android:orientation="horizontal">
 
@@ -186,17 +227,24 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/margin"
                     android:layout_weight="10"
+                    android:background="null"
                     android:drawableStart="@drawable/address"
                     android:drawablePadding="10dp"
                     android:gravity="center_vertical"
                     android:hint="ADDRESS"
                     android:textColorHint="@color/Greenshine"
-                    android:textSize="@dimen/smalltext" />
+                    android:textSize="@dimen/smalltext"
+                    android:textStyle="bold" />
             </LinearLayout>
+            <View
+                android:layout_width="375sp"
+                android:layout_height="0.5dp"
+                android:layout_gravity="end"
+                android:background="@color/dividers" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/standard"
+                android:layout_height="@dimen/detailheight"
                 android:layout_margin="0dp"
                 android:orientation="horizontal">
 
@@ -206,12 +254,14 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/margin"
                     android:layout_weight="10"
+                    android:background="null"
                     android:drawableStart="@drawable/event"
                     android:drawablePadding="10dp"
                     android:gravity="center_vertical"
                     android:hint="EVENT"
                     android:textColorHint="@color/Greenshine"
-                    android:textSize="@dimen/smalltext" />
+                    android:textSize="@dimen/smalltext"
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </LinearLayout>
