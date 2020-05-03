@@ -12,21 +12,33 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.squareup.picasso.Picasso;
 
 public class very_main extends AppCompatActivity {
 
     ProgressBar progressBar;
+    private SignInButton signInButton;
+    private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
-    EditText Email, Password;
+    private EditText Email, Password;
+    private int RC_SIGN_IN = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +49,8 @@ public class very_main extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBar2);
         mAuth = FirebaseAuth.getInstance();
+
+
 
 
     findViewById(R.id.login_txt).setOnClickListener(new View.OnClickListener() {
@@ -104,5 +118,27 @@ public class very_main extends AppCompatActivity {
                 });
 
     }
+
+
+//    private void FirebaseGoogleAuth(GoogleSignInAccount acct){
+//        if(acct != null){
+//            AuthCredential authCredential = GoogleAuthProvider.getCredential(acct.getId(), null);
+//            mAuth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//                @Override
+//                public void onComplete(@NonNull Task<AuthResult> task) {
+//                    if(task.isSuccessful()){
+//                        Toast.makeText(very_main.this, "Successful", Toast.LENGTH_SHORT).show();
+//                        FirebaseUser user = mAuth.getCurrentUser();
+//                        updateUI(user);
+//                    }
+//                    else{
+//                        Toast.makeText(very_main.this, "Failed", Toast.LENGTH_SHORT).show();
+//                        updateUI(null);
+//                    }
+//                }
+//            });
+//        }
+//    }
+
 
 }

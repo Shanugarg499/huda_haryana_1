@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Registeractivity"></activity>
+        <activity android:name=".phone_login" />
         <activity
             android:name=".mybusiness.NewNote"
             android:theme="@style/business" />

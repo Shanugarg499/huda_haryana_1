@@ -52,6 +52,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordhere" />
 
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/google_signin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/gotologin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerhere" />
+
     <TextView
         android:id="@+id/gotologin"
         android:layout_width="wrap_content"

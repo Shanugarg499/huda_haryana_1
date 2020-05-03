@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "276212624115-r93vg102743nhb4ht2f9h50ta1ippete.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.huda_haryana",
+            "certificate_hash": "f0b6c8b4a5c9ddf7bb412bf42988f73a91bb65bf"
+          }
+        },
+        {
           "client_id": "276212624115-cpulnkgabt6vu4k3p0363q80fufq7lod.apps.googleusercontent.com",
           "client_type": 3
         }
