@@ -1,6 +1,7 @@
 package com.example.huda_haryana.SG;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.huda_haryana.Lead.LeadOptions;
 import com.example.huda_haryana.R;
+import com.example.huda_haryana.ask_details;
 
 import java.util.ArrayList;
 
@@ -62,7 +65,13 @@ public class lead_adapter extends RecyclerView.Adapter<lead_adapter.Viewholder> 
                 Toast.makeText(context, "This option of deletion will activate soon", Toast.LENGTH_SHORT).show();
             }
         });
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, LeadOptions.class);
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
