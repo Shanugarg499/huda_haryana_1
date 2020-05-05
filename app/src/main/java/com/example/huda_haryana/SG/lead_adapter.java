@@ -68,8 +68,9 @@ public class lead_adapter extends RecyclerView.Adapter<lead_adapter.Viewholder> 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, LeadOptions.class);
+                Intent intent = new Intent(context, LeadOptions.class).putExtra("id",nos.get(position)).putExtra("name",names.get(position));
                 holder.itemView.getContext().startActivity(intent);
+//                Toast.makeText(context,nos.get(position),Toast.LENGTH_SHORT).show();
             }
         });
     }

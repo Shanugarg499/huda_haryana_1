@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Lead.LeadNote"
+    android:orientation="vertical">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/leadnote_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/arrow_back_white"
+        app:title="Notes"
+        app:titleTextColor="#fff" />
+    <TextView
+        android:id="@+id/leadnote_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Anubhav"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:textSize="19sp"
+        android:drawableStart="@drawable/lead_profile"
+        android:drawablePadding="10dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#34111111"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/leadnote_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="5 May 2020"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/leadnote_note"
+            android:textColor="#A4111111"/>
+
+        <EditText
+            android:id="@+id/leadnote_addnote_et"
+            android:layout_width="match_parent"
+            android:layout_below="@id/leadnote_date"
+            android:layout_height="wrap_content" />
+
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/leadnote_recyler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/leadnote_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:layout_margin="10dp"
+        android:layout_gravity="end|bottom"
+        android:background="#47E60D"
+        android:textColor="#fff"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

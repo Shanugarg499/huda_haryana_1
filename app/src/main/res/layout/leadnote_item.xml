@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="2dp">
+
+    <TextView
+        android:id="@+id/item_date"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:textColor="#C3111111"
+        android:layout_height="wrap_content"
+        android:text="5 May 2020"/>
+
+    <TextView
+        android:id="@+id/note_item"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Note"
+        android:padding="5dp"
+        android:textSize="18sp"
+        />
+</LinearLayout>
