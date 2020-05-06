@@ -1,4 +1,4 @@
-package com.example.huda_haryana.fragments_bottom
+package com.example.huda_haryana.Lead
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.huda_haryana.R
 import com.example.huda_haryana.databinding.FragmentLabelsBinding
 
-class LabelsFragment : Fragment() {
+class AddLabels : Fragment() {
     lateinit var binding: FragmentLabelsBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
