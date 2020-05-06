@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Lead.LeadNote"
-            android:theme="@style/business" />/>
+            android:theme="@style/business" />
         <activity
             android:name=".Lead.LeadOptions"
             android:theme="@style/business" />
