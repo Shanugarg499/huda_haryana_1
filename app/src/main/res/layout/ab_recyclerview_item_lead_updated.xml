@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/leadTypeRecyclerview"
+            android:layout_width="38dp"
+            android:layout_height="46dp"
+            android:src="@drawable/lead_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewPin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/nameLeadRecyclerview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="Lead"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/leadTypeRecyclerview"
+            app:layout_constraintTop_toTopOf="@+id/leadTypeRecyclerview" />
+
+        <TextView
+            android:id="@+id/timeRecyclerViewItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/add_lead"
+            android:drawableTint="#555555"
+            android:gravity="center"
+            android:text="Time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/leadIdRecyclerView"
+            android:layout_width="38dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/menuicon"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewPin"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewPin"
+            app:layout_constraintTop_toTopOf="@+id/imageViewPin" />
+
+        <ImageView
+            android:id="@+id/imageViewPin"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/pinicon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timeRecyclerViewItem" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewInner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/leadIdRecyclerView"
+            app:layout_constraintStart_toStartOf="@+id/nameLeadRecyclerview"
+            app:layout_constraintTop_toBottomOf="@+id/nameLeadRecyclerview"
+            tools:visibility="gone" />
+
+
+        <LinearLayout
+            android:id="@+id/option_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:weightSum="2"
+            app:layout_constraintBottom_toBottomOf="@+id/leadIdRecyclerView"
+            app:layout_constraintEnd_toStartOf="@+id/leadIdRecyclerView"
+            tools:visibility="visible">
+
+
+            <LinearLayout
+                android:id="@+id/custom_Leads"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical"
+
+                tools:layout_editor_absoluteX="140dp"
+                tools:layout_editor_absoluteY="27dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/round_yellow_bg"
+                    android:padding="2dp"
+                    android:src="@drawable/hide_leads" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hide"
+                    android:textColor="#E79600" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/delete_Leads"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical"
+
+                tools:layout_editor_absoluteX="140dp"
+                tools:layout_editor_absoluteY="27dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/round_red_bg"
+                    android:padding="2dp"
+                    android:src="@drawable/delete_lead" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Delete"
+                    android:textColor="#EE000F" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

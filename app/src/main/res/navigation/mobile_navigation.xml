@@ -3,13 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@id/nav_home">
 
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.huda_haryana.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home">
+        android:label="@string/menu_home">
 
         <action
             android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
@@ -86,4 +85,8 @@
         android:name="com.example.huda_haryana.mybusiness.Notes"
         android:label="fragment_notes"
         tools:layout="@layout/fragment_notes" />
+    <fragment
+        android:id="@+id/leadsPageUpdated"
+        android:name="com.example.huda_haryana.fragments_bottom.ab.LeadsPageUpdated"
+        android:label="LeadsPageUpdated" />
 </navigation>
