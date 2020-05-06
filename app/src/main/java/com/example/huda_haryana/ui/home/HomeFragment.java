@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.huda_haryana.R;
 import com.example.huda_haryana.fragments_bottom.LabelsFragment;
 import com.example.huda_haryana.fragments_bottom.LeadsFragment;
+import com.example.huda_haryana.fragments_bottom.ab.LeadsPageUpdated;
 import com.example.huda_haryana.mybusiness.mybusinessFragment;
 import com.example.huda_haryana.fragments_bottom.tasksFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -26,7 +27,7 @@ public class HomeFragment extends Fragment {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
 
-        getChildFragmentManager().beginTransaction().replace(R.id.fragment_container, new LeadsFragment()).commit();
+        getChildFragmentManager().beginTransaction().replace(R.id.fragment_container, new LeadsPageUpdated()).commit();
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
@@ -45,7 +46,7 @@ public class HomeFragment extends Fragment {
 
                     switch (item.getItemId()) {
                         case R.id.nav_leads:
-                            selectedFragment = new LeadsFragment();
+                            selectedFragment = new LeadsPageUpdated();
                             Toast.makeText(getActivity(), "You clicked leads", Toast.LENGTH_SHORT).show();
                             break;
                         case R.id.nav_labels:selectedFragment = new LabelsFragment();

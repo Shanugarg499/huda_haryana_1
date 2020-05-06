@@ -182,6 +182,7 @@ public class ask_details extends AppCompatActivity {
                     Toast.makeText(ask_details.this, "Successfully data stored", Toast.LENGTH_SHORT).show();
                     dbr.child(String.valueOf(i)).setValue(new order_to_database(t1.getText().toString(),txt,String.valueOf(i)));
                     Toast.makeText(ask_details.this, "Recorded successfully!", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
                 else{
                     Toast.makeText(ask_details.this, "Sorry! can't store without incomplete details", Toast.LENGTH_SHORT).show();
