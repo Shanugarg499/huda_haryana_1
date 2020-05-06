@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.huda_haryana.R;
 import com.example.huda_haryana.Lead.AddLabels;
+import com.example.huda_haryana.fragments_bottom.LabelsFragment;
 import com.example.huda_haryana.fragments_bottom.LeadsFragment;
 import com.example.huda_haryana.mybusiness.mybusinessFragment;
 import com.example.huda_haryana.fragments_bottom.tasksFragment;
@@ -48,7 +49,7 @@ public class HomeFragment extends Fragment {
                             selectedFragment = new LeadsFragment();
                             Toast.makeText(getActivity(), "You clicked leads", Toast.LENGTH_SHORT).show();
                             break;
-                        case R.id.nav_labels:selectedFragment = new AddLabels();
+                        case R.id.nav_labels:selectedFragment = new LabelsFragment();
                             Toast.makeText(getActivity(), "You clicked labels", Toast.LENGTH_SHORT).show();
                             break;
                         case R.id.nav_tasks:selectedFragment = new tasksFragment();
