@@ -24,6 +24,10 @@ class LeadOptions : AppCompatActivity() {
             startActivity(intent)
 
         }
+        binding.leadptionsAddlabel.setOnClickListener {
+            val intent=Intent(this,AddLabels::class.java).putExtra("number",id)
+            startActivity(intent)
+        }
         binding.leadoptionNameTxt.text=name
     }
 }
