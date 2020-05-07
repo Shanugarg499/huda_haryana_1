@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.sql.Ref;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -183,7 +184,7 @@ public class ask_details extends AppCompatActivity {
                             t5.getText().toString()+"."+t6.getText().toString()+"."+t7.getText().toString()+"."+t8.getText().toString()+"."+
                             t9.getText().toString();
                     Toast.makeText(ask_details.this, "Successfully data stored", Toast.LENGTH_SHORT).show();
-                    String t = String.valueOf(System.currentTimeMillis());
+                    String t = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
                     dbr.child(t).setValue(new order_to_database(t1.getText().toString(), t2.getText().toString(),
                             t3.getText().toString(), t4.getText().toString(), t5.getText().toString(), t6.getText().toString(),
                             t7.getText().toString(), t8.getText().toString(), t9.getText().toString(), t,new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date()),  t));
