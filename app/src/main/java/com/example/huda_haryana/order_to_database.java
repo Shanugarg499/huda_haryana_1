@@ -1,10 +1,11 @@
 package com.example.huda_haryana;
 
 public class order_to_database {
-        String Name, location, R_C, subtype, figures, Number, Email, address, event, time, date;
+        String Name, location, R_C, subtype, figures, Number, Email, address, event, time, date, key;
         public order_to_database(){}
 
-    public order_to_database(String name, String location, String r_C, String subtype, String figures, String number, String email, String address, String event, String time, String date) {
+    public order_to_database(String name, String location, String r_C, String subtype, String figures, String number, String email, String address, String event, String time, String date, String key) {
+            this.key = key;
         Name = name;
         this.location = location;
         R_C = r_C;
@@ -16,6 +17,14 @@ public class order_to_database {
         this.event = event;
         this.time = time;
         this.date = date;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getName() {
