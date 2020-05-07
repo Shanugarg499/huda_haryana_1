@@ -9,7 +9,7 @@
     app:cardElevation="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
+        android:id="@+id/entireCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp">
@@ -37,8 +37,6 @@
             android:id="@+id/timeRecyclerViewItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/add_lead"
-            android:drawableTint="#555555"
             android:gravity="center"
             android:text="Time"
             app:layout_constraintEnd_toEndOf="parent"

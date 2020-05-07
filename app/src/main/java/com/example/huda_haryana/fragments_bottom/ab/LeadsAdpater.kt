@@ -9,12 +9,14 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.huda_haryana.R
+import com.example.huda_haryana.order_to_database
 import com.google.firebase.database.FirebaseDatabase
 
-class LeadsAdpater(val context: Context, val data: ArrayList<LeadDataKtClass>) : RecyclerView.Adapter<LeadsAdpater.MyViewModel>() {
+class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>) : RecyclerView.Adapter<LeadsAdpater.MyViewModel>() {
 
     private val mDb = FirebaseDatabase.getInstance().reference
 
@@ -25,6 +27,7 @@ class LeadsAdpater(val context: Context, val data: ArrayList<LeadDataKtClass>) :
         val nameTextView: TextView = itemView.findViewById(R.id.nameLeadRecyclerview)
         val timeTextView: TextView = itemView.findViewById(R.id.timeRecyclerViewItem)
         val deleteButton: LinearLayout = itemView.findViewById(R.id.delete_Leads)
+        val background = itemView.findViewById(R.id.entireCard) as ConstraintLayout
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewModel {
@@ -57,19 +60,29 @@ class LeadsAdpater(val context: Context, val data: ArrayList<LeadDataKtClass>) :
 
         }
 
+        holder.background.setOnClickListener{
+            //anubhav do your work from here :)
+        }
+
+
+
+
         holder.nameTextView.text = data[pos].name
-        holder.timeTextView.text = data[pos].time
+        holder.timeTextView.text = "+"+data[pos].date+" "+data[pos].time
+
+        val ref = mDb.child("leads").child(data[pos].key)
 
         holder.deleteButton.setOnClickListener {
             val alertDialog = AlertDialog.Builder(context)
             alertDialog.setTitle("Delete Customer?")
                     .setMessage("Deletes customer will be removed and will NOT reappear when they call you ")
-                    .setPositiveButton("Cancle") { dialogInterface, i ->
+                    .setPositiveButton("Cancel") { dialogInterface, i ->
                         //do nothing
                     }.setNegativeButton("Delete") { dialogInterface, i ->
-                        data.removeAt(pos)
-                        notifyDataSetChanged()
-                        mDb.child("leads").setValue(data)
+//                        data.removeAt(pos)
+//                        notifyDataSetChanged()
+//                        mDb.child("leads").setValue(data)
+                        ref.removeValue()
                     }.setIcon(R.drawable.delete_lead)
                     .show()
         }

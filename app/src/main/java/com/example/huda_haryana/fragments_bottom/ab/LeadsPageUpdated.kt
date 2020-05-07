@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.huda_haryana.R
 import com.example.huda_haryana.ask_details
 import com.example.huda_haryana.databinding.LeadsPageUpdatedFragmentBinding
+import com.example.huda_haryana.order_to_database
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -21,7 +22,7 @@ class LeadsPageUpdated : Fragment() {
 
     private lateinit var viewModel: LeadsPageUpdatedViewModel
     private lateinit var binding: LeadsPageUpdatedFragmentBinding
-    private lateinit var data: ArrayList<LeadDataKtClass>
+    private lateinit var data: ArrayList<order_to_database>
     private lateinit var adapter:LeadsAdpater
     private var mDb = FirebaseDatabase.getInstance().reference
 
@@ -41,11 +42,8 @@ class LeadsPageUpdated : Fragment() {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     data.clear()
                     for(eachLead in dataSnapshot.children){
-                        val oneLead = LeadDataKtClass(
-                                name = eachLead.child("name").value.toString(),
-                                time = "time not uploaded."
-                        )
-                        data.add(oneLead)
+                        val oneLead = eachLead.getValue(order_to_database::class.java)
+                        data.add(oneLead!!)
                     }
                     (binding.recyclerViewLeadsUpdated.adapter as LeadsAdpater).notifyDataSetChanged()
                 }
