@@ -30,8 +30,16 @@ import java.util.ArrayList;
 public class LeadsFragment extends Fragment {
 
     ArrayList<String> names = new ArrayList<>();
-    ArrayList<String> firsttwos = new ArrayList<>();
+    ArrayList<String> location = new ArrayList<>();
+    ArrayList<String> R_C = new ArrayList<>();
+    ArrayList<String> subtype = new ArrayList<>();
+    ArrayList<String> figures = new ArrayList<>();
     ArrayList<String> nos = new ArrayList<>();
+    ArrayList<String> email = new ArrayList<>();
+    ArrayList<String> address = new ArrayList<>();
+    ArrayList<String> event = new ArrayList<>();
+    ArrayList<String> time = new ArrayList<>();
+    ArrayList<String> date = new ArrayList<>();
 
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container,
@@ -45,16 +53,24 @@ public class LeadsFragment extends Fragment {
         dbr.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                firsttwos.clear();nos.clear();
+                names.clear();location.clear();R_C.clear();subtype.clear();figures.clear();email.clear();address.clear();event.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
 
                     order_to_database info = snapshot.getValue(order_to_database.class);
                     if(info!=null){
                         names.add(info.getName());
-                        firsttwos.add(info.getDetails());
+                        location.add(info.getLocation());
+                        R_C.add(info.getR_C());
+                        subtype.add(info.getSubtype());
+                        figures.add(info.getFigures());
                         nos.add(info.getNumber());
+                        email.add(info.getEmail());
+                        address.add(info.getAddress());
+                        event.add(info.getEvent());
+                        time.add(info.getTime());
+                        date.add(info.getDate());
                     }
-                    lead_adapter adapter = new lead_adapter(names, nos, firsttwos, getContext());
+                    lead_adapter adapter = new lead_adapter(names, nos,  time, getContext());
                     rcv.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
                     rcv.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -84,7 +100,7 @@ public class LeadsFragment extends Fragment {
     private void initializeRV(LayoutInflater inflater, ViewGroup container){
         View view = inflater.inflate(R.layout.fragment_leads, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.lead_recycler);
-        lead_adapter adapter = new lead_adapter(names, nos, firsttwos, getContext());
+        lead_adapter adapter = new lead_adapter(names, nos, time, getContext());
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));}
