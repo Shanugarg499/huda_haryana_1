@@ -185,7 +185,7 @@ public class ask_details extends AppCompatActivity {
                     Toast.makeText(ask_details.this, "Successfully data stored", Toast.LENGTH_SHORT).show();
                     dbr.child(String.valueOf(System.currentTimeMillis())).setValue(new order_to_database(t1.getText().toString(), t2.getText().toString(),
                             t3.getText().toString(), t4.getText().toString(), t5.getText().toString(), t6.getText().toString(),
-                            t7.getText().toString(), t8.getText().toString(), t9.getText().toString(), new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date()), String.valueOf(System.currentTimeMillis()), String.valueOf(System.currentTimeMillis())));
+                            t7.getText().toString(), t8.getText().toString(), t9.getText().toString(), String.valueOf(System.currentTimeMillis()),new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date()),  String.valueOf(System.currentTimeMillis())));
                     Toast.makeText(ask_details.this, "Recorded successfully!", Toast.LENGTH_SHORT).show();
                     finish();
                 }
