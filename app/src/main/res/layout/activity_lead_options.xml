@@ -59,14 +59,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Message"/>
+
     <TextView
-        android:textColor="#FFF"
-        android:drawableTop="@drawable/email"
-        android:gravity="center"
-        android:layout_weight="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email"/>
+        android:layout_weight="1"
+        android:drawableTop="@drawable/leadoption_email"
+        android:gravity="center"
+        android:text="Email"
+        android:textColor="#FFF" />
     <TextView
         android:textColor="#FFF"
         android:drawableTop="@drawable/ic_navigation_black_24dp"
