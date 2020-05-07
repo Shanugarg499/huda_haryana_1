@@ -15,7 +15,9 @@ class AddLabels : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.lead_addlabel)
         val id = intent.getStringExtra("number")
         val mref = FirebaseDatabase.getInstance().getReference("leads").child(id!!).child("Labels")
-
+        binding.toolbarAddlabels.setNavigationOnClickListener {
+            onBackPressed()
+        }
         binding.addTolabels.setOnClickListener {
             val labellist = mutableListOf<LabelData>()
             if (binding.directCheck.isChecked) {

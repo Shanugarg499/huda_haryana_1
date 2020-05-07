@@ -2,6 +2,7 @@ package com.example.huda_haryana.fragments_bottom.ab
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.example.huda_haryana.Lead.LeadOptions
 import com.example.huda_haryana.R
 import com.example.huda_haryana.order_to_database
 import com.google.firebase.database.FirebaseDatabase
@@ -60,7 +62,8 @@ class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>)
         }
 
         holder.background.setOnClickListener{
-            //anubhav do your work from here :)
+            val intent=Intent(context,LeadOptions::class.java).putExtra("id",data[pos].key).putExtra("name",data[pos].name)
+            holder.itemView.context.startActivity(intent)
         }
 
 
