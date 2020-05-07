@@ -57,7 +57,6 @@ class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>)
                 holder.optionLayout.visibility = View.VISIBLE
             }
 
-
         }
 
         holder.background.setOnClickListener{
