@@ -43,24 +43,29 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
-    <TextView
-        android:drawableTop="@drawable/phone_call"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Call"
-        android:textColor="#FFF"/>
-    <TextView
-        android:textColor="#FFF"
-        android:drawableTop="@drawable/message"
-        android:gravity="center"
-        android:layout_weight="1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Message"/>
 
     <TextView
+        android:id="@+id/call_option"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawableTop="@drawable/phone_call"
+        android:gravity="center"
+        android:text="Call"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/message_option"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawableTop="@drawable/message"
+        android:gravity="center"
+        android:text="Message"
+        android:textColor="#FFF" />
+
+    <TextView
+        android:id="@+id/mail_option"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -68,14 +73,16 @@
         android:gravity="center"
         android:text="Email"
         android:textColor="#FFF" />
+
     <TextView
-        android:textColor="#FFF"
-        android:drawableTop="@drawable/ic_navigation_black_24dp"
-        android:gravity="center"
-        android:layout_weight="1"
+        android:id="@+id/navigate_option"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Navigate"/>
+        android:layout_weight="1"
+        android:drawableTop="@drawable/ic_navigation_black_24dp"
+        android:gravity="center"
+        android:text="Navigate"
+        android:textColor="#FFF" />
 
 
 </LinearLayout>
