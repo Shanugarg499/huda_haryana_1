@@ -48,5 +48,10 @@ class LeadOptions : AppCompatActivity() {
             val intent=Intent(Intent.ACTION_VIEW,Uri.fromParts("sms",phone,null))
             startActivity(intent)
         }
+        binding.leadoptionsAddtask.setOnClickListener {
+            val intent=Intent(this,AddTask::class.java)
+            startActivity(intent)
+        }
+
     }
 }
