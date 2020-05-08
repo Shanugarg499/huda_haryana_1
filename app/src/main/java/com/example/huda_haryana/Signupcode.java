@@ -39,20 +39,10 @@ public class Signupcode extends AppCompatActivity {
 
         newemail = findViewById(R.id.emailhere);
         newpassword = findViewById(R.id.passwordhere);
-        signInButton = findViewById(R.id.google_signin);
+
 
         mAuth = FirebaseAuth.getInstance();
 
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail().build();
-
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signin();
-            }
-        });
 
 
         findViewById(R.id.registerhere).setOnClickListener(new View.OnClickListener() {
@@ -84,53 +74,15 @@ public class Signupcode extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.gotologin).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Signupcode.this, very_main.class));
-                finishAffinity();
-            }
-        });
 
     }
 
-    private void signin(){
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == RC_SIGN_IN){
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
-        }
-    }
-
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask){
-        try{
-            GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
-            Toast.makeText(this, "Signed In Successfully", Toast.LENGTH_SHORT).show();
-            updateUI(acc);
-
-        }
-        catch (ApiException e){
-            Toast.makeText(this, "Sign In Failed", Toast.LENGTH_SHORT).show();
-            updateUI(null);
-        }
-    }
-    public void  updateUI(GoogleSignInAccount account){
-        if(account != null){
-            Toast.makeText(this,"U Signed In successfully as "+account.getDisplayName(),Toast.LENGTH_LONG).show();
-            startActivity(new Intent(this,MainActivity.class));
-        }else {
-            Toast.makeText(this,"U Didnt signed in",Toast.LENGTH_LONG).show();
-            startActivity(new Intent(this,MainActivity.class));
-        }
-    }
-
+//    if(requestCode == RC_SIGN_IN){
+//        Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+//        handleSignInResult(task);
+//    }
 
 
 }

@@ -6,9 +6,12 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="generaltext">18sp</dimen>
+    <dimen name="twenty">20sp</dimen>
     <dimen name="standard">50sp</dimen>
     <dimen name="margin">10sp</dimen>
     <dimen name="smalltext">15sp</dimen>
     <dimen name="dialogwidth">200sp</dimen>
+    <dimen name="smart_button">250sp</dimen>
     <dimen name="detailheight">40sp</dimen>
+    <dimen name="padding">5sp</dimen>
 </resources>

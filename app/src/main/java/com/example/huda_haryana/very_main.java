@@ -51,7 +51,7 @@ public class very_main extends AppCompatActivity {
     private SignInButton signInButton;
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
-    private EditText Email, Password;
+
     private LoginButton loginButton;
     private CallbackManager callbackManager;
     private int RC_SIGN_IN = 1;
@@ -59,15 +59,34 @@ public class very_main extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        Email = findViewById(R.id.email);
-        Password = findViewById(R.id.password);
-        mAuth = FirebaseAuth.getInstance();
+        setContentView(R.layout.very_main);
+
+
         progressBar = findViewById(R.id.progressBar2);
+        signInButton = findViewById(R.id.google_signin);
         loginButton = findViewById(R.id.fb_login);
         mAuth = FirebaseAuth.getInstance();
         callbackManager = CallbackManager.Factory.create();
         loginButton.setPermissions(Arrays.asList("email", "public_profile"));
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail().build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signin();
+            }
+        });
+
+        findViewById(R.id.login_b).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(very_main.this, login.class));
+                finishAffinity();
+            }
+        });
+
 
 //        checkloginstatus();
 
@@ -90,6 +109,7 @@ public class very_main extends AppCompatActivity {
         });
 
 
+
     findViewById(R.id.login_txt).setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -97,64 +117,41 @@ public class very_main extends AppCompatActivity {
             finishAffinity();
         }
     });
-    findViewById(R.id.login_b).setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            login();
-        }
-    });
 
     }
-    private void login() {
-        progressBar.setVisibility(View.VISIBLE);
-        String email = Email.getText().toString().trim();
-        String password = Password.getText().toString().trim();
 
-        if(email.isEmpty()){
-            progressBar.setVisibility(View.GONE);
-            Email.setError("Email required");
-            Email.requestFocus();
-            return;
-        }
-        if(password.isEmpty()){
-            progressBar.setVisibility(View.GONE);
-            Password.setError("Password required");
-            Password.requestFocus();
-            return;
-        }
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            progressBar.setVisibility(View.GONE);
-            Email.setError("Valid Email required");
-            Email.requestFocus();
-            return;
-        }
-        if(password.length()<6){
-            progressBar.setVisibility(View.GONE);
-            Password.setError("Minimum length of password should be 6");
-            Password.requestFocus();
-            return;
-        }
 
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            progressBar.setVisibility(View.GONE);
-                            Intent intent = new Intent(very_main.this, MainActivity.class);
-                            startActivity(intent);
-                            finishAffinity();
-                        }
-                        else{
-                            progressBar.setVisibility(View.GONE);
-                            Toast.makeText(very_main.this, "Some temporary error occurred!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(very_main.this, MainActivity.class);
-                            startActivity(intent);
-                        }
-                    }
-                });
-
+    private void signin(){
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
     }
+
+
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask){
+        try{
+            GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
+            Toast.makeText(this, "Signed In Successfully", Toast.LENGTH_SHORT).show();
+            updateUI(acc);
+
+        }
+        catch (ApiException e){
+            Toast.makeText(this, "Sign In Failed", Toast.LENGTH_SHORT).show();
+            updateUI(null);
+        }
+    }
+    public void  updateUI(GoogleSignInAccount account){
+        if(account != null){
+            Toast.makeText(this,"U Signed In successfully as "+account.getDisplayName(),Toast.LENGTH_LONG).show();
+            startActivity(new Intent(this,MainActivity.class));
+            finishAffinity();
+        }else {
+            Toast.makeText(this,"U Didnt signed in",Toast.LENGTH_LONG).show();
+            startActivity(new Intent(this,MainActivity.class));
+            finishAffinity();
+        }
+    }
+
+
 
 
 //    private void FirebaseGoogleAuth(GoogleSignInAccount acct){
@@ -182,6 +179,10 @@ public class very_main extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == RC_SIGN_IN){
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
+        }
     }
 
     AccessTokenTracker accessTokenTracker = new AccessTokenTracker() {
@@ -209,6 +210,7 @@ public class very_main extends AppCompatActivity {
 
                      Toast.makeText(getApplicationContext(), first_name + " " +last_name + " logged in successfully", Toast.LENGTH_SHORT).show();
                      startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                     finishAffinity();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -222,7 +224,10 @@ public class very_main extends AppCompatActivity {
         request.setParameters(parameters);
         request.executeAsync();
 
+
+
     }
+
 
 //    private void checkloginstatus(){
 //        if(AccessToken.getCurrentAccessToken() != null){
