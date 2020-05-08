@@ -15,20 +15,21 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         tools:context=".Signup">
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/google_signin"
-            android:layout_width="@dimen/smart_button"
-            android:layout_height="45sp"
+            android:layout_width="@dimen/others"
+            android:layout_height="30sp"
             android:background="@drawable/whiteround"
-            app:layout_constraintBottom_toTopOf="@+id/login_b"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
+            android:padding="@dimen/padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/fb_login"
+            app:layout_constraintHorizontal_bias="0.56"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.73" />
+            app:layout_constraintTop_toBottomOf="@+id/login_b"
+            app:layout_constraintVertical_bias="0.526" />
 
         <Button
             android:id="@+id/login_b"
@@ -41,12 +42,12 @@
             android:textColor="@android:color/holo_red_light"
             android:textSize="@dimen/generaltext"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/fb_login"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_txt"
-            app:layout_constraintVertical_bias="0.518" />
+            app:layout_constraintVertical_bias="0.079" />
 
         <TextView
             android:id="@+id/login_txt"
@@ -64,19 +65,20 @@
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.661" />
+            app:layout_constraintVertical_bias="0.596" />
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/fb_login"
-            android:layout_width="@dimen/smart_button"
-            android:layout_height="30sp"
+            android:layout_width="@dimen/standard"
+            android:layout_height="40sp"
             android:background="@drawable/bluesolidcircle"
+            android:paddingLeft="@dimen/generaltext"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="0.681"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_txt"
-            app:layout_constraintVertical_bias="0.627" />
+            app:layout_constraintVertical_bias="0.637" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -89,8 +91,45 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.609"
+            app:layout_constraintVertical_bias="0.317"
             app:srcCompat="@drawable/lead_icon" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="or"
+            android:textColor="@color/dividers"
+            android:textSize="@dimen/generaltext"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_b"
+            app:layout_constraintVertical_bias="0.542" />
+
+        <View
+            android:id="@+id/divider8"
+            android:layout_width="@dimen/dialogwidth"
+            android:layout_height="2dp"
+            android:background="@color/dividers"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_b"
+            app:layout_constraintVertical_bias="0.873" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Other login methods"
+            android:textColor="@color/dividers"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_b"
+            app:layout_constraintVertical_bias="0.744" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
