@@ -9,10 +9,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#D82A44"
+        android:background="@drawable/highresoln"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
@@ -20,65 +20,61 @@
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/google_signin"
-            android:layout_width="@dimen/others"
-            android:layout_height="30sp"
-            android:background="@drawable/whiteround"
-            android:padding="@dimen/padding"
+            android:layout_width="@dimen/smart_button"
+            android:layout_height="@dimen/standard"
+            android:layout_marginBottom="@dimen/generaltext"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fb_login"
-            app:layout_constraintHorizontal_bias="0.56"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_b"
-            app:layout_constraintVertical_bias="0.526" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.201" />
 
         <Button
             android:id="@+id/login_b"
-            android:layout_width="@dimen/smart_button"
-            android:layout_height="30sp"
+            android:layout_width="@dimen/doublestd"
+            android:layout_height="@dimen/standard"
             android:background="@drawable/whiteround"
             android:gravity="center"
             android:padding="@dimen/padding"
             android:text="login"
-            android:textColor="@android:color/holo_red_light"
+            android:textColor="#2843F3"
             android:textSize="@dimen/generaltext"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_txt"
-            app:layout_constraintVertical_bias="0.079" />
+            app:layout_constraintStart_toEndOf="@+id/login_txt"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.898" />
 
         <TextView
             android:id="@+id/login_txt"
-            android:layout_width="@dimen/smart_button"
-            android:layout_height="wrap_content"
-            android:background="@drawable/whiteround"
+            android:layout_width="@dimen/doublestd"
+            android:layout_height="@dimen/standard"
+            android:background="@drawable/bluesolidcircle"
             android:gravity="center"
             android:padding="@dimen/padding"
             android:text="Sign up"
-            android:textColor="@android:color/holo_red_light"
+            android:textColor="#FFFFFF"
             android:textSize="@dimen/generaltext"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintHorizontal_bias="0.208"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.596" />
+            app:layout_constraintVertical_bias="0.898" />
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/fb_login"
-            android:layout_width="@dimen/standard"
-            android:layout_height="40sp"
+            android:layout_width="@dimen/smart_button"
+            android:layout_height="@dimen/standard"
+            android:layout_marginTop="@dimen/generaltext"
             android:background="@drawable/bluesolidcircle"
-            android:paddingLeft="@dimen/generaltext"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:paddingLeft="@dimen/padding"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.681"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_txt"
-            app:layout_constraintVertical_bias="0.637" />
+            app:layout_constraintTop_toBottomOf="@+id/google_signin" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -86,12 +82,13 @@
             android:layout_height="144dp"
             android:background="@drawable/whitesolidcircle"
             android:padding="@dimen/twenty"
-            app:layout_constraintBottom_toTopOf="@+id/google_signin"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.317"
+            app:layout_constraintVertical_bias="0.262"
             app:srcCompat="@drawable/lead_icon" />
 
         <TextView
@@ -99,37 +96,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="or"
-            android:textColor="@color/dividers"
+            android:textColor="#FFFFFF"
             android:textSize="@dimen/generaltext"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_b"
-            app:layout_constraintVertical_bias="0.542" />
+            app:layout_constraintEnd_toStartOf="@+id/login_b"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toEndOf="@+id/login_txt"
+            app:layout_constraintTop_toBottomOf="@+id/google_signin"
+            app:layout_constraintVertical_bias="0.728" />
 
         <View
             android:id="@+id/divider8"
-            android:layout_width="@dimen/dialogwidth"
+            android:layout_width="@dimen/smart_button"
             android:layout_height="2dp"
-            android:background="@color/dividers"
-            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            android:background="#FF2843F3"
+            app:layout_constraintBottom_toTopOf="@+id/login_b"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_b"
-            app:layout_constraintVertical_bias="0.873" />
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
         <TextView
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Other login methods"
-            android:textColor="@color/dividers"
+            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toTopOf="@+id/textView2"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.473"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_b"
-            app:layout_constraintVertical_bias="0.744" />
+            app:layout_constraintTop_toBottomOf="@+id/google_signin"
+            app:layout_constraintVertical_bias="0.778" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
