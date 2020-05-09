@@ -38,31 +38,33 @@ class SetTask : AppCompatActivity() {
         binding.selectTimeSetTask.setOnClickListener {
             datetime.show(supportFragmentManager, "Set")
         }
-        val intent = Intent(this, AddTask::class.java)
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            notificationChannel = NotificationChannel(channelID, desc, NotificationManager.IMPORTANCE_HIGH)
-            notificationChannel.enableLights(true)
-            notificationChannel.lightColor = Color.GREEN
-            notificationChannel.enableVibration(true)
-            notificationManager.createNotificationChannel(notificationChannel)
-            builder = Notification.Builder(this, channelID)
-                    .setContentTitle("Reminder")
-                    .setSmallIcon(R.drawable.lead_icon)
-                    .setContentIntent(pendingIntent)
-        } else {
-            builder = Notification.Builder(this)
-                    .setContentTitle("Reminder")
-                    .setSmallIcon(R.drawable.lead_icon)
-                    .setContentIntent(pendingIntent)
-        }
         val mref = FirebaseDatabase.getInstance().getReference("Alarm")
         datetime.setOnButtonClickListener(object : SwitchDateTimeDialogFragment.OnButtonClickListener {
             override fun onPositiveButtonClick(date: Date?) {
                 Toast.makeText(this@SetTask, date.toString(), Toast.LENGTH_SHORT).show()
                 d = date?.time
-                binding.dateTime.setText(date.toString())
+                val dateFormat=SimpleDateFormat("hh:mm a dd-MMM")
+                val time=dateFormat.format(Date(d!!))
+                binding.dateTime.setText(time)
+                val intent = Intent(this@SetTask, AddTask::class.java)
+                pendingIntent = PendingIntent.getActivity(this@SetTask, 0, intent, 0)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    notificationChannel = NotificationChannel(channelID, desc, NotificationManager.IMPORTANCE_HIGH)
+                    notificationChannel.enableLights(true)
+                    notificationChannel.lightColor = Color.GREEN
+                    notificationChannel.enableVibration(true)
+                    notificationManager.createNotificationChannel(notificationChannel)
+                    builder = Notification.Builder(this@SetTask, channelID)
+                            .setContentTitle("Reminder")
+                            .setSmallIcon(R.drawable.lead_icon)
+                            .setContentIntent(pendingIntent)
+                } else {
+                    builder = Notification.Builder(this@SetTask)
+                            .setContentTitle("Reminder")
+                            .setSmallIcon(R.drawable.lead_icon)
+                            .setContentIntent(pendingIntent)
+                }
 
             }
 
