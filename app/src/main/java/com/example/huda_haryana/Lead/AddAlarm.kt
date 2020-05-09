@@ -14,11 +14,11 @@ class AddAlarm : BroadcastReceiver() {
         val mediaPlayer = MediaPlayer.create(context, Settings.System.DEFAULT_NOTIFICATION_URI)
         mediaPlayer.start()
         notificationManager.notify(1, builder.build())
-        for (i in list){
-            if(i.date.toLong()<Date().time){
-                AddTask().setalarm(i.date.toLong())
-            }
-        }
+//        for (i in list){
+//            if(i.date.toLong()<Date().time){
+//                AddTask().setalarm(i.date.toLong())
+//            }
+//        }
     }
 
 }
