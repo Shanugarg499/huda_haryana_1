@@ -1,11 +1,7 @@
 package com.example.huda_haryana.Lead
 
-import android.app.AlarmManager
-import android.app.PendingIntent
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,8 +11,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import java.util.*
+
 lateinit var list: MutableList<AlarmData>
+
 class AddTask : AppCompatActivity() {
     lateinit var binding: ActivityAddTaskBinding
 

@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
 import android.provider.Settings
-import java.util.*
 
 class AddAlarm : BroadcastReceiver() {
 

@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 var d: Long? = null
-lateinit var desctxt:String
+lateinit var desctxt: String
 lateinit var notificationManager: NotificationManager
 lateinit var pendingIntent: PendingIntent
 lateinit var notificationChannel: NotificationChannel
@@ -57,7 +57,7 @@ class SetTask : AppCompatActivity() {
                     .setSmallIcon(R.drawable.lead_icon)
                     .setContentIntent(pendingIntent)
         }
-        val mref=FirebaseDatabase.getInstance().getReference("Alarm")
+        val mref = FirebaseDatabase.getInstance().getReference("Alarm")
         datetime.setOnButtonClickListener(object : SwitchDateTimeDialogFragment.OnButtonClickListener {
             override fun onPositiveButtonClick(date: Date?) {
                 Toast.makeText(this@SetTask, date.toString(), Toast.LENGTH_SHORT).show()
@@ -72,10 +72,10 @@ class SetTask : AppCompatActivity() {
 
         })
         binding.setalarmSettask.setOnClickListener {
-            desctxt=binding.descriptionSettask.text.toString()
+            desctxt = binding.descriptionSettask.text.toString()
             builder.setContentText(desctxt)
-            val data=AlarmData(desctxt,d.toString())
-            val key=mref.push().key
+            val data = AlarmData(desctxt, d.toString())
+            val key = mref.push().key
             mref.child(key!!).setValue(data)
             setalarm(d)
         }
