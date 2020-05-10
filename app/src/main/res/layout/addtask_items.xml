@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#57F3E5F5">
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:padding="2dp"
+            android:id="@+id/date_addtask_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DATE AND TIME"
+            android:textSize="12sp"
+            android:textColor="#AD111111"
+            />
+        <TextView
+            android:padding="5dp"
+            android:textSize="16sp"
+            android:id="@+id/desc_addtask_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DESCRIPTION"/>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#65111111"/>
+</LinearLayout>

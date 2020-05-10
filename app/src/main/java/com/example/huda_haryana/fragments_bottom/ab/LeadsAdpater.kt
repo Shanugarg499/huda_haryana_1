@@ -61,8 +61,8 @@ class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>)
 
         }
 
-        holder.background.setOnClickListener{
-            val intent=Intent(context,LeadOptions::class.java).putExtra("id",data[pos].key).putExtra("name",data[pos].name)
+        holder.background.setOnClickListener {
+            val intent = Intent(context, LeadOptions::class.java).putExtra("id", data[pos].key).putExtra("name", data[pos].name).putExtra("phone", data[pos].number).putExtra("email",data[pos].email)
             holder.itemView.context.startActivity(intent)
         }
 
@@ -70,7 +70,7 @@ class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>)
 
 
         holder.nameTextView.text = data[pos].name
-        holder.timeTextView.text = "+"+data[pos].date+" "+data[pos].time
+        holder.timeTextView.text = "+" + data[pos].date + " " + data[pos].time
 
         val ref = mDb.child("leads").child(data[pos].key)
 

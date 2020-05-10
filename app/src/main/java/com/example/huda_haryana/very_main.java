@@ -78,14 +78,14 @@ public class very_main extends AppCompatActivity {
                 signin();
             }
         });
-
-        findViewById(R.id.login_b).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(very_main.this, login.class));
-                finishAffinity();
-            }
-        });
+//
+//        findViewById(R.id.login_b).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(very_main.this, login.class));
+//                finishAffinity();
+//            }
+//        });
 
 
 //        checkloginstatus();
@@ -110,11 +110,10 @@ public class very_main extends AppCompatActivity {
 
 
 
-    findViewById(R.id.login_txt).setOnClickListener(new View.OnClickListener() {
+    findViewById(R.id.register_txt).setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             startActivity(new Intent(getApplicationContext(), Signupcode.class));
-            finishAffinity();
         }
     });
 

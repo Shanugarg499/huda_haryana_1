@@ -46,7 +46,7 @@ class AddLabels : AppCompatActivity() {
             }
             val data = ListData(labellist)
             mref.setValue(data)
-            Toast.makeText(this,"Added",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Added", Toast.LENGTH_SHORT).show()
         }
 
     }

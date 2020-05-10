@@ -1,6 +1,5 @@
 package com.example.huda_haryana.Lead
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -23,38 +22,38 @@ class LeadNote : AppCompatActivity() {
         binding.leadnoteToolbar.setNavigationOnClickListener {
             onBackPressed()
         }
-        val id =intent.getStringExtra("id")
-        val name=intent.getStringExtra("name")
+        val id = intent.getStringExtra("id")
+        val name = intent.getStringExtra("name")
         val mref = FirebaseDatabase.getInstance().getReference("leads").child(id!!).child("Notes")
         binding.leadnoteToolbar.inflateMenu(R.menu.bottom_navigation_menu)
-        binding.leadnoteRecyler.layoutManager=LinearLayoutManager(this)
+        binding.leadnoteRecyler.layoutManager = LinearLayoutManager(this)
         val getdate = Calendar.getInstance().time
         val dateformat = SimpleDateFormat("dd-MMM-yyyy")
         val date = dateformat.format(getdate)
         binding.leadnoteDate.text = date
-        binding.leadnoteName.text=name
+        binding.leadnoteName.text = name
         binding.leadnoteButton.setOnClickListener {
             val notetext = binding.leadnoteAddnoteEt.text.toString()
             val data = LeadNoteData(date, notetext)
-            val key=mref.push().key
+            val key = mref.push().key
             mref.child(key!!).setValue(data)
             Toast.makeText(this, "Added", Toast.LENGTH_SHORT).show()
             binding.leadnoteAddnoteEt.setText("")
         }
 
-        mref.addValueEventListener(object :ValueEventListener{
+        mref.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
 
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-                if(p0.exists()){
-                    val list= mutableListOf<LeadNoteData>()
-                    for(i in p0.children){
-                        val data=i.getValue(LeadNoteData::class.java)
+                if (p0.exists()) {
+                    val list = mutableListOf<LeadNoteData>()
+                    for (i in p0.children) {
+                        val data = i.getValue(LeadNoteData::class.java)
                         list.add(data!!)
                     }
-                    binding.leadnoteRecyler.adapter=LeadNoteAdapter(list)
+                    binding.leadnoteRecyler.adapter = LeadNoteAdapter(list)
                 }
             }
 
