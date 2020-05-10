@@ -48,7 +48,7 @@ class LeadOptions : AppCompatActivity() {
             startActivity(intent)
         }
         binding.leadoptionsAddtask.setOnClickListener {
-            val intent = Intent(this, AddTask::class.java)
+            val intent = Intent(this, AddTask::class.java).putExtra("id",id).putExtra("name",name)
             startActivity(intent)
         }
 

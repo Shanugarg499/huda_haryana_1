@@ -23,18 +23,20 @@ class AddTask : AppCompatActivity() {
         binding.leadnoteToolbar.setNavigationOnClickListener {
             onBackPressed()
         }
+        val id=intent.getStringExtra("id")
+        val name=intent.getStringExtra("name")
         binding.leadnoteToolbar.inflateMenu(R.menu.task_menu)
         binding.tasksRecycler.layoutManager = LinearLayoutManager(this)
         binding.leadnoteToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.add_task -> {
-                    val intent = Intent(this, SetTask::class.java)
+                    val intent = Intent(this, SetTask::class.java).putExtra("id",id).putExtra("name",name)
                     startActivity(intent)
                 }
             }
             true
         }
-        val mref = FirebaseDatabase.getInstance().getReference("Alarm")
+        val mref = FirebaseDatabase.getInstance().getReference("leads").child(id!!).child("Alarm")
         mref.addValueEventListener(object : ValueEventListener {
 
             override fun onCancelled(p0: DatabaseError) {

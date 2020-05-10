@@ -36,12 +36,18 @@ class SetTask : AppCompatActivity() {
         datetime.startAtCalendarView()
         datetime.setHighlightAMPMSelection(false)
         datetime.set24HoursMode(false)
+        val id=intent.getStringExtra("id")
+        val name=intent.getStringExtra("name")
         datetime.simpleDateMonthAndDayFormat = SimpleDateFormat("MMM dd", java.util.Locale.getDefault())
         binding.selectTimeSetTask.setOnClickListener {
             datetime.show(supportFragmentManager, "Set")
         }
+        binding.settaskToolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val mref = FirebaseDatabase.getInstance().getReference("Alarm")
+        val mref = FirebaseDatabase.getInstance().getReference("leads").child(id!!).child("Alarm")
+        val mref2=FirebaseDatabase.getInstance().getReference("Tasks")
         datetime.setOnButtonClickListener(object : SwitchDateTimeDialogFragment.OnButtonClickListener {
             override fun onPositiveButtonClick(date: Date?) {
                 Toast.makeText(this@SetTask, date.toString(), Toast.LENGTH_SHORT).show()
@@ -79,8 +85,10 @@ class SetTask : AppCompatActivity() {
         binding.setalarmSettask.setOnClickListener {
             desctxt = binding.descriptionSettask.text.toString()
             builder.setContentText(desctxt)
-            val data = AlarmData(desctxt, d.toString())
-            val key = mref.push().key
+            val data = AlarmData(desctxt, d.toString(),name!!)
+            val key2=mref2.push().key
+            val key=mref.push().key
+            mref2.child(key2!!).setValue(data)
             mref.child(key!!).setValue(data)
             setalarm(d)
         }

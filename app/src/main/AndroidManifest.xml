@@ -38,19 +38,22 @@
             android:name=".mybusiness.NotesActivity"
             android:theme="@style/business" />
         <activity android:name=".mybusiness.BusinessActivity" />
-        <activity android:name=".Signupcode" />
+        <activity android:name=".Signupcode"
+            android:theme="@style/business"/>
         <activity android:name=".ask_details" />
         <activity android:name=".MainActivity">
+
+        </activity>
+        <activity
+            android:name=".very_main"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".very_main"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
