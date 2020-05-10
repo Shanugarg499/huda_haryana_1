@@ -3,6 +3,8 @@ package com.example.huda_haryana.Lead
 import android.app.*
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -62,8 +64,9 @@ class SetTask : AppCompatActivity() {
                 } else {
                     builder = Notification.Builder(this@SetTask)
                             .setContentTitle("Reminder")
-                            .setSmallIcon(R.drawable.lead_icon)
+                            .setSmallIcon(R.drawable.lead_profile)
                             .setContentIntent(pendingIntent)
+                            .setLargeIcon(BitmapFactory.decodeResource(this@SetTask.resources,R.drawable.lead_profile))
                 }
 
             }
