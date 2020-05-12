@@ -68,9 +68,18 @@ public class Signupcode extends AppCompatActivity {
                             startActivity(new Intent(Signupcode.this, MainActivity.class));
                             finishAffinity();
                         }
+                        else{Toast.makeText(getApplicationContext(), "This email is already registered ", Toast.LENGTH_SHORT).show();}
                     }
                 });
 
+            }
+        });
+
+        findViewById(R.id.gotologin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), very_main.class));
+                finishAffinity();
             }
         });
 

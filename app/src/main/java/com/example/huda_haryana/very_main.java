@@ -47,6 +47,7 @@ import java.util.Arrays;
 
 public class very_main extends AppCompatActivity {
 
+    private EditText Password, Email;
     ProgressBar progressBar;
     private SignInButton signInButton;
     private GoogleSignInClient mGoogleSignInClient;
@@ -66,6 +67,17 @@ public class very_main extends AppCompatActivity {
         signInButton = findViewById(R.id.google_signin);
         loginButton = findViewById(R.id.fb_login);
         mAuth = FirebaseAuth.getInstance();
+        Email = findViewById(R.id.email_et);
+        Password = findViewById(R.id.pass_et);
+        progressBar = findViewById(R.id.login_progress);
+
+        findViewById(R.id.login_b).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Login();
+            }
+        });
+
         callbackManager = CallbackManager.Factory.create();
         loginButton.setPermissions(Arrays.asList("email", "public_profile"));
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -234,5 +246,51 @@ public class very_main extends AppCompatActivity {
 //            startActivity(new Intent(getApplicationContext(), MainActivity.class));
 //        }
 //    }
+
+    private void Login() {
+        String email = Email.getText().toString().trim();
+        String password = Password.getText().toString().trim();
+
+        if(email.isEmpty()){
+            Email.setError("Email required");
+            Email.requestFocus();
+            return;
+        }
+        if(password.isEmpty()){
+            Password.setError("Password required");
+            Password.requestFocus();
+            return;
+        }
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            Email.setError("Valid Email required");
+            Email.requestFocus();
+            return;
+        }
+        if(password.length()<6){
+            Password.setError("Minimum length of password should be 6");
+            Password.requestFocus();
+            return;
+        }
+
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Intent intent = new Intent(very_main.this, MainActivity.class);
+                            startActivity(intent);
+                            finishAffinity();
+                        }
+                        else{
+                            Toast.makeText(very_main.this, "Login Bug to be resolved!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(very_main.this, MainActivity.class);
+                            startActivity(intent);
+                            finishAffinity();
+                        }
+                    }
+                });
+
+    }
+
 
 }
