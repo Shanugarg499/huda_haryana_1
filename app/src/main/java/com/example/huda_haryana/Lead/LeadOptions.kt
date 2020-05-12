@@ -3,10 +3,17 @@ package com.example.huda_haryana.Lead
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.huda_haryana.R
 import com.example.huda_haryana.databinding.ActivityLeadOptionsBinding
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class LeadOptions : AppCompatActivity() {
     lateinit var binding: ActivityLeadOptionsBinding
@@ -25,6 +32,10 @@ class LeadOptions : AppCompatActivity() {
             val intent = Intent(this, LeadNote::class.java).putExtra("id", id).putExtra("name", name)
             startActivity(intent)
 
+        }
+        binding.horRecyclerLeadOption.setOnClickListener {
+            val intent = Intent(this, AddLabels::class.java).putExtra("number", id)
+            startActivity(intent)
         }
         binding.leadptionsAddlabel.setOnClickListener {
             val intent = Intent(this, AddLabels::class.java).putExtra("number", id)
@@ -51,6 +62,27 @@ class LeadOptions : AppCompatActivity() {
             val intent = Intent(this, AddTask::class.java).putExtra("id",id).putExtra("name",name)
             startActivity(intent)
         }
+        binding.horRecyclerLeadOption.layoutManager=LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        val mref=FirebaseDatabase.getInstance().getReference("leads").child(id!!).child("Labels").child("list")
+        mref.addValueEventListener(object :ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                val list= mutableListOf<LabelData>()
+                if(p0.exists()) {
+                    for (i in p0.children) {
+                        val data = i.getValue(LabelData::class.java)
+                        list.add(data!!)
+                    }
+                    binding.horRecyclerLeadOption.visibility= View.VISIBLE
+                    binding.addLabelTxt.visibility=View.GONE
+                    binding.horRecyclerLeadOption.adapter=AddLabelAdapter(list)
+                }
+            }
+
+        })
 
     }
 }
