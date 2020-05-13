@@ -11,24 +11,20 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.allyants.notifyme.NotifyMe
 import com.example.huda_haryana.R
 import com.example.huda_haryana.databinding.ActivitySetTaskBinding
 import com.google.firebase.database.FirebaseDatabase
 import com.kunzisoft.switchdatetime.SwitchDateTimeDialogFragment
 import java.text.SimpleDateFormat
 import java.util.*
+lateinit var time:String
 
-var d: Long? = null
 lateinit var desctxt: String
-lateinit var notificationManager: NotificationManager
-lateinit var pendingIntent: PendingIntent
-lateinit var notificationChannel: NotificationChannel
-lateinit var builder: Notification.Builder
-private val channelID = "1"
-private val desc = "Set Reminder"
 
 class SetTask : AppCompatActivity() {
     lateinit var binding: ActivitySetTaskBinding
+    var d: Long? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_set_task)
@@ -45,35 +41,18 @@ class SetTask : AppCompatActivity() {
         binding.settaskToolbar.setNavigationOnClickListener {
             onBackPressed()
         }
-        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        var d2:Date?=null
         val mref = FirebaseDatabase.getInstance().getReference("leads").child(id!!).child("Alarm")
         val mref2=FirebaseDatabase.getInstance().getReference("Tasks")
         datetime.setOnButtonClickListener(object : SwitchDateTimeDialogFragment.OnButtonClickListener {
             override fun onPositiveButtonClick(date: Date?) {
                 Toast.makeText(this@SetTask, date.toString(), Toast.LENGTH_SHORT).show()
                 d = date?.time
+                d2=date!!
                 val dateFormat=SimpleDateFormat("hh:mm a dd-MMM")
-                val time=dateFormat.format(Date(d!!))
+                 time=dateFormat.format(Date(d!!))
                 binding.dateTime.setText(time)
-                val intent = Intent(this@SetTask, AddTask::class.java)
-                pendingIntent = PendingIntent.getActivity(this@SetTask, 0, intent, 0)
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    notificationChannel = NotificationChannel(channelID, desc, NotificationManager.IMPORTANCE_HIGH)
-                    notificationChannel.enableLights(true)
-                    notificationChannel.lightColor = Color.GREEN
-                    notificationChannel.enableVibration(true)
-                    notificationManager.createNotificationChannel(notificationChannel)
-                    builder = Notification.Builder(this@SetTask, channelID)
-                            .setContentTitle("Reminder")
-                            .setSmallIcon(R.drawable.lead_icon)
-                            .setContentIntent(pendingIntent)
-                } else {
-                    builder = Notification.Builder(this@SetTask)
-                            .setContentTitle("Reminder")
-                            .setSmallIcon(R.drawable.lead_profile)
-                            .setContentIntent(pendingIntent)
-                            .setLargeIcon(BitmapFactory.decodeResource(this@SetTask.resources,R.drawable.lead_profile))
-                }
+
 
             }
 
@@ -84,21 +63,24 @@ class SetTask : AppCompatActivity() {
         })
         binding.setalarmSettask.setOnClickListener {
             desctxt = binding.descriptionSettask.text.toString()
-            builder.setContentText(desctxt)
             val data = AlarmData(desctxt, d.toString(),name!!)
             val key2=mref2.push().key
             val key=mref.push().key
             mref2.child(key2!!).setValue(data)
             mref.child(key!!).setValue(data)
-            setalarm(d)
+            if(d2!=null) {
+                Toast.makeText(this,"SET",Toast.LENGTH_SHORT).show()
+                val notifyMe = NotifyMe.Builder(applicationContext)
+                        .title(desctxt)
+                        .content("Lets go")
+                        .color(255, 0, 0, 255)
+                        .led_color(255, 255, 255, 255)
+                        .time(d2)
+                        .addAction(Intent(this,AddTask::class.java),"DONE")
+                        .large_icon(R.drawable.small_logo)
+                        .small_icon(R.drawable.small_logo)
+                        .build()
+            }
         }
-    }
-
-    fun setalarm(d: Long?) {
-        val alarmanager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val intent = Intent(this, AddAlarm::class.java)
-        val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
-        alarmanager.setExact(AlarmManager.RTC_WAKEUP, d!!, pendingIntent)
-        Toast.makeText(this, "Alarm Set", Toast.LENGTH_SHORT).show()
     }
 }

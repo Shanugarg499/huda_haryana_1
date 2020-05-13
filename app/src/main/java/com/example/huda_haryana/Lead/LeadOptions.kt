@@ -76,8 +76,6 @@ class LeadOptions : AppCompatActivity() {
                         val data = i.getValue(LabelData::class.java)
                         list.add(data!!)
                     }
-                    binding.horRecyclerLeadOption.visibility= View.VISIBLE
-                    binding.addLabelTxt.visibility=View.GONE
                     binding.horRecyclerLeadOption.adapter=AddLabelAdapter(list)
                 }
             }

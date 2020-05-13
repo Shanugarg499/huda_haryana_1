@@ -55,7 +55,7 @@ dependencies {
 
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
-
+    implementation 'com.github.jakebonk:NotifyMe:1.0.1'
     implementation "androidx.navigation:navigation-fragment-ktx:2.2.2"
     implementation "androidx.navigation:navigation-ui-ktx:2.2.2"
     implementation 'com.facebook.android:facebook-login:5.15.3'

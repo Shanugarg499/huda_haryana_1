@@ -59,12 +59,6 @@ class AddTask : AppCompatActivity() {
                             }
                         }
                     }
-//                    for(i in list){
-//                        if(i.date.toLong()>Date().time){
-//                            setalarm(i.date.toLong())
-//                            break
-//                        }
-//                    }
                     binding.tasksRecycler.adapter = AlarmAdapter(list)
                 }
             }
