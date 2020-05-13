@@ -68,11 +68,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toStartOf="@+id/leadIdRecyclerView"
+            app:layout_constraintEnd_toStartOf="@+id/option_layout"
             app:layout_constraintStart_toStartOf="@+id/nameLeadRecyclerview"
             app:layout_constraintTop_toBottomOf="@+id/nameLeadRecyclerview"
-            tools:visibility="gone" />
+            />
 
 
         <LinearLayout
@@ -91,7 +90,7 @@
                 android:id="@+id/custom_Leads"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:visibility="gone"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:orientation="vertical"
