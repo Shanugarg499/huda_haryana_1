@@ -3,6 +3,7 @@ package com.example.huda_haryana.fragments_bottom.ab
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,11 +13,17 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.huda_haryana.Lead.AddLabelAdapter
+import com.example.huda_haryana.Lead.LabelData
 import com.example.huda_haryana.Lead.LeadOptions
 import com.example.huda_haryana.R
 import com.example.huda_haryana.order_to_database
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>) : RecyclerView.Adapter<LeadsAdpater.MyViewModel>() {
 
@@ -29,6 +36,7 @@ class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>)
         val nameTextView: TextView = itemView.findViewById(R.id.nameLeadRecyclerview)
         val timeTextView: TextView = itemView.findViewById(R.id.timeRecyclerViewItem)
         val deleteButton: LinearLayout = itemView.findViewById(R.id.delete_Leads)
+        val recyclerViewInner: RecyclerView = itemView.findViewById(R.id.recyclerViewInner)
         val background = itemView.findViewById(R.id.entireCard) as ConstraintLayout
     }
 
@@ -66,6 +74,29 @@ class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>)
             holder.itemView.context.startActivity(intent)
         }
 
+        val mref=FirebaseDatabase.getInstance().getReference("leads").child(data[pos].key!!).child("Labels").child("list")
+        mref.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                val list= mutableListOf<LabelData>()
+                Log.i("here" , " here1")
+                if(p0.exists()) {
+                    Log.i("here" , " here2")
+                    for (i in p0.children) {
+                        val data = i.getValue(LabelData::class.java)
+                        list.add(data!!)
+                    }
+                    Log.i("here" , " here3 + ${list.toString()}")
+                    holder.recyclerViewInner.visibility = View.VISIBLE
+                    holder.recyclerViewInner.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+                    holder.recyclerViewInner.adapter=AddLabelAdapterSmallerTextSize(list)
+                }
+            }
+
+        })
 
 
 
@@ -75,6 +106,7 @@ class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>)
         val ref = mDb.child("leads").child(data[pos].key)
 
         holder.deleteButton.setOnClickListener {
+
             val alertDialog = AlertDialog.Builder(context)
             alertDialog.setTitle("Delete Customer?")
                     .setMessage("Deletes customer will be removed and will NOT reappear when they call you ")
