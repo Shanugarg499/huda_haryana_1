@@ -16,4 +16,5 @@
     <dimen name="smart_button">250sp</dimen>
     <dimen name="detailheight">40sp</dimen>
     <dimen name="padding">5sp</dimen>
+    <dimen name="conversiontab">35sp</dimen>
 </resources>

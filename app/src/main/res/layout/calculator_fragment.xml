@@ -5,9 +5,431 @@
     android:layout_height="match_parent"
     tools:context=".ui.calculator.CalculatorFragment">
 
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="calce.." />
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/standard"
+            android:layout_margin="@dimen/margin"
+            android:background="@color/dividers"
+            android:gravity="center"
+            android:text="Land Unit Convertor"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/twenty" />
+
+        <EditText
+            android:id="@+id/entered_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/standard"
+            android:layout_margin="@dimen/margin"
+            android:background="@color/dividers"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="@dimen/detailheight"
+                android:layout_height="@dimen/detailheight"
+                android:layout_gravity="clip_vertical|center_vertical"
+                android:background="@drawable/drop_down"
+                android:foregroundGravity="center_vertical" />
+
+            <TextView
+                android:id="@+id/selectedunit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/margin"
+                android:layout_weight="1"
+                android:gravity="center|center_vertical"
+                android:text="Textview"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/twenty" />
+
+            <Button
+                android:id="@+id/buttonconvert"
+                android:layout_width="0sp"
+                android:layout_height="@dimen/standard"
+                android:layout_gravity="center_vertical|end"
+                android:layout_weight="1"
+                android:minWidth="@dimen/twenty"
+                android:text="convert" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin"
+            android:background="@drawable/white_stroke">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/dividers"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/white_stroke"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/conversiontab"
+                        android:layout_margin="@dimen/margin"
+                        android:layout_weight="1"
+                        android:gravity="start|center_vertical"
+                        android:text="Acres"
+                        android:textColor="@color/units"
+                        android:textSize="@dimen/generaltext" />
+
+                    <View
+                        android:id="@+id/divider8"
+                        android:layout_width="@dimen/padding"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:background="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/margin"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="-NC-"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/generaltext" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/white_stroke"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/conversiontab"
+                        android:layout_margin="@dimen/margin"
+                        android:layout_weight="1"
+                        android:gravity="start|center_vertical"
+                        android:text="Bigha"
+                        android:textColor="@color/units"
+                        android:textSize="@dimen/generaltext" />
+
+                    <View
+                        android:id="@+id/divider9"
+                        android:layout_width="@dimen/padding"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:background="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/margin"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="-NC-"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/generaltext" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/white_stroke"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/conversiontab"
+                        android:layout_margin="@dimen/margin"
+                        android:layout_weight="1"
+                        android:gravity="start|center_vertical"
+                        android:text="Sq. yards"
+                        android:textColor="@color/units"
+                        android:textSize="@dimen/generaltext" />
+
+                    <View
+                        android:id="@+id/divider10"
+                        android:layout_width="@dimen/padding"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:background="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/margin"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="-NC-"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/generaltext" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/white_stroke"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/conversiontab"
+                        android:layout_margin="@dimen/margin"
+                        android:layout_weight="1"
+                        android:gravity="start|center_vertical"
+                        android:text="Biswa"
+                        android:textColor="@color/units"
+                        android:textSize="@dimen/generaltext" />
+
+                    <View
+                        android:id="@+id/divider11"
+                        android:layout_width="@dimen/padding"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:background="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/margin"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="-NC-"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/generaltext"
+                        tools:text="-NC-" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/white_stroke"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/conversiontab"
+                        android:layout_margin="@dimen/margin"
+                        android:layout_weight="1"
+                        android:gravity="start|center_vertical"
+                        android:text="Sq. metres"
+                        android:textColor="@color/units"
+                        android:textSize="@dimen/generaltext" />
+
+                    <View
+                        android:id="@+id/divider12"
+                        android:layout_width="@dimen/padding"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:background="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/margin"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="-NC-"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/generaltext" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/white_stroke"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/conversiontab"
+                        android:layout_margin="@dimen/margin"
+                        android:layout_weight="1"
+                        android:gravity="start|center_vertical"
+                        android:text="Sq. feet"
+                        android:textColor="@color/units"
+                        android:textSize="@dimen/generaltext" />
+
+                    <View
+                        android:id="@+id/divider13"
+                        android:layout_width="@dimen/padding"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:background="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/margin"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="-NC-"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/generaltext" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/white_stroke"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/conversiontab"
+                        android:layout_margin="@dimen/margin"
+                        android:layout_weight="1"
+                        android:gravity="start|center_vertical"
+                        android:text="Sq. inches"
+                        android:textColor="@color/units"
+                        android:textSize="@dimen/generaltext" />
+
+                    <View
+                        android:id="@+id/divider14"
+                        android:layout_width="@dimen/padding"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:background="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/margin"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="-NC-"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/generaltext" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/white_stroke"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/conversiontab"
+                        android:layout_margin="@dimen/margin"
+                        android:layout_weight="1"
+                        android:gravity="start|center_vertical"
+                        android:text="Extra 1"
+                        android:textColor="@color/units"
+                        android:textSize="@dimen/generaltext" />
+
+                    <View
+                        android:id="@+id/divider15"
+                        android:layout_width="@dimen/padding"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:background="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/margin"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="-NC-"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/generaltext" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/white_stroke"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/conversiontab"
+                        android:layout_margin="@dimen/margin"
+                        android:layout_weight="1"
+                        android:gravity="start|center_vertical"
+                        android:text="Extra 2"
+                        android:textColor="@color/units"
+                        android:textSize="@dimen/generaltext" />
+
+                    <View
+                        android:id="@+id/divider16"
+                        android:layout_width="@dimen/padding"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:background="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/margin"
+                        android:layout_weight="1"
+                        android:gravity="fill_vertical"
+                        android:text="-NC-"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/generaltext" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white_stroke"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/conversiontab"
+                        android:layout_margin="@dimen/margin"
+                        android:layout_weight="1"
+                        android:gravity="start|center_vertical"
+                        android:text="Extra 3"
+                        android:textColor="@color/units"
+                        android:textSize="@dimen/generaltext" />
+
+                    <View
+                        android:id="@+id/divider17"
+                        android:layout_width="@dimen/padding"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:background="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/margin"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="-NC-"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/generaltext" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
 </FrameLayout>
