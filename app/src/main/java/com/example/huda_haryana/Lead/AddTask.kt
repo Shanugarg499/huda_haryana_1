@@ -50,15 +50,6 @@ class AddTask : AppCompatActivity() {
                         val data = i.getValue(AlarmData::class.java)
                         list.add(data!!)
                     }
-                    for (i in 0 until list.size) {
-                        for (j in i until list.size) {
-                            if (list[i].date > list[j].date) {
-                                val t = list[i]
-                                list[i] = list[j]
-                                list[j] = t
-                            }
-                        }
-                    }
                     binding.tasksRecycler.adapter = AlarmAdapter(list)
                 }
             }
