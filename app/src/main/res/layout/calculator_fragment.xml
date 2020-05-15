@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mygreen"
     tools:context=".ui.calculator.CalculatorFragment">
 
 
@@ -16,11 +17,12 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/standard"
             android:layout_margin="@dimen/margin"
-            android:background="@color/dividers"
+            android:background="@android:color/white"
             android:gravity="center"
             android:text="Land Unit Convertor"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/twenty" />
+            android:textColor="@color/units"
+            android:textSize="@dimen/twenty"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/entered_area"
@@ -28,13 +30,14 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin"
             android:ems="10"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:textColor="@android:color/white" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/standard"
             android:layout_margin="@dimen/margin"
-            android:background="@color/dividers"
+            android:background="@android:color/white"
             android:orientation="horizontal">
 
             <Spinner
@@ -54,7 +57,7 @@
                 android:layout_weight="1"
                 android:gravity="center|center_vertical"
                 android:text="Textview"
-                android:textColor="@android:color/white"
+                android:textColor="@color/units"
                 android:textSize="@dimen/twenty" />
 
             <Button
@@ -71,18 +74,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/margin"
-            android:background="@drawable/white_stroke">
+            android:background="@drawable/white_stroke"
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/dividers"
+                android:background="@color/mygreen"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/white_stroke"
+                    android:layout_margin="@dimen/padding"
+                    android:background="@drawable/whiteround"
                     android:orientation="horizontal">
 
                     <TextView
@@ -100,16 +105,17 @@
                         android:layout_width="@dimen/padding"
                         android:layout_height="match_parent"
                         android:layout_weight="0"
-                        android:background="@android:color/white" />
+                        android:background="@color/transparent" />
 
                     <TextView
+                        android:id="@+id/first_unit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/margin"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:text="-NC-"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/units"
                         android:textSize="@dimen/generaltext" />
 
 
@@ -118,7 +124,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/white_stroke"
+                    android:layout_margin="@dimen/padding"
+                    android:background="@drawable/whiteround"
                     android:orientation="horizontal">
 
                     <TextView
@@ -136,23 +143,25 @@
                         android:layout_width="@dimen/padding"
                         android:layout_height="match_parent"
                         android:layout_weight="0"
-                        android:background="@android:color/white" />
+                        android:background="@color/transparent" />
 
                     <TextView
+                        android:id="@+id/second_unit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/margin"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:text="-NC-"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/units"
                         android:textSize="@dimen/generaltext" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/white_stroke"
+                    android:layout_margin="@dimen/padding"
+                    android:background="@drawable/whiteround"
                     android:orientation="horizontal">
 
                     <TextView
@@ -161,7 +170,7 @@
                         android:layout_margin="@dimen/margin"
                         android:layout_weight="1"
                         android:gravity="start|center_vertical"
-                        android:text="Sq. yards"
+                        android:text="Bigha-Pucca"
                         android:textColor="@color/units"
                         android:textSize="@dimen/generaltext" />
 
@@ -170,16 +179,17 @@
                         android:layout_width="@dimen/padding"
                         android:layout_height="match_parent"
                         android:layout_weight="0"
-                        android:background="@android:color/white" />
+                        android:background="@color/transparent" />
 
                     <TextView
+                        android:id="@+id/third_unit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/margin"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:text="-NC-"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/units"
                         android:textSize="@dimen/generaltext" />
 
                 </LinearLayout>
@@ -187,7 +197,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/white_stroke"
+                    android:layout_margin="@dimen/padding"
+                    android:background="@drawable/whiteround"
                     android:orientation="horizontal">
 
                     <TextView
@@ -205,16 +216,17 @@
                         android:layout_width="@dimen/padding"
                         android:layout_height="match_parent"
                         android:layout_weight="0"
-                        android:background="@android:color/white" />
+                        android:background="@color/transparent" />
 
                     <TextView
+                        android:id="@+id/fourth_unit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/margin"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:text="-NC-"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/units"
                         android:textSize="@dimen/generaltext"
                         tools:text="-NC-" />
                 </LinearLayout>
@@ -222,7 +234,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/white_stroke"
+                    android:layout_margin="@dimen/padding"
+                    android:background="@drawable/whiteround"
                     android:orientation="horizontal">
 
 
@@ -241,23 +254,25 @@
                         android:layout_width="@dimen/padding"
                         android:layout_height="match_parent"
                         android:layout_weight="0"
-                        android:background="@android:color/white" />
+                        android:background="@color/transparent" />
 
                     <TextView
+                        android:id="@+id/fifth_unit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/margin"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:text="-NC-"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/units"
                         android:textSize="@dimen/generaltext" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/white_stroke"
+                    android:layout_margin="@dimen/padding"
+                    android:background="@drawable/whiteround"
                     android:orientation="horizontal">
 
 
@@ -276,23 +291,25 @@
                         android:layout_width="@dimen/padding"
                         android:layout_height="match_parent"
                         android:layout_weight="0"
-                        android:background="@android:color/white" />
+                        android:background="@color/transparent" />
 
                     <TextView
+                        android:id="@+id/sixth_unit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/margin"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:text="-NC-"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/units"
                         android:textSize="@dimen/generaltext" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/white_stroke"
+                    android:layout_margin="@dimen/padding"
+                    android:background="@drawable/whiteround"
                     android:orientation="horizontal">
 
 
@@ -311,23 +328,25 @@
                         android:layout_width="@dimen/padding"
                         android:layout_height="match_parent"
                         android:layout_weight="0"
-                        android:background="@android:color/white" />
+                        android:background="@color/transparent" />
 
                     <TextView
+                        android:id="@+id/seventh_unit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/margin"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:text="-NC-"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/units"
                         android:textSize="@dimen/generaltext" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/white_stroke"
+                    android:layout_margin="@dimen/padding"
+                    android:background="@drawable/whiteround"
                     android:orientation="horizontal">
 
 
@@ -346,23 +365,25 @@
                         android:layout_width="@dimen/padding"
                         android:layout_height="match_parent"
                         android:layout_weight="0"
-                        android:background="@android:color/white" />
+                        android:background="@color/transparent" />
 
                     <TextView
+                        android:id="@+id/eighth_unit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/margin"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:text="-NC-"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/units"
                         android:textSize="@dimen/generaltext" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/white_stroke"
+                    android:layout_margin="@dimen/padding"
+                    android:background="@drawable/whiteround"
                     android:orientation="horizontal">
 
 
@@ -381,23 +402,24 @@
                         android:layout_width="@dimen/padding"
                         android:layout_height="match_parent"
                         android:layout_weight="0"
-                        android:background="@android:color/white" />
+                        android:background="@color/transparent" />
 
                     <TextView
+                        android:id="@+id/ninth_unit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/margin"
                         android:layout_weight="1"
                         android:gravity="fill_vertical"
                         android:text="-NC-"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/units"
                         android:textSize="@dimen/generaltext" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/white_stroke"
+                    android:background="@drawable/whiteround"
                     android:orientation="horizontal">
 
 
@@ -416,20 +438,28 @@
                         android:layout_width="@dimen/padding"
                         android:layout_height="match_parent"
                         android:layout_weight="0"
-                        android:background="@android:color/white" />
+                        android:background="@color/transparent" />
 
                     <TextView
+                        android:id="@+id/tenth_unit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/margin"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:text="-NC-"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/units"
                         android:textSize="@dimen/generaltext" />
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/units_RCV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/mygreen"
+            android:visibility="gone" />
 
     </LinearLayout>
 </FrameLayout>
