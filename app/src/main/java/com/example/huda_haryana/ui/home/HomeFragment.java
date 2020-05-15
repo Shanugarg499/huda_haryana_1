@@ -12,12 +12,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.huda_haryana.R;
-import com.example.huda_haryana.Lead.AddLabels;
 import com.example.huda_haryana.fragments_bottom.LabelsFragment;
-import com.example.huda_haryana.fragments_bottom.LeadsFragment;
+import com.example.huda_haryana.fragments_bottom.TaskFragment;
 import com.example.huda_haryana.fragments_bottom.ab.LeadsPageUpdated;
 import com.example.huda_haryana.mybusiness.mybusinessFragment;
-import com.example.huda_haryana.fragments_bottom.tasksFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeFragment extends Fragment {
@@ -53,7 +51,7 @@ public class HomeFragment extends Fragment {
                         case R.id.nav_labels:selectedFragment = new LabelsFragment();
                             Toast.makeText(getActivity(), "You clicked labels", Toast.LENGTH_SHORT).show();
                             break;
-                        case R.id.nav_tasks:selectedFragment = new tasksFragment();
+                        case R.id.nav_tasks:selectedFragment = new TaskFragment();
                             Toast.makeText(getActivity(), "You clicked tasks", Toast.LENGTH_SHORT).show();
                             break;
                         case R.id.nav_business:selectedFragment = new mybusinessFragment();

@@ -28,6 +28,6 @@ class AlarmAdapter(val list: MutableList<AlarmData>) : RecyclerView.Adapter<Alar
         holder.desc.text = list[position].desc
         val dateformat = SimpleDateFormat("hh:mm a dd-MMM")
         val date = dateformat.format(Date(list[position].date.toLong()))
-        holder.date.text=date
+        holder.date.text=list[position].name +"   "+ date
     }
 }
