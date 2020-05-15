@@ -39,7 +39,7 @@
         android:textColor="#FFF"
         android:layout_margin="15dp"
         android:id="@+id/select_time_set_task"
-        android:background="#7986CB"/>
+        android:background="#DF181819"/>
 
 
 

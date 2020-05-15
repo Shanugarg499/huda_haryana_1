@@ -71,8 +71,8 @@ class SetTask : AppCompatActivity() {
             if(d2!=null) {
                 Toast.makeText(this,"SET",Toast.LENGTH_SHORT).show()
                 val notifyMe = NotifyMe.Builder(applicationContext)
-                        .title(desctxt)
-                        .content("Lets go")
+                        .title(name)
+                        .content(desctxt)
                         .color(255, 0, 0, 255)
                         .led_color(255, 255, 255, 255)
                         .time(d2)
