@@ -11,16 +11,52 @@
     <string name="gravity_unit">start</string>
 
     <string-array name="units">
-        <item> Acres </item>
+        <item> Aankadam </item>
+        <item> Acre </item>
+        <item> Are </item>
         <item> Bigha </item>
+        <item> Bigha-Pucca </item>
+        <item> Bigha </item>
+        <item> Bigha </item>
+        <item> Bigha </item>
+        <item> Bigha </item>
+        <item> Biswa-Kachha </item>
+        <item> Biswa-Pucca </item>
         <item> Biswa </item>
-        <item> Sq. yards </item>
-        <item> Sq. metres </item>
+        <item> Biswa </item>
+        <item> Biswa-kachha </item>
+        <item> Centiare </item>
+        <item> Cent </item>
+        <item> Chatak </item>
+        <item> Decimal </item>
+        <item> Dhur </item>
+        <item> Dhur </item>
+        <item> Ghumaon </item>
+        <item> Ground </item>
+        <item> Guntha </item>
+        <item> Hectare </item>
+        <item> Kanal </item>
+        <item> Kattha </item>
+        <item> Kattha </item>
+        <item> Kattha </item>
+        <item> Kattha </item>
+        <item> Killa </item>
+        <item> Kranta </item>
+        <item> Kuncham </item>
+        <item> Lecha </item>
+        <item> Marla </item>
+        <item> Murabba </item>
+        <item> Nalli </item>
+        <item> Perch(Rod) </item>
+        <item> Rood </item>
+        <item> Sarsahi(Square Karam) </item>
+        <item> Shatak </item>
         <item> Sq. feet </item>
         <item> Sq. inches </item>
-        <item> Extra 1 </item>
-        <item> Extra 2 </item>
-        <item> Extra 3 </item>
+        <item> Sq. Kilometer </item>
+        <item> Sq. metres </item>
+        <item> Sq. Mile </item>
+        <item> Sq. yards </item>
     </string-array>
 
 
