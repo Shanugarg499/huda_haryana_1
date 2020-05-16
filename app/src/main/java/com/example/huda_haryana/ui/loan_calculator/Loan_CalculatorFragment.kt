@@ -22,13 +22,25 @@ class Loan_CalculatorFragment : Fragment() {
     private var principal: Double = 0.00
     private var intrest: Double = 0.00
     private var time: Double = 0.00
-    private var emi : Double = 0.00
-
+    private var EMI : Double = 0.00
+    private var totalIntrest = 0.00
+    private var totalPayment = 0.00
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater , R.layout.loan__calculator_fragment2, container, false)
         viewModel = ViewModelProviders.of(this).get(LoanCalculatorViewModel::class.java)
+
+
+        binding.resetFields.setOnClickListener {
+            binding.loanAmount.text.clear()
+            binding.intrestValue.text.clear()
+            binding.yearsValue.text.clear()
+            binding.monthValue.text.clear()
+            binding.EMIShow.text = "-"
+            binding.IntrestShow.text = "-"
+            binding.totalAmountShow.text = "-"
+        }
 
 
         binding.calculateEMI.setOnClickListener {
@@ -48,7 +60,8 @@ class Loan_CalculatorFragment : Fragment() {
                 time = months
 
                 binding.EMIShow.text =  String.format("%.2f", getEMI(principal , intrest/12 , time) )
-
+                binding.IntrestShow.text = String.format("%.2f", getIntrest() )
+                binding.totalAmountShow.text = String.format("%.2f", getTotalAmt() )
             }
 
 
@@ -57,12 +70,25 @@ class Loan_CalculatorFragment : Fragment() {
         return binding.root
     }
 
+    private fun getTotalAmt(): Double {
+        totalPayment = principal + totalIntrest
+        return totalPayment
+    }
+
+    private fun getIntrest(): Double {
+        totalIntrest =  EMI*time - principal
+
+        return totalIntrest
+    }
+
     private fun getEMI(p: Double, r: Double, n: Double): Double {
 
         val step =  (1+r/100).pow(n)
 
 
         val emi =  (p *  (r/100) * step ) / (step-1)
+
+        EMI = emi
 
         return emi
     }
