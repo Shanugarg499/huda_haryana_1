@@ -72,7 +72,7 @@ class SetTask : AppCompatActivity() {
                         .time(d2)
                         .addAction(Intent(this, AddTask::class.java), "DONE")
                         .large_icon(R.drawable.small_logo)
-                        .small_icon(R.drawable.small_logo)
+                        .small_icon(R.drawable.small_logo)  
                         .build()
             }
         }
