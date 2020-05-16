@@ -41,13 +41,13 @@ class Loan_CalculatorFragment : Fragment() {
                 var months = 0.0
 
                 if(binding.yearsValue.text.isNotEmpty())
-                        months += binding.yearsValue.text.toString().toDouble()*12
+                    months += binding.yearsValue.text.toString().toDouble()*12
                 if(binding.monthValue.text.isNotEmpty())
                     months += binding.monthValue.text.toString().toDouble()
 
                 time = months
 
-                binding.EMIShow.text =  String.format("%.2f", getEMI(principal , intrest , time) )
+                binding.EMIShow.text =  String.format("%.2f", getEMI(principal , intrest/12 , time) )
 
             }
 
