@@ -1,5 +1,6 @@
 package com.example.huda_haryana.Lead
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,7 @@ import com.example.huda_haryana.R
 import java.sql.Date
 import java.text.SimpleDateFormat
 
-class AlarmAdapter(val list: MutableList<AlarmData>) : RecyclerView.Adapter<AlarmAdapter.MyViewHolder>() {
+class AlarmAdapter(val list: MutableList<AlarmData>,val id:String,val name:String) : RecyclerView.Adapter<AlarmAdapter.MyViewHolder>() {
     class MyViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview) {
         val desc = itemview.findViewById<TextView>(R.id.desc_addtask_item)
         val date = itemview.findViewById<TextView>(R.id.date_addtask_item)
@@ -29,5 +30,9 @@ class AlarmAdapter(val list: MutableList<AlarmData>) : RecyclerView.Adapter<Alar
         val dateformat = SimpleDateFormat("hh:mm a dd-MMM")
         val date = dateformat.format(Date(list[position].date.toLong()))
         holder.date.text=date
+        holder.itemView.setOnClickListener {
+            val intent= Intent(holder.itemView.context,SetTask::class.java).putExtra("key",list[position].key).putExtra("id",id).putExtra("name",name)
+            holder.itemView.context.startActivity(intent)
+        }
     }
 }
