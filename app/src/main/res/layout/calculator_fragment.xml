@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mygreen"
+    android:background="@color/colorPrimary"
     tools:context=".ui.calculator.CalculatorFragment">
 
 
@@ -80,7 +80,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/mygreen"
+                android:background="@color/colorPrimary"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -458,7 +458,7 @@
             android:id="@+id/units_RCV"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/mygreen"
+            android:background="@color/colorPrimary"
             android:visibility="gone" />
 
     </LinearLayout>

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -25,11 +26,19 @@ import android.widget.Toast;
 
 import com.example.huda_haryana.MainActivity;
 import com.example.huda_haryana.R;
+import com.example.huda_haryana.SG.units_adapter;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 public class Conversion_value_tablesFragment extends Fragment {
 
     private ConversionValueTablesViewModel mViewModel;
-
+    ArrayList<Integer> factors = new ArrayList<>();
+    ArrayList<String> units = new ArrayList<>();
+//    private List<String> Lines = Arrays.asList(requireContext().getResources().getStringArray(R.array.units));
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -53,12 +62,22 @@ public class Conversion_value_tablesFragment extends Fragment {
                 unitsel.setText(spinner.getSelectedItem().toString());
             }
 
+//            ArrayList<String> region = new ArrayList<>();
+
+
+
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
                 // TODO Auto-generated method stub
 
             }
         });
+
+
+        fill();
+        units_adapter adapter2 = new units_adapter(factors, units, units);
+        rcv.setAdapter(adapter2);
+        rcv.setLayoutManager(new LinearLayoutManager(getContext()));
 
         root.findViewById(R.id.buttonconvert).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,5 +96,9 @@ public class Conversion_value_tablesFragment extends Fragment {
 //        mViewModel = ViewModelProviders.of(this).get(ConversionValueTablesViewModel.class);
 //        // TODO: Use the ViewModel
 //    }
+
+    public void fill(){
+        for (int i = 0;i<47;i++){factors.add(1);units.add("Unit"); }
+    }
 
 }
