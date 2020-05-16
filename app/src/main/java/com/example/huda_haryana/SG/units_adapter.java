@@ -3,6 +3,7 @@ package com.example.huda_haryana.SG;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,12 +12,19 @@ import com.example.huda_haryana.R;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class units_adapter extends RecyclerView.Adapter<units_adapter.Viewholder>{
 
     private ArrayList<Integer> factors = new ArrayList<>();
     private ArrayList<String> areas = new ArrayList<>();
     private ArrayList<String> units = new ArrayList<>();
+
+    public units_adapter(ArrayList<Integer> factors, ArrayList<String> areas, ArrayList<String> units) {
+        this.factors = factors;
+        this.areas = areas;
+        this.units = units;
+    }
 
     @NonNull
     @Override
@@ -28,17 +36,23 @@ public class units_adapter extends RecyclerView.Adapter<units_adapter.Viewholder
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
-
+        holder.main.setText(units.get(position));
+        holder.side.setText(areas.get(position));
+        holder.value.setText(String.valueOf(factors.get(position)));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return factors.size();
     }
 
     public class Viewholder extends RecyclerView.ViewHolder {
+        TextView main, side, value;
         public Viewholder(@NonNull View itemView) {
             super(itemView);
+            main = itemView.findViewById(R.id.main);
+            side = itemView.findViewById(R.id.side);
+            value = itemView.findViewById(R.id.value);
         }
     }
 }
