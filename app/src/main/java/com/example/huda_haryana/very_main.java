@@ -2,13 +2,10 @@ package com.example.huda_haryana;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,13 +29,8 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthProvider;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -121,48 +113,45 @@ public class very_main extends AppCompatActivity {
         });
 
 
-
-    findViewById(R.id.register_txt).setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            startActivity(new Intent(getApplicationContext(), Signupcode.class));
-        }
-    });
+        findViewById(R.id.register_txt).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Signupcode.class));
+            }
+        });
 
     }
 
 
-    private void signin(){
+    private void signin() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
 
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask){
-        try{
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
             GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
             Toast.makeText(this, "Signed In Successfully", Toast.LENGTH_SHORT).show();
             updateUI(acc);
 
-        }
-        catch (ApiException e){
+        } catch (ApiException e) {
             Toast.makeText(this, "Sign In Failed", Toast.LENGTH_SHORT).show();
             updateUI(null);
         }
     }
-    public void  updateUI(GoogleSignInAccount account){
-        if(account != null){
-            Toast.makeText(this,"U Signed In successfully as "+account.getDisplayName(),Toast.LENGTH_LONG).show();
-            startActivity(new Intent(this,MainActivity.class));
+
+    public void updateUI(GoogleSignInAccount account) {
+        if (account != null) {
+            Toast.makeText(this, "U Signed In successfully as " + account.getDisplayName(), Toast.LENGTH_LONG).show();
+            startActivity(new Intent(this, MainActivity.class));
             finishAffinity();
-        }else {
-            Toast.makeText(this,"U Didnt signed in",Toast.LENGTH_LONG).show();
-            startActivity(new Intent(this,MainActivity.class));
+        } else {
+            Toast.makeText(this, "U Didnt signed in", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(this, MainActivity.class));
             finishAffinity();
         }
     }
-
-
 
 
 //    private void FirebaseGoogleAuth(GoogleSignInAccount acct){
@@ -190,7 +179,7 @@ public class very_main extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == RC_SIGN_IN){
+        if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
@@ -199,16 +188,15 @@ public class very_main extends AppCompatActivity {
     AccessTokenTracker accessTokenTracker = new AccessTokenTracker() {
         @Override
         protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
-            if(currentAccessToken==null){
+            if (currentAccessToken == null) {
                 Toast.makeText(getApplicationContext(), "User logged out", Toast.LENGTH_SHORT).show();
-            }
-            else{
+            } else {
                 loaduserProfile(currentAccessToken);
             }
         }
     };
 
-    private void loaduserProfile(AccessToken newAccessToken){
+    private void loaduserProfile(AccessToken newAccessToken) {
 
         GraphRequest request = GraphRequest.newMeRequest(newAccessToken, new GraphRequest.GraphJSONObjectCallback() {
             @Override
@@ -219,9 +207,9 @@ public class very_main extends AppCompatActivity {
                     String email = object.getString("email");
                     String id = object.getString("id");
 
-                     Toast.makeText(getApplicationContext(), first_name + " " +last_name + " logged in successfully", Toast.LENGTH_SHORT).show();
-                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                     finishAffinity();
+                    Toast.makeText(getApplicationContext(), first_name + " " + last_name + " logged in successfully", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    finishAffinity();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -231,10 +219,9 @@ public class very_main extends AppCompatActivity {
         });
 
         Bundle parameters = new Bundle();
-        parameters.putString("fields","first_name, last_name, email, id");
+        parameters.putString("fields", "first_name, last_name, email, id");
         request.setParameters(parameters);
         request.executeAsync();
-
 
 
     }
@@ -251,22 +238,22 @@ public class very_main extends AppCompatActivity {
         String email = Email.getText().toString().trim();
         String password = Password.getText().toString().trim();
 
-        if(email.isEmpty()){
+        if (email.isEmpty()) {
             Email.setError("Email required");
             Email.requestFocus();
             return;
         }
-        if(password.isEmpty()){
+        if (password.isEmpty()) {
             Password.setError("Password required");
             Password.requestFocus();
             return;
         }
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Email.setError("Valid Email required");
             Email.requestFocus();
             return;
         }
-        if(password.length()<6){
+        if (password.length() < 6) {
             Password.setError("Minimum length of password should be 6");
             Password.requestFocus();
             return;
@@ -280,8 +267,7 @@ public class very_main extends AppCompatActivity {
                             Intent intent = new Intent(very_main.this, MainActivity.class);
                             startActivity(intent);
                             finishAffinity();
-                        }
-                        else{
+                        } else {
                             Toast.makeText(very_main.this, "Login Bug to be resolved!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(very_main.this, MainActivity.class);
                             startActivity(intent);

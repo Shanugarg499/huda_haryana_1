@@ -29,10 +29,10 @@ class AlarmAdapter(val list: MutableList<AlarmData>,val id:String,val name:Strin
         holder.desc.text = list[position].desc
         val dateformat = SimpleDateFormat("hh:mm a dd-MMM")
         val date = dateformat.format(Date(list[position].date.toLong()))
-        holder.date.text=date
         holder.itemView.setOnClickListener {
             val intent= Intent(holder.itemView.context,SetTask::class.java).putExtra("key",list[position].key).putExtra("id",id).putExtra("name",name)
             holder.itemView.context.startActivity(intent)
         }
+        holder.date.text=list[position].name +"   "+ date
     }
 }

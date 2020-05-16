@@ -49,7 +49,6 @@ class SetTask : AppCompatActivity() {
                 time = dateFormat.format(Date(d!!))
                 binding.dateTime.setText(time)
 
-
             }
 
             override fun onNegativeButtonClick(date: Date?) {

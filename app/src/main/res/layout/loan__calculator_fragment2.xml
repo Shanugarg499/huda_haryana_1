@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".ui.loan_calculator.Loan_CalculatorFragment">
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:gravity="center"
+                android:text="Loan Amount"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/loanAmount"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/loanAmount" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginBottom="4dp"
+                android:gravity="center"
+                android:text="Intrest Rate"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/intrestValue"
+                app:layout_constraintStart_toStartOf="@+id/textView14"
+                app:layout_constraintTop_toTopOf="@+id/intrestValue" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:text="Period"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/yearsValue"
+                app:layout_constraintStart_toStartOf="@+id/textView14"
+                app:layout_constraintTop_toTopOf="@+id/yearsValue" />
+
+            <Button
+                android:id="@+id/calculateEMI"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/colorPrimary"
+                android:padding="14dp"
+                android:text="Calculate"
+                android:textColor="@android:color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/resetFields"
+                app:layout_constraintTop_toBottomOf="@+id/yearsValue" />
+
+            <Button
+                android:id="@+id/resetFields"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="48dp"
+                android:background="@color/colorPrimary"
+                android:padding="14dp"
+                android:text="Reset"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/calculateEMI"
+                app:layout_constraintEnd_toStartOf="@+id/calculateEMI"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/calculateEMI"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/loanAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView14"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/intrestValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                app:layout_constraintEnd_toEndOf="@+id/loanAmount"
+                app:layout_constraintStart_toStartOf="@+id/loanAmount"
+                app:layout_constraintTop_toBottomOf="@+id/loanAmount" />
+
+            <EditText
+                android:id="@+id/yearsValue"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Years"
+                android:inputType="number"
+                app:layout_constraintEnd_toStartOf="@+id/monthValue"
+                app:layout_constraintStart_toStartOf="@+id/loanAmount"
+                app:layout_constraintTop_toBottomOf="@+id/intrestValue" />
+
+
+            <EditText
+                android:id="@+id/monthValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="Months"
+                android:inputType="number"
+                app:layout_constraintBottom_toBottomOf="@+id/yearsValue"
+                app:layout_constraintEnd_toEndOf="@+id/loanAmount"
+                app:layout_constraintStart_toEndOf="@+id/yearsValue"
+                app:layout_constraintTop_toTopOf="@+id/yearsValue" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="32dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/calculateEMI">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/top_left_bg"
+                        android:gravity="center"
+                        android:padding="14dp"
+                        android:text="Monthly EMI"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/EMIShow"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/top_right_bg"
+                        android:gravity="center"
+                        android:padding="14dp"
+                        android:text="-"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/middle_bg"
+                        android:gravity="center"
+                        android:padding="14dp"
+                        android:text="Total Intrest"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/IntrestShow"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/middle_bg"
+                        android:gravity="center"
+                        android:padding="14dp"
+                        android:text="-"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/bottom_left_bg"
+                        android:gravity="center"
+                        android:padding="14dp"
+                        android:text="Total Payment"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/totalAmountShow"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/bottom_right_bg"
+                        android:gravity="center"
+                        android:padding="14dp"
+                        android:text="-"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

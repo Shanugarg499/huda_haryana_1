@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:text="Lead"
+            android:textStyle="bold"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/leadTypeRecyclerview"
             app:layout_constraintTop_toTopOf="@+id/leadTypeRecyclerview" />
@@ -65,13 +66,13 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewInner"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toStartOf="@+id/option_layout"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/nameLeadRecyclerview"
-            app:layout_constraintTop_toBottomOf="@+id/nameLeadRecyclerview"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/nameLeadRecyclerview" />
 
 
         <LinearLayout
