@@ -60,6 +60,15 @@ class SetTask : AppCompatActivity() {
         })
         binding.setalarmSettask.setOnClickListener {
             desctxt = binding.descriptionSettask.text.toString()
+            if(desctxt.isEmpty()){
+                binding.descriptionSettask.error="Enter description"
+                binding.descriptionSettask.requestFocus()
+                return@setOnClickListener
+            }
+            if(d2==null){
+                Toast.makeText(this,"Select Time",Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             if (mainkey == null) {
                 mainkey = mref.push().key
             }
