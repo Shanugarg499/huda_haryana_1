@@ -10,6 +10,7 @@ import com.example.huda_haryana.R
 import com.example.huda_haryana.databinding.ActivitySetTaskBinding
 import com.google.firebase.database.FirebaseDatabase
 import com.kunzisoft.switchdatetime.SwitchDateTimeDialogFragment
+import kotlinx.android.synthetic.main.unit_card.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -49,6 +50,7 @@ class SetTask : AppCompatActivity() {
                 time = dateFormat.format(Date(d!!))
                 binding.dateTime.setText(time)
 
+
             }
 
             override fun onNegativeButtonClick(date: Date?) {
@@ -58,13 +60,11 @@ class SetTask : AppCompatActivity() {
         })
         binding.setalarmSettask.setOnClickListener {
             desctxt = binding.descriptionSettask.text.toString()
-            if(mainkey!=null){
-                NotifyMe.cancel(applicationContext,mainkey)
-            }
             if (mainkey == null) {
                 mainkey = mref.push().key
             }
-            val data = AlarmData(desctxt, d.toString(), name!!, mainkey!!)
+            NotifyMe.cancel(applicationContext,mainkey)
+            val data = AlarmData(desctxt, d.toString(), name!!, mainkey!!, id)
             mref2.child(mainkey!!).setValue(data)
             mref.child(mainkey!!).setValue(data)
             if (d2 != null) {
