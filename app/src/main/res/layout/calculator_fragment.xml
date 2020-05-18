@@ -31,6 +31,7 @@
             android:layout_margin="@dimen/margin"
             android:ems="10"
             android:inputType="numberDecimal"
+            android:paddingLeft="@dimen/margin"
             android:textColor="@android:color/white" />
 
         <LinearLayout
@@ -75,7 +76,7 @@
             android:layout_height="match_parent"
             android:layout_margin="@dimen/margin"
             android:background="@drawable/white_stroke"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -459,7 +460,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorPrimary"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
     </LinearLayout>
 </FrameLayout>

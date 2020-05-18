@@ -53,13 +53,14 @@ public class Conversion_value_tablesFragment extends Fragment {
         String regionarray[] = getActivity().getResources().getStringArray(R.array.regions);
         final ArrayList<String> units = new ArrayList<>(Arrays.asList(unitsarray));
         final ArrayList<String> regions = new ArrayList<>(Arrays.asList(regionarray));
+        final int[] j = new int[1];
 
-        double[] Array = new double[]{ 1,0.001653,0.06689,0.005,0.002645,0.004132,0.008264,0.008889,0.006,0.007934, 0.052893
+        final double[] Array = new double[]{ 1,0.001653,0.06689,0.005,0.002645,0.004132,0.008264,0.008889,0.006,0.007934, 0.052893
         , 0.082645, 0.165289, 0.177778, 0.158678, 6.689019, 0.165289, 0.4, 0.165289, 1.057851, 20, 0.001653, 0.03, 0.066116,
         0.000669, 0.013223, 0.025, 0.1, 0.052893, 0.12, 0.001653, 1, 0.016529, 0.5, 0.264463, 0.000066, 0.033333, 0.264463,
-        0.006612, 2.380165, 0.165289, 72, 10368, 0.000007, 6.689018, 0.000003, 8};
+        0.006612, 2.380165, 0.165289, 72, 10368, 0.000006689018, 6.689018, 0.000003, 8};
 
-        for(int i=0;i<46;i++){factors.add(Array[i]);}
+        for(int i=0;i<47;i++){factors.add(Array[i]);}
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.units, android.R.layout.simple_spinner_item);
@@ -71,6 +72,7 @@ public class Conversion_value_tablesFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,
                                        int arg2, long arg3) {
+                j[0]=spinner.getSelectedItemPosition();
                 unitsel.setText(spinner.getSelectedItem().toString());
             }
 
@@ -85,7 +87,7 @@ public class Conversion_value_tablesFragment extends Fragment {
             }
         });
 
-        units_adapter adapter2 = new units_adapter(factors, regions, units);
+        units_adapter adapter2 = new units_adapter(factors, regions, units, 0, 1);
         rcv.setAdapter(adapter2);
         rcv.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -93,7 +95,7 @@ public class Conversion_value_tablesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 text.onEditorAction(EditorInfo.IME_ACTION_DONE);
-                units_adapter adapter2 = new units_adapter(factors, regions, units);
+                units_adapter adapter2 = new units_adapter(factors, regions, units, Double. parseDouble(text.getText().toString()), Array[j[0]]);
                 rcv.setAdapter(adapter2);
                 rcv.setLayoutManager(new LinearLayoutManager(getContext()));
             }

@@ -19,11 +19,15 @@ public class units_adapter extends RecyclerView.Adapter<units_adapter.Viewholder
     private ArrayList<Double> factors = new ArrayList<>();
     private ArrayList<String> areas = new ArrayList<>();
     private ArrayList<String> units = new ArrayList<>();
+    private double from;
+    private double smarty;
 
-    public units_adapter(ArrayList<Double> factors, ArrayList<String> areas, ArrayList<String> units) {
+    public units_adapter(ArrayList<Double> factors, ArrayList<String> areas, ArrayList<String> units, double from, double smarty) {
         this.factors = factors;
         this.areas = areas;
         this.units = units;
+        this.from = from;
+        this.smarty = smarty;
     }
 
     @NonNull
@@ -38,7 +42,7 @@ public class units_adapter extends RecyclerView.Adapter<units_adapter.Viewholder
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
         holder.main.setText(units.get(position));
         holder.side.setText(areas.get(position));
-        holder.value.setText(String.valueOf(factors.get(position)));
+        holder.value.setText(String.valueOf((factors.get(position) * from)/smarty));
     }
 
     @Override
