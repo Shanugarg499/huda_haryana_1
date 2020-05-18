@@ -16,6 +16,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.util.*
 
 class TaskFragment : Fragment() {
     lateinit var binding: FragmentTasksBinding
@@ -37,7 +38,14 @@ class TaskFragment : Fragment() {
                         list.add(data!!)
                     }
                     list.reverse()
-                    binding.taskFragRecyler.adapter=AlarmAdapter(list)
+                    val list2= mutableListOf<AlarmData>()
+                    val curr=Date().time
+                    for(i in list){
+                        if(i.date.toLong()>curr){
+                            list2.add(i)
+                        }
+                    }
+                    binding.taskFragRecyler.adapter=AlarmAdapter(list2,curr)
                 }
             }
 

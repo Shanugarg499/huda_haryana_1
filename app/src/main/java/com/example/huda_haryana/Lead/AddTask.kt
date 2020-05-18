@@ -11,6 +11,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.util.*
 
 lateinit var list: MutableList<AlarmData>
 
@@ -50,8 +51,9 @@ class AddTask : AppCompatActivity() {
                         val data = i.getValue(AlarmData::class.java)
                         list.add(data!!)
                     }
+                    val curr= Date().time
                     list.reverse()
-                    binding.tasksRecycler.adapter = AlarmAdapter(list)
+                    binding.tasksRecycler.adapter = AlarmAdapter(list,curr)
                 }
             }
 

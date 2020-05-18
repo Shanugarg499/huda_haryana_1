@@ -10,7 +10,6 @@ import com.example.huda_haryana.R
 import com.example.huda_haryana.databinding.ActivitySetTaskBinding
 import com.google.firebase.database.FirebaseDatabase
 import com.kunzisoft.switchdatetime.SwitchDateTimeDialogFragment
-import kotlinx.android.synthetic.main.unit_card.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -31,6 +30,14 @@ class SetTask : AppCompatActivity() {
         val id = intent.getStringExtra("id")
         val name = intent.getStringExtra("name")
         var mainkey = intent.getStringExtra("key")
+        val initialdesc = intent.getStringExtra("desc")
+        val initialdate = intent.getStringExtra("date")
+        if (initialdate != null && initialdesc != null) {
+            val dateFormat = SimpleDateFormat("hh:mm a dd-MMM")
+            val initialtime = dateFormat.format(Date(initialdate.toLong()))
+            binding.dateTime.setText(initialtime)
+            binding.descriptionSettask.setText(initialdesc)
+        }
         datetime.simpleDateMonthAndDayFormat = SimpleDateFormat("MMM dd", java.util.Locale.getDefault())
         binding.selectTimeSetTask.setOnClickListener {
             datetime.show(supportFragmentManager, "Set")
@@ -41,6 +48,7 @@ class SetTask : AppCompatActivity() {
         var d2: Date? = null
         val mref = FirebaseDatabase.getInstance().getReference("leads").child(id!!).child("Alarm")
         val mref2 = FirebaseDatabase.getInstance().getReference("Tasks")
+
         datetime.setOnButtonClickListener(object : SwitchDateTimeDialogFragment.OnButtonClickListener {
             override fun onPositiveButtonClick(date: Date?) {
                 Toast.makeText(this@SetTask, date.toString(), Toast.LENGTH_SHORT).show()
@@ -60,24 +68,23 @@ class SetTask : AppCompatActivity() {
         })
         binding.setalarmSettask.setOnClickListener {
             desctxt = binding.descriptionSettask.text.toString()
-            if(desctxt.isEmpty()){
-                binding.descriptionSettask.error="Enter description"
+            if (desctxt.isEmpty()) {
+                binding.descriptionSettask.error = "Enter description"
                 binding.descriptionSettask.requestFocus()
                 return@setOnClickListener
             }
-            if(d2==null){
-                Toast.makeText(this,"Select Time",Toast.LENGTH_SHORT).show()
+            if (d2 == null) {
+                Toast.makeText(this, "Select Time", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             if (mainkey == null) {
                 mainkey = mref.push().key
             }
-            NotifyMe.cancel(applicationContext,mainkey)
+            NotifyMe.cancel(applicationContext, mainkey)
             val data = AlarmData(desctxt, d.toString(), name!!, mainkey!!, id)
             mref2.child(mainkey!!).setValue(data)
             mref.child(mainkey!!).setValue(data)
             if (d2 != null) {
-                Toast.makeText(this, "SET", Toast.LENGTH_SHORT).show()
                 val notifyMe = NotifyMe.Builder(applicationContext)
                         .title(name)
                         .content(desctxt)
@@ -89,7 +96,9 @@ class SetTask : AppCompatActivity() {
                         .large_icon(R.drawable.small_logo)
                         .small_icon(R.drawable.small_logo)
                         .build()
+                onBackPressed()
             }
+
         }
     }
 }
