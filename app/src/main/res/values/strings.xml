@@ -10,6 +10,56 @@
     <string name="action_feedback">Feedback to SG</string>
     <string name="gravity_unit">start</string>
 
+    <string-array name="regions">
+        <item>  </item>
+        <item>  </item>
+        <item>  </item>
+        <item> Assam and West Bengal </item>
+        <item> Bihar, UP, Gujrat, RJ-1, PB-1 and HR-1 </item>
+        <item> Gujrat and RJ-II </item>
+        <item> HP-1 and Uttarakhand-I </item>
+        <item> HP-II and Uttarakhand-II </item>
+        <item> MP </item>
+        <item> Punjab-II, HR-II and UP-II </item>
+        <item> Punjab-I, Haryana-I and RJ-I </item>
+        <item> RJ-II </item>
+        <item> HP-I and Uttarakhand-I </item>
+        <item> HP-II and Uttarakhand-II </item>
+        <item> Punjab-II, Haryana-II and UP-II </item>
+        <item>  </item>
+        <item> TN, Kerela and Karnataka </item>
+        <item> West Bengal </item>
+        <item> West Bengal </item>
+        <item> Bihar and Jharkhand </item>
+        <item> Tripura </item>
+        <item> HP, Haryana and Punjab </item>
+        <item> Tamil Nadu </item>
+        <item> AP, Karnataka, MH and GJ </item>
+        <item>  </item>
+        <item> Haryana, Punjab, HP and JK </item>
+        <item> Assam </item>
+        <item> West Bengal </item>
+        <item> Bihar </item>
+        <item> MP </item>
+        <item> Haryana and Punjab </item>
+        <item> Tripura </item>
+        <item> Andhra Pradesh </item>
+        <item> Assam </item>
+        <item> Haryana, Punjab, HP and JK </item>
+        <item> Punjab, Haryana and HP </item>
+        <item> Uttarakhand </item>
+        <item>  </item>
+        <item>  </item>
+        <item> Punjab, Haryana and HP </item>
+        <item>  </item>
+        <item>  </item>
+        <item>  </item>
+        <item>  </item>
+        <item>  </item>
+        <item>  </item>
+        <item>  </item>
+    </string-array>
+
     <string-array name="units">
         <item> Aankadam </item>
         <item> Acre </item>
@@ -22,6 +72,7 @@
         <item> Bigha </item>
         <item> Biswa-Kachha </item>
         <item> Biswa-Pucca </item>
+        <item> Biswa </item>
         <item> Biswa </item>
         <item> Biswa </item>
         <item> Biswa-kachha </item>
@@ -49,7 +100,7 @@
         <item> Nalli </item>
         <item> Perch(Rod) </item>
         <item> Rood </item>
-        <item> Sarsahi(Square Karam) </item>
+        <item> Sarsahi </item>
         <item> Shatak </item>
         <item> Sq. feet </item>
         <item> Sq. inches </item>
@@ -58,6 +109,7 @@
         <item> Sq. Mile </item>
         <item> Sq. yards </item>
     </string-array>
+
 
 
     <string name="menu_home">News</string>
