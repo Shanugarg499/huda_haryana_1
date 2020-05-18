@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:foreground="?android:attr/selectableItemBackground"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -9,7 +10,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
+    <TextView
+        android:padding="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:id="@+id/addtask_item_name"
+        android:textStyle="bold"
+        android:layout_marginEnd="20dp"/>
         <TextView
             android:padding="2dp"
             android:id="@+id/date_addtask_item"
@@ -19,6 +32,8 @@
             android:textSize="12sp"
             android:textColor="#AD111111"
             />
+
+</LinearLayout>
         <TextView
             android:padding="5dp"
             android:textSize="16sp"

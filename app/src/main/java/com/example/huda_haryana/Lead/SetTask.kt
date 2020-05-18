@@ -10,6 +10,7 @@ import com.example.huda_haryana.R
 import com.example.huda_haryana.databinding.ActivitySetTaskBinding
 import com.google.firebase.database.FirebaseDatabase
 import com.kunzisoft.switchdatetime.SwitchDateTimeDialogFragment
+import kotlinx.android.synthetic.main.unit_card.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -29,6 +30,7 @@ class SetTask : AppCompatActivity() {
         datetime.set24HoursMode(false)
         val id = intent.getStringExtra("id")
         val name = intent.getStringExtra("name")
+        var mainkey = intent.getStringExtra("key")
         datetime.simpleDateMonthAndDayFormat = SimpleDateFormat("MMM dd", java.util.Locale.getDefault())
         binding.selectTimeSetTask.setOnClickListener {
             datetime.show(supportFragmentManager, "Set")
@@ -48,6 +50,7 @@ class SetTask : AppCompatActivity() {
                 time = dateFormat.format(Date(d!!))
                 binding.dateTime.setText(time)
 
+
             }
 
             override fun onNegativeButtonClick(date: Date?) {
@@ -57,11 +60,22 @@ class SetTask : AppCompatActivity() {
         })
         binding.setalarmSettask.setOnClickListener {
             desctxt = binding.descriptionSettask.text.toString()
-            val data = AlarmData(desctxt, d.toString(), name!!)
-            val key2 = mref2.push().key
-            val key = mref.push().key
-            mref2.child(key2!!).setValue(data)
-            mref.child(key!!).setValue(data)
+            if(desctxt.isEmpty()){
+                binding.descriptionSettask.error="Enter description"
+                binding.descriptionSettask.requestFocus()
+                return@setOnClickListener
+            }
+            if(d2==null){
+                Toast.makeText(this,"Select Time",Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (mainkey == null) {
+                mainkey = mref.push().key
+            }
+            NotifyMe.cancel(applicationContext,mainkey)
+            val data = AlarmData(desctxt, d.toString(), name!!, mainkey!!, id)
+            mref2.child(mainkey!!).setValue(data)
+            mref.child(mainkey!!).setValue(data)
             if (d2 != null) {
                 Toast.makeText(this, "SET", Toast.LENGTH_SHORT).show()
                 val notifyMe = NotifyMe.Builder(applicationContext)
@@ -70,9 +84,10 @@ class SetTask : AppCompatActivity() {
                         .color(255, 0, 0, 255)
                         .led_color(255, 255, 255, 255)
                         .time(d2)
+                        .key(mainkey)
                         .addAction(Intent(this, AddTask::class.java), "DONE")
                         .large_icon(R.drawable.small_logo)
-                        .small_icon(R.drawable.small_logo)  
+                        .small_icon(R.drawable.small_logo)
                         .build()
             }
         }
