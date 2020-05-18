@@ -16,11 +16,11 @@ import java.util.List;
 
 public class units_adapter extends RecyclerView.Adapter<units_adapter.Viewholder>{
 
-    private ArrayList<Integer> factors = new ArrayList<>();
+    private ArrayList<Double> factors = new ArrayList<>();
     private ArrayList<String> areas = new ArrayList<>();
     private ArrayList<String> units = new ArrayList<>();
 
-    public units_adapter(ArrayList<Integer> factors, ArrayList<String> areas, ArrayList<String> units) {
+    public units_adapter(ArrayList<Double> factors, ArrayList<String> areas, ArrayList<String> units) {
         this.factors = factors;
         this.areas = areas;
         this.units = units;
