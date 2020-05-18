@@ -45,6 +45,8 @@ class TaskFragment : Fragment() {
                             list2.add(i)
                         }
                     }
+                    binding.noTaskTxt.visibility=View.GONE
+                    binding.taskFragRecyler.visibility=View.VISIBLE
                     binding.taskFragRecyler.adapter=AlarmAdapter(list2,curr)
                 }
             }
