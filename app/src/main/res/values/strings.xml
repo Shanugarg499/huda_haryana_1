@@ -9,6 +9,10 @@
     <string name="action_logout">Logout</string>
     <string name="action_feedback">Feedback to SG</string>
     <string name="gravity_unit">start</string>
+    <string name="Lead">Leads</string>
+    <string name="Label">Labels</string>
+    <string name="tasks">Tasks</string>
+    <string name="mybusiness">my Business</string>
 
     <string-array name="regions">
         <item>  </item>
@@ -112,7 +116,7 @@
 
 
 
-    <string name="menu_home">News</string>
+    <string name="menu_home">  </string>
     <string name="menu_gallery">Personal Calendar</string>
     <string name="menu_slideshow">To Do list</string>
     <string name="menu_calculator">Calculator</string>

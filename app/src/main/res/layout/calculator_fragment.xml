@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
     tools:context=".ui.calculator.CalculatorFragment">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/conversion_background"
         android:orientation="vertical">
 
         <TextView
@@ -459,7 +459,7 @@
             android:id="@+id/units_RCV"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/conversion_background"
             android:visibility="visible" />
 
     </LinearLayout>
