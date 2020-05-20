@@ -13,6 +13,8 @@ import com.example.huda_haryana.R
 import com.example.huda_haryana.ask_details
 import com.example.huda_haryana.databinding.LeadsPageUpdatedFragmentBinding
 import com.example.huda_haryana.order_to_database
+import com.facebook.FacebookSdk.getApplicationContext
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -24,6 +26,10 @@ class LeadsPageUpdated : Fragment() {
     private lateinit var binding: LeadsPageUpdatedFragmentBinding
     private lateinit var data: ArrayList<order_to_database>
     private lateinit var adapter:LeadsAdpater
+    var personFamilyName = ""
+    var personName = ""
+    var personGivenName = ""
+
     private var mDb = FirebaseDatabase.getInstance().reference
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +41,15 @@ class LeadsPageUpdated : Fragment() {
         binding.recyclerViewLeadsUpdated.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerViewLeadsUpdated.adapter = LeadsAdpater(requireContext() , data)
 
-        mDb.child("leads").addValueEventListener(
+        val acct = GoogleSignIn.getLastSignedInAccount(getApplicationContext())
+        if (acct != null) {
+            personName = acct.displayName.toString()
+            personGivenName = acct.givenName.toString()
+            personFamilyName = acct.familyName.toString()
+        }
+
+        mDb.child(personFamilyName+personGivenName+personName+"leads").addValueEventListener(
+
             object: ValueEventListener{
                 override fun onCancelled(p0: DatabaseError) {}
 
