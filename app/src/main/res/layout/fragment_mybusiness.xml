@@ -1,131 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_centerInParent="true">
-
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/mybusiness_back"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="5dp"
-        tools:layout_editor_absoluteY="38dp">
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/add_logo"
-            android:layout_width="wrap_content"
-            android:clickable="true"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/round"
-            android:gravity="end"
-            android:padding="17dp"
-            android:text="ADD \nLOGO"
-            android:focusable="true" />
 
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="horizontal"
-            android:padding="7dp">
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/mybusiness_back"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="5dp"
+            tools:layout_editor_absoluteY="38dp">
 
-            <TextView
-                android:id="@+id/edit_details"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:padding="7dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:clickable="true"
-                android:padding="10dp"
-                android:text="EDIT DETAILS"
-                android:textColor="#40A645"
-                android:focusable="true" />
+                android:orientation="horizontal">
 
+                <TextView
+                    android:id="@+id/business_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp" />
 
-            <TextView
-                android:id="@+id/send_business"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/desc_business"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/business_name"
+                    android:layout_marginStart="10dp" />
+
+                <TextView
+                    android:id="@+id/website_business"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/desc_business"
+                    android:layout_marginStart="10dp" />
+
+                <TextView
+                    android:id="@+id/address_business"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/website_business"
+                    android:layout_marginStart="10dp" />
+
+                <TextView
+                    android:id="@+id/opening_business"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/address_business"
+                    android:layout_marginStart="10dp" />
+
+                <TextView
+                    android:id="@+id/phone_business"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/opening_business"
+                    android:layout_marginStart="10dp" />
+
+                <TextView
+                    android:id="@+id/whatsapp_business"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/phone_business"
+                    android:layout_marginStart="10dp" />
+
+                <TextView
+                    android:id="@+id/email_business"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/whatsapp_business"
+                    android:layout_marginStart="10dp" />
+
+                <TextView
+                    android:id="@+id/more_business"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/email_business"
+                    android:layout_marginStart="10dp" />
+                <TextView
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/add_logo"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/round"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="end"
+                    android:padding="17dp"
+                    android:text="ADD \nLOGO" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:layout_alignParentEnd="true"
-                android:layout_gravity="center|end"
-                android:background="@drawable/stroke"
-                android:padding="10dp"
-                android:text="SEND BUSINESS CARD"
-                android:textColor="#40A645"
-                android:focusable="true" />
+                android:orientation="horizontal"
+                android:padding="7dp">
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/edit_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:clickable="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:focusable="true"
+                    android:padding="10dp"
+                    android:text="EDIT DETAILS"
+                    android:textColor="#40A645" />
+
+
+                <TextView
+                    android:id="@+id/send_business"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center|end"
+                    android:background="@drawable/stroke"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="10dp"
+                    android:text="SEND BUSINESS CARD"
+                    android:textColor="#40A645" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="20dp"
+            android:background="#46111111" />
+
+        <TextView
+
+            android:id="@+id/notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/note_color"
+            android:drawablePadding="10dp"
+            android:padding="12dp"
+            android:text="Notes"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:textColor="@color/textcolor"
+            android:textSize="19sp"
+            tools:layout_editor_absoluteX="25dp"
+            tools:layout_editor_absoluteY="251dp"
+            android:focusable="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#46111111" />
+
+        <TextView
+            android:id="@+id/proposals"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/proposal_color"
+            android:drawablePadding="10dp"
+            android:padding="12dp"
+            android:text="Proposals"
+
+            android:textColor="@color/textcolor"
+            android:textSize="19sp"
+            tools:layout_editor_absoluteX="25dp"
+            tools:layout_editor_absoluteY="302dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#46111111" />
+
+        <TextView
+            android:id="@+id/statistics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/stats_colorprimary"
+            android:drawablePadding="10dp"
+            android:padding="12dp"
+            android:text="Statistics"
+            android:textColor="@color/textcolor"
+            android:textSize="19sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="353dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#46111111" />
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#46111111"
-        android:layout_marginTop="20dp"
-        />
-    <TextView
-
-        android:padding="12dp"
-        android:id="@+id/notes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableStart="@drawable/note_color"
-        android:drawablePadding="10dp"
-        android:text="Notes"
-        android:textColor="@color/textcolor"
-        android:textSize="19sp"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="251dp" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#46111111"
-        />
-    <TextView
-        android:id="@+id/proposals"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableStart="@drawable/proposal_color"
-        android:drawablePadding="10dp"
-        android:text="Proposals"
-        android:padding="12dp"
-
-        android:textColor="@color/textcolor"
-        android:textSize="19sp"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="302dp" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#46111111"
-        />
-    <TextView
-        android:id="@+id/statistics"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableStart="@drawable/stats_colorprimary"
-        android:drawablePadding="10dp"
-        android:text="Statistics"
-        android:padding="12dp"
-        android:textColor="@color/textcolor"
-        android:textSize="19sp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="353dp" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#46111111"
-        />
-</LinearLayout>
+</layout>

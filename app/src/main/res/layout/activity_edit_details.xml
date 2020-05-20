@@ -1,141 +1,332 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    tools:context=".mybusiness.EditDetails">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_editdetails"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        app:title="Logo &amp; Bussiness Profile"
-        app:titleTextColor="#fff"
-        app:navigationIcon="@drawable/arrow_back_white"/>
-    <TextView
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#40912A"
-        android:padding="5dp"
-        android:text="To have your own bussiness details included in price proposals, text messages and more,we strongly recommend that you fill your business details" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".mybusiness.EditDetails">
 
-    <TextView
-        android:id="@+id/tap_logo"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:text="Tap to add logo"
-        android:textSize="18sp" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_editdetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            app:navigationIcon="@drawable/arrow_back_white"
+            app:title="Logo &amp; Bussiness Profile"
+            app:titleTextColor="#fff" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#52111111"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:text="Business Name"
-        android:id="@+id/bussiness_name"
-        android:textSize="18sp" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#52111111"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:id="@+id/description"
-        android:text="Description"
-        android:textSize="18sp" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#52111111"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:text="Website"
-        android:id="@+id/website"
-        android:textSize="18sp" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#52111111"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:text="Address"
-        android:id="@+id/address"
-        android:textSize="18sp" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#52111111"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:id="@+id/operating_hours"
-        android:text="Opening/Operating Hours"
-        android:textSize="18sp" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#52111111"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:text="Phone Number"
-        android:id="@+id/phone_number"
-        android:textSize="18sp" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#52111111"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:text="Whatsapp Number"
-        android:id="@+id/whatsapp_number"
-        android:textSize="18sp" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#52111111"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:text="Email"
-        android:id="@+id/email"
-        android:textSize="18sp" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#52111111"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:text="More Details"
-        android:id="@+id/more_details"
-        android:textSize="18sp" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#52111111"/>
-</LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:padding="6dp"
+                    android:text="To have your own bussiness details included in price proposals, text messages and more,we strongly recommend that you fill your business details"
+                    android:textColor="#40912A" />
+
+                <TextView
+                    android:id="@+id/tap_logo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:text="Tap to add logo"
+                    android:textSize="18sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#52111111" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/bussiness_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="12dp"
+                        android:paddingTop="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="6dp"
+                        android:text="Business Name"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/bussiness_data"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:padding="2dp"
+                        android:textColor="#A6040404"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#52111111" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="12dp"
+                        android:paddingTop="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="6dp"
+                        android:text="Description"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/desc_data"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:padding="2dp"
+                        android:textColor="#A6040404"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#52111111" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/website"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="12dp"
+                        android:paddingTop="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="6dp"
+                        android:text="Website"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/website_data"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:padding="2dp"
+                        android:textColor="#A6040404"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#52111111" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="12dp"
+                        android:paddingTop="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="6dp"
+                        android:text="Address"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/address_data"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:padding="2dp"
+                        android:textColor="#A6040404"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#52111111" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/operating_hours"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="12dp"
+                        android:paddingTop="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="6dp"
+                        android:text="Opening/Operating Hours"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/operating_data"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:padding="2dp"
+                        android:textColor="#A6040404"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#52111111" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/phone_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="12dp"
+                        android:paddingTop="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="6dp"
+                        android:text="Phone Number"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/phone_data"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:padding="2dp"
+                        android:textColor="#A6040404"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#52111111" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/whatsapp_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="12dp"
+                        android:paddingTop="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="6dp"
+                        android:text="Whatsapp Number"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/whatsapp_data"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:padding="2dp"
+                        android:textColor="#A6040404"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#52111111" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="12dp"
+                        android:paddingTop="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="6dp"
+                        android:text="Email"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/email_data"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:padding="2dp"
+                        android:textColor="#A6040404"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#52111111" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/more_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="12dp"
+                        android:paddingTop="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="6dp"
+                        android:text="More Details"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/moredetails_data"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:padding="2dp"
+                        android:textColor="#A6040404"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#52111111" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 </layout>
