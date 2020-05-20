@@ -73,8 +73,9 @@ public class very_main extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create();
         loginButton.setPermissions(Arrays.asList("email", "public_profile"));
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail().build();
-
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,7 +145,8 @@ public class very_main extends AppCompatActivity {
     public void updateUI(GoogleSignInAccount account) {
         if (account != null) {
             Toast.makeText(this, "U Signed In successfully as " + account.getDisplayName(), Toast.LENGTH_LONG).show();
-            startActivity(new Intent(this, MainActivity.class));
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
             finishAffinity();
         } else {
             Toast.makeText(this, "U Didnt signed in", Toast.LENGTH_LONG).show();

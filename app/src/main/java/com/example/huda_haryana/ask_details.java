@@ -14,6 +14,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,7 +30,6 @@ import java.util.Date;
 import java.util.Locale;
 
 public class ask_details extends AppCompatActivity {
-
     Button SubmitButton;
     int i = 0;
     TextView t4;
@@ -36,13 +37,19 @@ public class ask_details extends AppCompatActivity {
     Switch t3;
     private ArrayList<String> nos = new ArrayList<>();
 
+    String personName, personGivenName, personFamilyName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ask_details);
-        final DatabaseReference dbr = FirebaseDatabase.getInstance().getReference().child("leads");
-
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+        if (acct != null) {
+            personName = acct.getDisplayName();
+            personGivenName = acct.getGivenName();
+            personFamilyName = acct.getFamilyName();
+        }
+        final DatabaseReference dbr = FirebaseDatabase.getInstance().getReference().child(personFamilyName+personGivenName+personName);
 
         dbr.addValueEventListener(new ValueEventListener() {
             @Override
