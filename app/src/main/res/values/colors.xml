@@ -11,4 +11,9 @@
     <color name="units">#000000</color>
     <color name="transparent">#005E5A63</color>
     <color name="mygreen">#0A9353</color>
+
+    <color name="colorblack">#24272E</color>
+    <color name="colorGray">#7C7C80</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorPurple">#738DEF</color>
 </resources>

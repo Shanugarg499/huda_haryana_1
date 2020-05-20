@@ -74,8 +74,8 @@ class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>)
             holder.itemView.context.startActivity(intent)
         }
 
-        val mref=FirebaseDatabase.getInstance().getReference("leads").child(data[pos].key!!).child("Labels").child("list")
-        mref.addValueEventListener(object : ValueEventListener {
+        val mref=FirebaseDatabase.getInstance().getReference("leads").child(data[pos].key).child("Labels").child("list")
+        mref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
 
             }
