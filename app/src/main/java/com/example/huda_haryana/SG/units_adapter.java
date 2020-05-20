@@ -11,8 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.huda_haryana.R;
 
 import java.lang.reflect.Array;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.lang.StrictMath.round;
 
 public class units_adapter extends RecyclerView.Adapter<units_adapter.Viewholder>{
 
@@ -20,6 +23,8 @@ public class units_adapter extends RecyclerView.Adapter<units_adapter.Viewholder
     private ArrayList<String> areas = new ArrayList<>();
     private ArrayList<String> units = new ArrayList<>();
     private double from;
+    private static DecimalFormat df = new DecimalFormat("0.0000");
+    private static DecimalFormat df2 = new DecimalFormat("0.000000");
     private double smarty;
 
     public units_adapter(ArrayList<Double> factors, ArrayList<String> areas, ArrayList<String> units, double from, double smarty) {
@@ -42,7 +47,11 @@ public class units_adapter extends RecyclerView.Adapter<units_adapter.Viewholder
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
         holder.main.setText(units.get(position));
         holder.side.setText(areas.get(position));
-        holder.value.setText(String.valueOf((factors.get(position) * from)/smarty));
+        if(((factors.get(position)*from)/smarty)>3000){
+        holder.value.setText(String.valueOf(round((factors.get(position) * from)/smarty)));}
+        else{if(((factors.get(position)*from)/smarty)<1)holder.value.setText(String.valueOf(df2.format(((factors.get(position)*from)/smarty))));
+        else{holder.value.setText(String.valueOf(df.format((factors.get(position)*from)/smarty)));}
+        }
     }
 
     @Override
