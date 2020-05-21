@@ -1,5 +1,6 @@
 package com.example.huda_haryana.mybusiness
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -34,7 +35,7 @@ class BusinessFrag : Fragment() {
             startActivity(intent)
         }
         val accnt= GoogleSignIn.getLastSignedInAccount(context)
-        val mref=FirebaseDatabase.getInstance().getReference(accnt?.familyName+accnt?.givenName+accnt?.displayName+"leads").child("UserData")
+        val mref=FirebaseDatabase.getInstance().getReference("User").child(accnt?.id!!).child("UserData")
         mref.addValueEventListener(object :ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
 
@@ -56,6 +57,11 @@ class BusinessFrag : Fragment() {
             }
 
         })
+        val first_dialog=Dialog(requireContext())
+        first_dialog.setContentView(R.layout.business_first_dialog)
+        binding.sendBusiness.setOnClickListener {
+            first_dialog.show()
+        }
         return binding.root
     }
 

@@ -8,6 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.huda_haryana.R
 import com.example.huda_haryana.databinding.FragmentNotesBinding
+import com.facebook.FacebookSdk
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -26,7 +28,8 @@ class NotesActivity : AppCompatActivity() {
         }
         var list = mutableListOf<NoteData>()
         binding.noteRecyler.layoutManager = LinearLayoutManager(this)
-        val ref = FirebaseDatabase.getInstance().getReference("Notes")
+        val acct = GoogleSignIn.getLastSignedInAccount(FacebookSdk.getApplicationContext())
+        val ref = FirebaseDatabase.getInstance().getReference("User").child(acct?.id!!).child("Notes")
         ref.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
 

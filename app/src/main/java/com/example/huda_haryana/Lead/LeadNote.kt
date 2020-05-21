@@ -7,6 +7,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.huda_haryana.R
 import com.example.huda_haryana.databinding.ActivityLeadNoteBinding
+import com.facebook.FacebookSdk
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -24,7 +26,8 @@ class LeadNote : AppCompatActivity() {
         }
         val id = intent.getStringExtra("id")
         val name = intent.getStringExtra("name")
-        val mref = FirebaseDatabase.getInstance().getReference("leads").child(id!!).child("Notes")
+        val acct = GoogleSignIn.getLastSignedInAccount(FacebookSdk.getApplicationContext())
+        val mref = FirebaseDatabase.getInstance().getReference("User").child(acct?.id!!).child(id!!).child("Notes")
         binding.leadnoteToolbar.inflateMenu(R.menu.bottom_navigation_menu)
         binding.leadnoteRecyler.layoutManager = LinearLayoutManager(this)
         val getdate = Calendar.getInstance().time

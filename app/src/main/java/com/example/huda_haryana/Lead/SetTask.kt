@@ -8,6 +8,8 @@ import androidx.databinding.DataBindingUtil
 import com.allyants.notifyme.NotifyMe
 import com.example.huda_haryana.R
 import com.example.huda_haryana.databinding.ActivitySetTaskBinding
+import com.facebook.FacebookSdk
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.database.FirebaseDatabase
 import com.kunzisoft.switchdatetime.SwitchDateTimeDialogFragment
 import java.text.SimpleDateFormat
@@ -46,7 +48,8 @@ class SetTask : AppCompatActivity() {
             onBackPressed()
         }
         var d2: Date? = null
-        val mref = FirebaseDatabase.getInstance().getReference("leads").child(id!!).child("Alarm")
+        val acct = GoogleSignIn.getLastSignedInAccount(FacebookSdk.getApplicationContext())
+        val mref = FirebaseDatabase.getInstance().getReference("User").child(acct?.id!!).child(id!!).child("Alarm")
         val mref2 = FirebaseDatabase.getInstance().getReference("Tasks")
 
         datetime.setOnButtonClickListener(object : SwitchDateTimeDialogFragment.OnButtonClickListener {

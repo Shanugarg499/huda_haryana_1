@@ -10,6 +10,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.huda_haryana.R
 import com.example.huda_haryana.databinding.ActivityLeadOptionsBinding
+import com.facebook.FacebookSdk
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -63,7 +65,8 @@ class LeadOptions : AppCompatActivity() {
             startActivity(intent)
         }
         binding.horRecyclerLeadOption.layoutManager=LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-        val mref=FirebaseDatabase.getInstance().getReference("leads").child(id!!).child("Labels").child("list")
+        val acct = GoogleSignIn.getLastSignedInAccount(FacebookSdk.getApplicationContext())
+        val mref=FirebaseDatabase.getInstance().getReference("User").child(acct?.id!!).child(id!!).child("Labels").child("list")
         mref.addValueEventListener(object :ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
 

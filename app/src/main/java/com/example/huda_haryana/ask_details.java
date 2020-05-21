@@ -37,7 +37,7 @@ public class ask_details extends AppCompatActivity {
     Switch t3;
     private ArrayList<String> nos = new ArrayList<>();
 
-    String personName, personGivenName, personFamilyName;
+    String personName, personGivenName, personFamilyName,id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +48,9 @@ public class ask_details extends AppCompatActivity {
             personName = acct.getDisplayName();
             personGivenName = acct.getGivenName();
             personFamilyName = acct.getFamilyName();
+            id=acct.getId();
         }
-        final DatabaseReference dbr = FirebaseDatabase.getInstance().getReference().child(personFamilyName+personGivenName+personName+"leads");
+        final DatabaseReference dbr = FirebaseDatabase.getInstance().getReference("User").child(id);
 
         dbr.addValueEventListener(new ValueEventListener() {
             @Override

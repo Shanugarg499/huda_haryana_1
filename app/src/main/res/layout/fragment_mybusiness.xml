@@ -131,6 +131,7 @@
                     android:id="@+id/send_business"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:foreground="?attr/selectableItemBackground"
                     android:layout_alignParentEnd="true"
                     android:layout_gravity="center|end"
                     android:background="@drawable/stroke"

@@ -15,11 +15,11 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.huda_haryana.Lead.AddLabelAdapter
 import com.example.huda_haryana.Lead.LabelData
 import com.example.huda_haryana.Lead.LeadOptions
 import com.example.huda_haryana.R
 import com.example.huda_haryana.order_to_database
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -70,29 +70,30 @@ class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>)
         }
 
         holder.background.setOnClickListener {
-            val intent = Intent(context, LeadOptions::class.java).putExtra("id", data[pos].key).putExtra("name", data[pos].name).putExtra("phone", data[pos].number).putExtra("email",data[pos].email)
+            val intent = Intent(context, LeadOptions::class.java).putExtra("id", data[pos].key).putExtra("name", data[pos].name).putExtra("phone", data[pos].number).putExtra("email", data[pos].email)
             holder.itemView.context.startActivity(intent)
         }
 
-        val mref=FirebaseDatabase.getInstance().getReference("leads").child(data[pos].key).child("Labels").child("list")
+        val accnt = GoogleSignIn.getLastSignedInAccount(context)
+        val mref = FirebaseDatabase.getInstance().getReference("User").child(accnt?.id!!).child(data[pos].key).child("Labels").child("list")
         mref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
 
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-                val list= mutableListOf<LabelData>()
-                Log.i("here" , " here1")
-                if(p0.exists()) {
-                    Log.i("here" , " here2")
+                val list = mutableListOf<LabelData>()
+                Log.i("here", " here1")
+                if (p0.exists()) {
+                    Log.i("here", " here2")
                     for (i in p0.children) {
                         val data = i.getValue(LabelData::class.java)
                         list.add(data!!)
                     }
-                    Log.i("here" , " here3 + ${list.toString()}")
+                    Log.i("here", " here3 + ${list.toString()}")
                     holder.recyclerViewInner.visibility = View.VISIBLE
-                    holder.recyclerViewInner.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
-                    holder.recyclerViewInner.adapter=AddLabelAdapterSmallerTextSize(list)
+                    holder.recyclerViewInner.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                    holder.recyclerViewInner.adapter = AddLabelAdapterSmallerTextSize(list)
                 }
             }
 
@@ -103,7 +104,7 @@ class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>)
         holder.nameTextView.text = data[pos].name
         holder.timeTextView.text = "+" + data[pos].date + " " + data[pos].time
 
-        val ref = mDb.child("leads").child(data[pos].key)
+        val ref = mDb.child("User").child(accnt.id!!).child(data[pos].key)
 
         holder.deleteButton.setOnClickListener {
 

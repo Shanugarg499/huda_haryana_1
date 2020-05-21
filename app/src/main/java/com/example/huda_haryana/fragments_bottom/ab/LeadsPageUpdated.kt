@@ -30,7 +30,7 @@ class LeadsPageUpdated : Fragment() {
     var personName = ""
     var personGivenName = ""
 
-    private var mDb = FirebaseDatabase.getInstance().reference
+    private var mDb = FirebaseDatabase.getInstance().getReference("User")
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -48,7 +48,7 @@ class LeadsPageUpdated : Fragment() {
             personFamilyName = acct.familyName.toString()
         }
 
-        mDb.child(personFamilyName+personGivenName+personName+"leads").addValueEventListener(
+        mDb.child(acct?.id!!).addValueEventListener(
 
             object: ValueEventListener{
                 override fun onCancelled(p0: DatabaseError) {}
