@@ -34,7 +34,7 @@ class EditDetails : AppCompatActivity() {
             onBackPressed()
         }
         val accnt= GoogleSignIn.getLastSignedInAccount(applicationContext)
-        val mref=FirebaseDatabase.getInstance().getReference(accnt?.id!!).child("UserData")
+        val mref=FirebaseDatabase.getInstance().getReference("User").child(accnt?.id!!).child("UserData")
         val dialog = Dialog(this)
         dialog.setContentView(R.layout.add_details_dia)
         val title = dialog.findViewById<TextView>(R.id.title_dia)
