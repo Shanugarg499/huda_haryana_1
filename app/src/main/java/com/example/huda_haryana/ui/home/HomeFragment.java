@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -16,14 +15,13 @@ import com.example.huda_haryana.R;
 import com.example.huda_haryana.fragments_bottom.LabelsFragment;
 import com.example.huda_haryana.fragments_bottom.TaskFragment;
 import com.example.huda_haryana.fragments_bottom.ab.LeadsPageUpdated;
-import com.example.huda_haryana.mybusiness.mybusinessFragment;
+import com.example.huda_haryana.mybusiness.BusinessFrag;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.Objects;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -40,6 +38,7 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
+
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
@@ -51,17 +50,20 @@ public class HomeFragment extends Fragment {
                             selectedFragment = new LeadsPageUpdated();
                             Toast.makeText(getActivity(), "You clicked leads", Toast.LENGTH_SHORT).show();
                             break;
-                        case R.id.nav_labels:selectedFragment = new LabelsFragment();
+                        case R.id.nav_labels:
+                            selectedFragment = new LabelsFragment();
                             Toast.makeText(getActivity(), "You clicked labels", Toast.LENGTH_SHORT).show();
                             break;
-                        case R.id.nav_tasks:selectedFragment = new TaskFragment();
+                        case R.id.nav_tasks:
+                            selectedFragment = new TaskFragment();
                             Toast.makeText(getActivity(), "You clicked tasks", Toast.LENGTH_SHORT).show();
                             break;
-                        case R.id.nav_business:selectedFragment = new mybusinessFragment();
+                        case R.id.nav_business:
+                            selectedFragment = new BusinessFrag();
                             Toast.makeText(getActivity(), "You clicked business", Toast.LENGTH_SHORT).show();
                             break;
                     }
-                    getChildFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
+                    getChildFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
                     return true;
                 }
             };
