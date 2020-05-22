@@ -47,16 +47,20 @@ class CalculatorFragment : Fragment() {
             btnDivide.setOnClickListener { appendOnClick(false, "/") }
             btnLeftB.setOnClickListener { appendOnClick(false, "(") }
             btnRightB.setOnClickListener { appendOnClick(false, ")") }
+            btnPrecentage.setOnClickListener { appendOnClick(false , "/100") }
 
             btnClear.setOnClickListener {
                 clear()
             }
 
-            btnEqual.setOnClickListener {
-                calculate()
-            }
+//            btnEqual.setOnClickListener {
+//                calculate()
+//            }
 
         }
+
+
+
 
         return binding.root
     }
@@ -64,14 +68,9 @@ class CalculatorFragment : Fragment() {
 
     private fun appendOnClick(clear: Boolean, string: String) {
 
-        if (clear) {
-            binding.tvOutput.text = ""
-            binding.tvInput.append(string)
-        } else {
-            binding.tvInput.append(tvOutput.text)
-            binding.tvInput.append(string)
-            binding.tvOutput.text = ""
-        }
+        binding.tvInput.append(string)
+        calculate()
+
     }
 
     private fun clear() {
@@ -94,7 +93,7 @@ class CalculatorFragment : Fragment() {
             }
 
         } catch (e: Exception) {
-            Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
+//            Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
         }
     }
 
