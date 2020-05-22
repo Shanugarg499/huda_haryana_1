@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.huda_haryana.R
 import com.example.huda_haryana.databinding.LeadAddlabelBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.database.FirebaseDatabase
 
 class AddLabels : AppCompatActivity() {
@@ -14,7 +15,8 @@ class AddLabels : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.lead_addlabel)
         val id = intent.getStringExtra("number")
-        val mref = FirebaseDatabase.getInstance().getReference("leads").child(id!!).child("Labels")
+        val accnt= GoogleSignIn.getLastSignedInAccount(applicationContext)
+        val mref = FirebaseDatabase.getInstance().getReference("User").child(accnt?.id!!).child(id!!).child("Labels")
         binding.toolbarAddlabels.setNavigationOnClickListener {
             onBackPressed()
         }

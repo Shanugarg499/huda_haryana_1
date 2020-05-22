@@ -270,7 +270,7 @@ public class very_main extends AppCompatActivity {
                             startActivity(intent);
                             finishAffinity();
                         } else {
-                            Toast.makeText(very_main.this, "Login Bug to be resolved!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(very_main.this,"Login Bug to be resolved!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(very_main.this, MainActivity.class);
                             startActivity(intent);
                             finishAffinity();
