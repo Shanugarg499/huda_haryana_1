@@ -29,8 +29,12 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -116,10 +120,7 @@ public class very_main extends AppCompatActivity {
 
         findViewById(R.id.register_txt).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), Signupcode.class));
-            }
-        });
+            public void onClick(View v) { startActivity(new Intent(getApplicationContext(), Signupcode.class)); }});
 
     }
 
@@ -133,6 +134,7 @@ public class very_main extends AppCompatActivity {
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
+            firebaseAuthWithGoogle(acc);
             Toast.makeText(this, "Signed In Successfully", Toast.LENGTH_SHORT).show();
             updateUI(acc);
 
@@ -140,6 +142,25 @@ public class very_main extends AppCompatActivity {
             Toast.makeText(this, "Sign In Failed", Toast.LENGTH_SHORT).show();
             updateUI(null);
         }
+    }
+
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acc) {
+        AuthCredential credential = GoogleAuthProvider.getCredential(acc.getIdToken(), null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            // FirebaseUser user = mAuth.getCurrentUser();
+                        } else {
+                            // If sign in fails, display a message to the user.
+//                            Snackbar.make(mBinding.mainLayout, "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
+                        }
+
+                        // ...
+                    }
+                });
     }
 
     public void updateUI(GoogleSignInAccount account) {

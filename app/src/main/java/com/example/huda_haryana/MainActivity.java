@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +64,18 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+
+//    @Override
+//    public boolean onContextItemSelected(@NonNull MenuItem item) {
+//        switch (item.getItemId()){
+//            case R.id.action_logout:
+//                FirebaseAuth.getInstance().signOut();
+//                Toast.makeText(getApplicationContext(),"Sign Out successfull", Toast.LENGTH_LONG).show();
+//                startActivity(new Intent(getApplicationContext(), very_main.class));
+//                break;
+//        }
+//        return super.onContextItemSelected(item);
+//    }
 
     @Override
     public boolean onSupportNavigateUp() {
