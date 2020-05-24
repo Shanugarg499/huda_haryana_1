@@ -22,6 +22,11 @@
             tools:layout_editor_absoluteX="5dp"
             tools:layout_editor_absoluteY="38dp">
 
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/test_image"
+                />
             <RelativeLayout
                 android:padding="7dp"
                 android:layout_width="match_parent"
@@ -91,6 +96,22 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/email_business"
                     android:layout_marginStart="10dp" />
+
+                <ImageView
+                    android:visibility="gone"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_margin="10dp"
+                    android:id="@+id/business_logo_image"
+                    android:layout_alignParentEnd="true"
+                    />
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:id="@+id/progress_logo"
+                    android:layout_alignParentEnd="true"/>
                 <TextView
                     android:layout_alignParentEnd="true"
                     android:id="@+id/add_logo"
@@ -98,8 +119,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_margin="10dp"
                     android:background="@drawable/round"
                     android:clickable="true"
                     android:focusable="true"
