@@ -25,7 +25,7 @@ class LeadsPageUpdated : Fragment() {
     private lateinit var viewModel: LeadsPageUpdatedViewModel
     private lateinit var binding: LeadsPageUpdatedFragmentBinding
     private lateinit var data: ArrayList<order_to_database>
-    private lateinit var adapter:LeadsAdpater
+    private lateinit var adapter: LeadsAdpater
     var personFamilyName = ""
     var personName = ""
     var personGivenName = ""
@@ -34,35 +34,34 @@ class LeadsPageUpdated : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater , R.layout.leads_page_updated_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.leads_page_updated_fragment, container, false)
         viewModel = ViewModelProviders.of(this).get(LeadsPageUpdatedViewModel::class.java)
 
-        data = ArrayList()
         binding.recyclerViewLeadsUpdated.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerViewLeadsUpdated.adapter = LeadsAdpater(requireContext() , data)
-
         val acct = GoogleSignIn.getLastSignedInAccount(getApplicationContext())
-        if (acct != null) {
-            personName = acct.displayName.toString()
-            personGivenName = acct.givenName.toString()
-            personFamilyName = acct.familyName.toString()
-        }
+//        if (acct != null) {
+//            personName = acct.displayName.toString()
+//            personGivenName = acct.givenName.toString()
+//            personFamilyName = acct.familyName.toString()
+//        }
 
-        mDb.child(acct?.id!!).addValueEventListener(
+        mDb.child(acct?.id!!).child("Leads").addValueEventListener(
 
-            object: ValueEventListener{
-                override fun onCancelled(p0: DatabaseError) {}
+                object : ValueEventListener {
+                    override fun onCancelled(p0: DatabaseError) {}
 
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    data.clear()
-                    for(eachLead in dataSnapshot.children){
-                        val oneLead = eachLead.getValue(order_to_database::class.java)
-                        data.add(oneLead!!)
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            data = ArrayList()
+                            for (eachLead in dataSnapshot.children) {
+                                val oneLead = eachLead.getValue(order_to_database::class.java)
+                                data.add(oneLead!!)
+                            }
+                            binding.recyclerViewLeadsUpdated.adapter = LeadsAdpater(requireContext(), data)
+                        }
                     }
-                    (binding.recyclerViewLeadsUpdated.adapter as LeadsAdpater).notifyDataSetChanged()
-                }
 
-            }
+                }
         )
 
         binding.mFab.setOnClickListener {
@@ -74,7 +73,6 @@ class LeadsPageUpdated : Fragment() {
 
         return binding.root
     }
-
 
 
 }

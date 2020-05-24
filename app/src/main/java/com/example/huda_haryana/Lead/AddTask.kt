@@ -40,7 +40,7 @@ class AddTask : AppCompatActivity() {
             true
         }
         val acct = GoogleSignIn.getLastSignedInAccount(FacebookSdk.getApplicationContext())
-        val mref = FirebaseDatabase.getInstance().getReference("User").child(acct?.id!!).child(id!!).child("Alarm")
+        val mref = FirebaseDatabase.getInstance().getReference("User").child(acct?.id!!).child("Leads").child(id!!).child("Alarm")
         mref.addValueEventListener(object : ValueEventListener {
 
             override fun onCancelled(p0: DatabaseError) {

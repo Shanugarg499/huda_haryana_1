@@ -11,6 +11,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.huda_haryana.R
+import com.facebook.FacebookSdk
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import java.sql.Date
@@ -54,7 +56,8 @@ class AlarmAdapter(val list: MutableList<AlarmData>, val curr: Long) : RecyclerV
         }
         holder.del.setOnClickListener {
             dialog.show()
-            mref = FirebaseDatabase.getInstance().getReference("leads").child(list[position].id).child("Alarm").child(list[position].key)
+            val acct = GoogleSignIn.getLastSignedInAccount(FacebookSdk.getApplicationContext())
+            mref = FirebaseDatabase.getInstance().getReference("User").child(acct?.id!!).child("Leads").child(list[position].id).child("Alarm").child(list[position].key)
             mref2 = FirebaseDatabase.getInstance().getReference("Tasks").child(list[position].key)
             pos=position
         }

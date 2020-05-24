@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.huda_haryana.Lead.LabelData
 import com.example.huda_haryana.Lead.LeadOptions
+import com.example.huda_haryana.Lead.list
 import com.example.huda_haryana.R
 import com.example.huda_haryana.order_to_database
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -75,7 +76,9 @@ class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>)
         }
 
         val accnt = GoogleSignIn.getLastSignedInAccount(context)
-        val mref = FirebaseDatabase.getInstance().getReference("User").child(accnt?.id!!).child(data[pos].key).child("Labels").child("list")
+        Log.i("h",data[pos].key)
+        Log.i("u",accnt?.id!!)
+        val mref = FirebaseDatabase.getInstance().getReference("User").child(accnt?.id!!).child("Leads").child(data[pos].key).child("Labels").child("list")
         mref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
 
@@ -104,7 +107,7 @@ class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>)
         holder.nameTextView.text = data[pos].name
         holder.timeTextView.text = "+" + data[pos].date + " " + data[pos].time
 
-        val ref = mDb.child("User").child(accnt.id!!).child(data[pos].key)
+        val ref = mDb.child("User").child(accnt.id!!).child("Leads").child(data[pos].key)
 
         holder.deleteButton.setOnClickListener {
 
@@ -118,6 +121,7 @@ class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>)
 //                        notifyDataSetChanged()
 //                        mDb.child("leads").setValue(data)
                         ref.removeValue()
+                        list.removeAt(pos)
                     }.setIcon(R.drawable.delete_lead)
                     .show()
         }

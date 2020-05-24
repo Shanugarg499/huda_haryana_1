@@ -50,7 +50,7 @@ public class ask_details extends AppCompatActivity {
             personFamilyName = acct.getFamilyName();
             id=acct.getId();
         }
-        final DatabaseReference dbr = FirebaseDatabase.getInstance().getReference("User").child(id);
+        final DatabaseReference dbr = FirebaseDatabase.getInstance().getReference("User").child(id).child("Leads");
 
         dbr.addValueEventListener(new ValueEventListener() {
             @Override

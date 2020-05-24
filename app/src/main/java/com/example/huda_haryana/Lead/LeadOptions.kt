@@ -66,7 +66,7 @@ class LeadOptions : AppCompatActivity() {
         }
         binding.horRecyclerLeadOption.layoutManager=LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         val acct = GoogleSignIn.getLastSignedInAccount(FacebookSdk.getApplicationContext())
-        val mref=FirebaseDatabase.getInstance().getReference("User").child(acct?.id!!).child(id!!).child("Labels").child("list")
+        val mref=FirebaseDatabase.getInstance().getReference("User").child(acct?.id!!).child("Leads").child(id!!).child("Labels").child("list")
         mref.addValueEventListener(object :ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
 

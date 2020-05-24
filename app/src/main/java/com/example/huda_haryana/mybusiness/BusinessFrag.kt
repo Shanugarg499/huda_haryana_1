@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.huda_haryana.R
@@ -76,8 +77,8 @@ class BusinessFrag : Fragment() {
         second_dialog.findViewById<Button>(R.id.second_dialog_ok).setOnClickListener {
             val email = second_dialog.findViewById<EditText>(R.id.entered_txt).text.toString()
             val intent = Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + email))
-            intent.putExtra(Intent.EXTRA_SUBJECT, binding.businessName.text)
-            intent.putExtra(Intent.EXTRA_TEXT, binding.businessName.text.toString() + "\n" + binding.descBusiness.text.toString() + "\n" + binding.websiteBusiness.text.toString() + "\n" + binding.addressBusiness.text.toString() + "\n" + binding.openingBusiness.text.toString() + "\n" + binding.phoneBusiness.text.toString() + "\n" + binding.whatsappBusiness.text.toString() + "\n" + binding.emailBusiness.text.toString() + "\n" + binding.moreBusiness.text.toString())
+            intent.putExtra(Intent.EXTRA_SUBJECT, "hello")
+            intent.putExtra(Intent.EXTRA_TEXT, "h")
             startActivity(Intent.createChooser(intent, "Choose:"))
         }
         return binding.root

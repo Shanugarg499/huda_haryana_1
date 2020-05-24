@@ -27,7 +27,7 @@ class LeadNote : AppCompatActivity() {
         val id = intent.getStringExtra("id")
         val name = intent.getStringExtra("name")
         val acct = GoogleSignIn.getLastSignedInAccount(FacebookSdk.getApplicationContext())
-        val mref = FirebaseDatabase.getInstance().getReference("User").child(acct?.id!!).child(id!!).child("Notes")
+        val mref = FirebaseDatabase.getInstance().getReference("User").child(acct?.id!!).child("Leads").child(id!!).child("Notes")
         binding.leadnoteToolbar.inflateMenu(R.menu.bottom_navigation_menu)
         binding.leadnoteRecyler.layoutManager = LinearLayoutManager(this)
         val getdate = Calendar.getInstance().time

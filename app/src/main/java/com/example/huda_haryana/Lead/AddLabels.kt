@@ -16,7 +16,7 @@ class AddLabels : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.lead_addlabel)
         val id = intent.getStringExtra("number")
         val accnt= GoogleSignIn.getLastSignedInAccount(applicationContext)
-        val mref = FirebaseDatabase.getInstance().getReference("User").child(accnt?.id!!).child(id!!).child("Labels")
+        val mref = FirebaseDatabase.getInstance().getReference("User").child(accnt?.id!!).child("Leads").child(id!!).child("Labels")
         binding.toolbarAddlabels.setNavigationOnClickListener {
             onBackPressed()
         }
