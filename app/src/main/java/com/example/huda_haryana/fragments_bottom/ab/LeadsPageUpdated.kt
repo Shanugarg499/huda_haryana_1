@@ -59,7 +59,7 @@ class LeadsPageUpdated : Fragment() {
                                 val oneLead = eachLead.getValue(order_to_database::class.java)
                                 data_lead.add(oneLead!!)
                             }
-                            binding.recyclerViewLeadsUpdated.adapter = LeadsAdpater(getApplicationContext(), data_lead)
+                            binding.recyclerViewLeadsUpdated.adapter = context?.let { LeadsAdpater(it, data_lead) }
                         }
                     }
 
