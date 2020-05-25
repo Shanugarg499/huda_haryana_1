@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.huda_haryana.R
 import com.example.huda_haryana.databinding.ActivityLeadOptionsBinding
+import com.example.huda_haryana.order_to_database
 import com.facebook.FacebookSdk
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.database.DataSnapshot
@@ -30,17 +31,18 @@ class LeadOptions : AppCompatActivity() {
         val name = intent.getStringExtra("name")
         val phone = intent.getStringExtra("phone")
         val email = intent.getStringExtra("email")
+        val obj=intent.getSerializableExtra("object") as order_to_database
         binding.leadoptionAddnote.setOnClickListener {
             val intent = Intent(this, LeadNote::class.java).putExtra("id", id).putExtra("name", name)
             startActivity(intent)
 
         }
         binding.horRecyclerLeadOption.setOnClickListener {
-            val intent = Intent(this, AddLabels::class.java).putExtra("number", id)
+            val intent = Intent(this, AddLabels::class.java).putExtra("object",obj)
             startActivity(intent)
         }
         binding.leadptionsAddlabel.setOnClickListener {
-            val intent = Intent(this, AddLabels::class.java).putExtra("number", id)
+            val intent = Intent(this, AddLabels::class.java).putExtra("object", obj)
             startActivity(intent)
         }
         binding.leadoptionNameTxt.text = name

@@ -20,11 +20,13 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
+lateinit var data_lead: ArrayList<order_to_database>
+
 class LeadsPageUpdated : Fragment() {
 
     private lateinit var viewModel: LeadsPageUpdatedViewModel
     private lateinit var binding: LeadsPageUpdatedFragmentBinding
-    private lateinit var data: ArrayList<order_to_database>
+
     private lateinit var adapter: LeadsAdpater
     var personFamilyName = ""
     var personName = ""
@@ -52,12 +54,12 @@ class LeadsPageUpdated : Fragment() {
 
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         if (dataSnapshot.exists()) {
-                            data = ArrayList()
+                            data_lead = ArrayList()
                             for (eachLead in dataSnapshot.children) {
                                 val oneLead = eachLead.getValue(order_to_database::class.java)
-                                data.add(oneLead!!)
+                                data_lead.add(oneLead!!)
                             }
-                            binding.recyclerViewLeadsUpdated.adapter = LeadsAdpater(context!!, data)
+                            binding.recyclerViewLeadsUpdated.adapter = LeadsAdpater(getApplicationContext(), data_lead)
                         }
                     }
 

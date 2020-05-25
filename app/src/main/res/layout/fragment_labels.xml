@@ -24,6 +24,7 @@
             app:cardMaxElevation="2dp">
 
             <LinearLayout
+                android:id="@+id/online"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
@@ -58,6 +59,7 @@
             app:cardMaxElevation="2dp">
 
             <LinearLayout
+                android:id="@+id/referrals"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
@@ -96,6 +98,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/direct_label"
                 android:orientation="horizontal"
                 android:padding="11dp">
 
@@ -131,6 +134,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/sms_campaign"
                 android:orientation="horizontal"
                 android:padding="11dp">
 
@@ -167,6 +171,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
+                android:id="@+id/newspaper_check"
                 android:padding="11dp">
 
                 <TextView
@@ -198,6 +203,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
+                android:id="@+id/pamphlets"
                 android:padding="11dp">
 
                 <TextView
@@ -229,6 +235,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
+                android:id="@+id/radio_tel"
                 android:padding="11dp">
 
                 <TextView
@@ -260,6 +267,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
+                android:id="@+id/telecalling"
                 android:padding="11dp">
 
                 <TextView

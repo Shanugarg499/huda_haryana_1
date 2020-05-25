@@ -25,6 +25,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.io.Serializable
 
 class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>) : RecyclerView.Adapter<LeadsAdpater.MyViewModel>() {
 
@@ -71,7 +72,8 @@ class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>)
         }
 
         holder.background.setOnClickListener {
-            val intent = Intent(context, LeadOptions::class.java).putExtra("id", data[pos].key).putExtra("name", data[pos].name).putExtra("phone", data[pos].number).putExtra("email", data[pos].email)
+
+            val intent = Intent(context, LeadOptions::class.java) .putExtra("id", data[pos].key).putExtra("name", data[pos].name).putExtra("phone", data[pos].number).putExtra("email", data[pos].email).putExtra("object",data[pos] as Serializable)
             holder.itemView.context.startActivity(intent)
         }
 

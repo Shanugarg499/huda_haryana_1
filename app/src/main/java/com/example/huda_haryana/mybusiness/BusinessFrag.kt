@@ -47,10 +47,12 @@ class BusinessFrag : Fragment() {
             binding.addLogo.visibility = View.GONE
             binding.businessLogoImage.visibility = View.VISIBLE
             binding.progressLogo.visibility=View.VISIBLE
-            Glide.with(requireContext())
-                    .load(it)
-                    .centerCrop()
-                    .into(binding.businessLogoImage)
+            context?.let { it1 ->
+                Glide.with(it1)
+                        .load(it)
+                        .centerCrop()
+                        .into(binding.businessLogoImage)
+            }
             binding.progressLogo.visibility=View.GONE
         }
         binding.editDetails.setOnClickListener {
@@ -132,7 +134,6 @@ class BusinessFrag : Fragment() {
         gallery.setType("image/*")
         gallery.setAction(Intent.ACTION_GET_CONTENT)
         startActivityForResult(Intent.createChooser(gallery, "Select Picture"), PIC_IMAGE)
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
