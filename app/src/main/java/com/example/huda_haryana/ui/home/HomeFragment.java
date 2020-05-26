@@ -11,8 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.huda_haryana.LabelsFrag.LabelFrag;
 import com.example.huda_haryana.R;
-import com.example.huda_haryana.fragments_bottom.LabelsFragment;
 import com.example.huda_haryana.fragments_bottom.TaskFragment;
 import com.example.huda_haryana.fragments_bottom.ab.LeadsPageUpdated;
 import com.example.huda_haryana.mybusiness.BusinessFrag;
@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment {
                             Toast.makeText(getActivity(), "You clicked leads", Toast.LENGTH_SHORT).show();
                             break;
                         case R.id.nav_labels:
-                            selectedFragment = new LabelsFragment();
+                            selectedFragment = new LabelFrag();
                             Toast.makeText(getActivity(), "You clicked labels", Toast.LENGTH_SHORT).show();
                             break;
                         case R.id.nav_tasks:

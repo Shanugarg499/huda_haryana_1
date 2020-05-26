@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,18 +16,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".LabelsFrag.LabelSelectedLead"
+            android:theme="@style/business"/>
+
         <receiver android:name="com.allyants.notifyme.NotificationPublisher" />
         <receiver android:name="com.allyants.notifyme.BootNotifyMe">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+
                 <category android:name="android.intent.category.HOME" />
             </intent-filter>
         </receiver>
+
         <activity
             android:name=".Lead.SetTask"
             android:theme="@style/business" />
-        <activity android:name=".Lead.AddTask"
-            android:theme="@style/business"/>
+        <activity
+            android:name=".Lead.AddTask"
+            android:theme="@style/business" />
         <activity android:name=".login" />
         <activity
             android:name=".Lead.AddLabels"
@@ -48,9 +55,9 @@
         <activity
             android:name=".mybusiness.NotesActivity"
             android:theme="@style/business" />
-        <activity android:name=".SplashActivity"
-            android:theme="@style/splash"
-            >
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -58,18 +65,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".mybusiness.BusinessActivity" />
-        <activity android:name=".Signupcode"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".Signupcode"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ask_details" />
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
         <activity
             android:name=".very_main"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" >
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -94,9 +98,10 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <receiver android:name=".Lead.AddAlarm"
+        <receiver
+            android:name=".Lead.AddAlarm"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true" />
     </application>
 
 </manifest>

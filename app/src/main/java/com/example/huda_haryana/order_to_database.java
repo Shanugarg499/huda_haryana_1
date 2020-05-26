@@ -1,6 +1,8 @@
 package com.example.huda_haryana;
 
-public class order_to_database {
+import java.io.Serializable;
+
+public class order_to_database implements Serializable {
         String Name, location, R_C, subtype, figures, Number, Email, address, event, time, date, key;
         public order_to_database(){}
 

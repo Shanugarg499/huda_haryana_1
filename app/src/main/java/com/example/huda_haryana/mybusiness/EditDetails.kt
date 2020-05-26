@@ -154,7 +154,6 @@ class EditDetails : AppCompatActivity() {
                     mref.child("moredetails").setValue(moredetails)
                 }
             }
-
             Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
             dialog.dismiss()
         }
