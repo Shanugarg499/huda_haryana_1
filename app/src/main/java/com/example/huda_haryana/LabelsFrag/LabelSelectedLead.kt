@@ -22,8 +22,9 @@ class LabelSelectedLead : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding=DataBindingUtil.setContentView(this,R.layout.activity_label_selected_lead)
         binding.labelSelectedRecycler.layoutManager=LinearLayoutManager(this)
-        val accnt = GoogleSignIn.getLastSignedInAccount(applicationContext)
-//        val mref=FirebaseDatabase.getInstance().getReference("User").child(accnt?.id!!).child("Leads")
+        binding.selectedLabelToolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
         for(i in list_sent){
             Log.i("1",i)
         }
