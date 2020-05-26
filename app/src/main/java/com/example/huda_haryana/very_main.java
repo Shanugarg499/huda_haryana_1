@@ -70,7 +70,7 @@ public class very_main extends AppCompatActivity {
         findViewById(R.id.login_b).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Login();
+                Toast.makeText(getApplicationContext(), "This feature is not active yet, use google sign in instead", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -171,8 +171,6 @@ public class very_main extends AppCompatActivity {
             finishAffinity();
         } else {
             Toast.makeText(this, "U Didnt signed in", Toast.LENGTH_LONG).show();
-            startActivity(new Intent(this, MainActivity.class));
-            finishAffinity();
         }
     }
 
