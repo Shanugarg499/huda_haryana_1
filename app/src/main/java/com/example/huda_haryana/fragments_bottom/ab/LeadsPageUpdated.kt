@@ -41,12 +41,6 @@ class LeadsPageUpdated : Fragment() {
 
         binding.recyclerViewLeadsUpdated.layoutManager = LinearLayoutManager(requireContext())
         val acct = GoogleSignIn.getLastSignedInAccount(getApplicationContext())
-//        if (acct != null) {
-//            personName = acct.displayName.toString()
-//            personGivenName = acct.givenName.toString()
-//            personFamilyName = acct.familyName.toString()
-//        }
-
         mDb.child(acct?.id!!).child("Leads").addValueEventListener(
 
                 object : ValueEventListener {
