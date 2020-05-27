@@ -41,7 +41,7 @@ class AddLabels: AppCompatActivity() {
             var pamphlets_list= false
             var radio_list= false
             var telecalling_list= false
-            val ref=FirebaseDatabase.getInstance().getReference("LabelLead")
+            val ref=FirebaseDatabase.getInstance().getReference("User").child(accnt.id!!).child("LabelLead")
             if (binding.directCheck.isChecked) {
                 labellist.add(LabelData("DIRECT", "55C177"))
                 direct=true

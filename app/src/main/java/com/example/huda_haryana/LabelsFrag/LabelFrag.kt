@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.example.huda_haryana.Lead.LabelLeadData
 import com.example.huda_haryana.R
 import com.example.huda_haryana.databinding.FragmentLabelsBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -24,7 +25,8 @@ class LabelFrag : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_labels, container, false)
-        val ref = FirebaseDatabase.getInstance().getReference("LabelLead")
+        val accnt= GoogleSignIn.getLastSignedInAccount(context)
+        val ref = FirebaseDatabase.getInstance().getReference("User").child(accnt?.id!!).child("LabelLead")
         ref.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
 
@@ -86,7 +88,7 @@ class LabelFrag : Fragment() {
         binding.online.setOnClickListener {
             list_sent = mutableListOf<String>()
             if(list==null){
-                Toast.makeText(context,"Net is Slow",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             for (i in list!!) {
@@ -100,7 +102,7 @@ class LabelFrag : Fragment() {
         binding.radioTel.setOnClickListener {
             list_sent = mutableListOf<String>()
             if(list==null){
-                Toast.makeText(context,"Net is Slow",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             for (i in list!!) {
@@ -114,7 +116,7 @@ class LabelFrag : Fragment() {
         binding.newspaperCheck.setOnClickListener {
             list_sent = mutableListOf<String>()
             if(list==null){
-                Toast.makeText(context,"Net is Slow",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             for (i in list!!) {
@@ -128,7 +130,7 @@ class LabelFrag : Fragment() {
         binding.directLabel.setOnClickListener {
             list_sent = mutableListOf<String>()
             if(list==null){
-                Toast.makeText(context,"Net is Slow",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             for (i in list!!) {
@@ -144,7 +146,7 @@ class LabelFrag : Fragment() {
         binding.referrals.setOnClickListener {
             list_sent = mutableListOf<String>()
             if(list==null){
-                Toast.makeText(context,"Net is Slow",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             for (i in list!!) {
@@ -159,7 +161,7 @@ class LabelFrag : Fragment() {
         binding.telecalling.setOnClickListener {
             list_sent = mutableListOf<String>()
             if(list==null){
-                Toast.makeText(context,"Net is Slow",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             for (i in list!!) {
@@ -173,7 +175,7 @@ class LabelFrag : Fragment() {
         binding.smsCampaign.setOnClickListener {
             list_sent = mutableListOf<String>()
             if(list==null){
-                Toast.makeText(context,"Net is Slow",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             for (i in list!!) {
@@ -187,7 +189,7 @@ class LabelFrag : Fragment() {
         binding.pamphlets.setOnClickListener {
             list_sent = mutableListOf<String>()
             if(list==null){
-                Toast.makeText(context,"Net is Slow",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             for (i in list!!) {
