@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -48,19 +47,15 @@ public class HomeFragment extends Fragment {
                     switch (item.getItemId()) {
                         case R.id.nav_leads:
                             selectedFragment = new LeadsPageUpdated();
-                            Toast.makeText(getActivity(), "You clicked leads", Toast.LENGTH_SHORT).show();
                             break;
                         case R.id.nav_labels:
                             selectedFragment = new LabelFrag();
-                            Toast.makeText(getActivity(), "You clicked labels", Toast.LENGTH_SHORT).show();
                             break;
                         case R.id.nav_tasks:
                             selectedFragment = new TaskFragment();
-                            Toast.makeText(getActivity(), "You clicked tasks", Toast.LENGTH_SHORT).show();
                             break;
                         case R.id.nav_business:
                             selectedFragment = new BusinessFrag();
-                            Toast.makeText(getActivity(), "You clicked business", Toast.LENGTH_SHORT).show();
                             break;
                     }
                     getChildFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();

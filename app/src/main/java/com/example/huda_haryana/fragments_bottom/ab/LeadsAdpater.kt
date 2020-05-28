@@ -112,7 +112,6 @@ class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>)
         val ref = mDb.child("User").child(accnt.id!!).child("Leads").child(data[pos].key)
 
         holder.deleteButton.setOnClickListener {
-
             val alertDialog = AlertDialog.Builder(context)
             alertDialog.setTitle("Delete Customer?")
                     .setMessage("Deletes customer will be removed and will NOT reappear when they call you ")
