@@ -17,7 +17,6 @@ import com.example.huda_haryana.R;
 import com.example.huda_haryana.SG.lead_adapter;
 import com.example.huda_haryana.ask_details;
 import com.example.huda_haryana.order_to_database;
-import com.example.huda_haryana.ui.analysis.AnalysisViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
