@@ -110,6 +110,20 @@ class LeadOptions : AppCompatActivity() {
         dia.findViewById<Button>(R.id.cancel).setOnClickListener {
             dia.dismiss()
         }
+        budgetref.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                val data = p0.getValue().toString()
+                if (data != "null") {
+                    binding.budgetView.setText(data)
+                    dia.findViewById<EditText>(R.id.details_et).setText(data)
+                }
+            }
+
+        })
         val typeref = FirebaseDatabase.getInstance().getReference("User").child(acct.id!!).child("Leads").child(id).child("Type")
         val items = arrayListOf<String>("ADD PROPERTY TYPE", "BUY", "SELL", "RENT")
         val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items)
