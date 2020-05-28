@@ -1,10 +1,11 @@
 package com.example.huda_haryana.Lead
 
+import android.app.Dialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +21,7 @@ import com.google.firebase.database.ValueEventListener
 
 class LeadOptions : AppCompatActivity() {
     lateinit var binding: ActivityLeadOptionsBinding
+    var typeData: TypeData? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_lead_options)
@@ -31,14 +33,14 @@ class LeadOptions : AppCompatActivity() {
         val name = intent.getStringExtra("name")
         val phone = intent.getStringExtra("phone")
         val email = intent.getStringExtra("email")
-        val obj=intent.getSerializableExtra("object") as order_to_database
+        val obj = intent.getSerializableExtra("object") as order_to_database
         binding.leadoptionAddnote.setOnClickListener {
             val intent = Intent(this, LeadNote::class.java).putExtra("id", id).putExtra("name", name)
             startActivity(intent)
 
         }
         binding.horRecyclerLeadOption.setOnClickListener {
-            val intent = Intent(this, AddLabels::class.java).putExtra("object",obj)
+            val intent = Intent(this, AddLabels::class.java).putExtra("object", obj)
             startActivity(intent)
         }
         binding.leadptionsAddlabel.setOnClickListener {
@@ -63,29 +65,89 @@ class LeadOptions : AppCompatActivity() {
             startActivity(intent)
         }
         binding.leadoptionsAddtask.setOnClickListener {
-            val intent = Intent(this, AddTask::class.java).putExtra("id",id).putExtra("name",name)
+            val intent = Intent(this, AddTask::class.java).putExtra("id", id).putExtra("name", name)
             startActivity(intent)
         }
-        binding.horRecyclerLeadOption.layoutManager=LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        binding.horRecyclerLeadOption.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         val acct = GoogleSignIn.getLastSignedInAccount(FacebookSdk.getApplicationContext())
-        val mref=FirebaseDatabase.getInstance().getReference("User").child(acct?.id!!).child("Leads").child(id!!).child("Labels").child("list")
-        mref.addValueEventListener(object :ValueEventListener{
+        val mref = FirebaseDatabase.getInstance().getReference("User").child(acct?.id!!).child("Leads").child(id!!).child("Labels").child("list")
+        mref.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
 
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-                val list= mutableListOf<LabelData>()
-                if(p0.exists()) {
+                val list = mutableListOf<LabelData>()
+                if (p0.exists()) {
                     for (i in p0.children) {
                         val data = i.getValue(LabelData::class.java)
                         list.add(data!!)
                     }
-                    binding.horRecyclerLeadOption.adapter=AddLabelAdapter(list)
+                    binding.horRecyclerLeadOption.adapter = AddLabelAdapter(list)
+                }
+            }
+
+        })
+        val dia = Dialog(this as LeadOptions)
+        dia.setContentView(R.layout.add_details_dia)
+        binding.leadoptionAddbudget.setOnClickListener {
+            dia.findViewById<TextView>(R.id.title_dia).setText("Add Budget")
+            dia.findViewById<EditText>(R.id.details_et)
+            dia.show()
+        }
+        val budgetref = FirebaseDatabase.getInstance().getReference("User").child(acct.id!!).child("Leads").child(id).child("Budget").child("Budgetvalue")
+
+        dia.findViewById<Button>(R.id.ok).setOnClickListener {
+
+            val txt = dia.findViewById<EditText>(R.id.details_et).text.toString()
+            if (txt == "") {
+                Toast.makeText(applicationContext, "Enter Something", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            budgetref.setValue(txt)
+            dia.dismiss()
+        }
+        dia.findViewById<Button>(R.id.cancel).setOnClickListener {
+            dia.dismiss()
+        }
+        val typeref = FirebaseDatabase.getInstance().getReference("User").child(acct.id!!).child("Leads").child(id).child("Type")
+        val items = arrayListOf<String>("ADD PROPERTY TYPE", "BUY", "SELL", "RENT")
+        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.leadoptionSpinner.adapter = adapter
+        typeref.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                if (p0.exists()) {
+                    typeData = p0.getValue(TypeData::class.java)!!
+                    binding.leadoptionSpinner.setSelection(typeData!!.pos.toInt())
                 }
             }
 
         })
 
+        binding.leadoptionSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                when (position) {
+                    1 -> {
+                        typeref.setValue(TypeData("BUY", "1"))
+                    }
+                    2 -> {
+                        typeref.setValue(TypeData("SELL", "2"))
+                    }
+                    3 -> {
+                        typeref.setValue(TypeData("RENT", "3"))
+                    }
+                }
+            }
+
+        }
     }
 }

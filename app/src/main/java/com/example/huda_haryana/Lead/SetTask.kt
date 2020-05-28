@@ -50,7 +50,7 @@ class SetTask : AppCompatActivity() {
         var d2: Date? = null
         val acct = GoogleSignIn.getLastSignedInAccount(FacebookSdk.getApplicationContext())
         val mref = FirebaseDatabase.getInstance().getReference("User").child(acct?.id!!).child("Leads").child(id!!).child("Alarm")
-        val mref2 = FirebaseDatabase.getInstance().getReference("Tasks")
+        val mref2 = FirebaseDatabase.getInstance().getReference("User").child(acct.id!!).child("Tasks")
 
         datetime.setOnButtonClickListener(object : SwitchDateTimeDialogFragment.OnButtonClickListener {
             override fun onPositiveButtonClick(date: Date?) {
