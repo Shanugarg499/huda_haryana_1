@@ -12,6 +12,8 @@ import com.example.huda_haryana.Lead.AlarmAdapter
 import com.example.huda_haryana.Lead.AlarmData
 import com.example.huda_haryana.R
 import com.example.huda_haryana.databinding.FragmentTasksBinding
+import com.facebook.FacebookSdk
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -24,7 +26,8 @@ class TaskFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         binding=DataBindingUtil.inflate(inflater,R.layout.fragment_tasks,container,false)
         binding.taskFragRecyler.layoutManager=LinearLayoutManager(context)
-        val mref=FirebaseDatabase.getInstance().getReference("Tasks")
+        val acct = GoogleSignIn.getLastSignedInAccount(FacebookSdk.getApplicationContext())
+            val mref=FirebaseDatabase.getInstance().getReference("User").child(acct?.id!!).child("Tasks")
         mref.addValueEventListener(object :ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
 

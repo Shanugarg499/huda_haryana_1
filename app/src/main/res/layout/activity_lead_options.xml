@@ -2,6 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -179,9 +182,11 @@
             android:textSize="16sp" />
     </LinearLayout>
 
+
     <LinearLayout
         android:background="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
+        android:id="@+id/leadoption_addbudget"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
@@ -194,14 +199,62 @@
             android:background="@drawable/leadoptions_residentback"
             android:padding="13dp"
             android:src="@drawable/leadopttions_resident" />
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:gravity="center"
-            android:text="RESIDENTIAL"
+            android:text="ADD BUDGET"
             android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/budget_view"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"/>
+</LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:id="@+id/leadoption_addtype"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/leadoptions_residentback"
+            android:padding="13dp"
+            android:src="@drawable/leadopttions_resident" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="ADD PROPERTY TYPE"
+            android:textSize="16sp" />
+
+    <TextView
+        android:layout_marginStart="20dp"
+        android:id="@+id/display_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    </LinearLayout>
     </LinearLayout>
 </LinearLayout>
+    </ScrollView>
 </layout>
