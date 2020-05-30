@@ -132,7 +132,6 @@ class LeadOptions : AppCompatActivity() {
 
         })
         val typeref = FirebaseDatabase.getInstance().getReference("User").child(acct.id!!).child("Leads").child(id).child("Type")
-
         val alertDialog = AlertDialog.Builder(this)
         val alert2 = AlertDialog.Builder(this)
         val alert3 = AlertDialog.Builder(this)
