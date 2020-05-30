@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
-import android.content.res.TypedArray
 import android.net.Uri
 import android.os.Bundle
 import android.widget.*
@@ -167,7 +166,7 @@ class LeadOptions : AppCompatActivity() {
                     }
 
                 }
-                typeref.setValue(TypeData(type,second_type,subtype,second_sub))
+                typeref.setValue(TypeData(type, second_type, subtype, second_sub))
                 dialog?.dismiss()
             }
 
@@ -204,7 +203,7 @@ class LeadOptions : AppCompatActivity() {
                         second_sub = "PentHouse"
                     }
                 }
-                typeref.setValue(TypeData(type,second_type,subtype,second_sub))
+                typeref.setValue(TypeData(type, second_type, subtype, second_sub))
                 dialog?.dismiss()
             }
 
@@ -237,7 +236,7 @@ class LeadOptions : AppCompatActivity() {
                         subtype = "Other"
                     }
                 }
-                typeref.setValue(TypeData(type,second_type,subtype))
+                typeref.setValue(TypeData(type, second_type, subtype))
                 dialog?.dismiss()
             }
 
@@ -280,7 +279,7 @@ class LeadOptions : AppCompatActivity() {
                         subtype = "Other"
                     }
                 }
-                typeref.setValue(TypeData(type,second_type,subtype))
+                typeref.setValue(TypeData(type, second_type, subtype))
                 dialog?.dismiss()
 
             }
