@@ -3,7 +3,6 @@ package com.real_estate.lead_grow.fragments_bottom.ab
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -77,8 +76,8 @@ class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>)
         }
 
         val accnt = GoogleSignIn.getLastSignedInAccount(context)
-        Log.i("h",data[pos].key)
-        Log.i("u",accnt?.id!!)
+//        Log.i("h",data[pos].key)
+//        Log.i("u",accnt?.id!!)
         val mref = FirebaseDatabase.getInstance().getReference("User").child(accnt?.id!!).child("Leads").child(data[pos].key).child("Labels").child("list")
         mref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -87,14 +86,14 @@ class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>)
 
             override fun onDataChange(p0: DataSnapshot) {
                 val list = mutableListOf<LabelData>()
-                Log.i("here", " here1")
+//                Log.i("here", " here1")
                 if (p0.exists()) {
-                    Log.i("here", " here2")
+//                    Log.i("here", " here2")
                     for (i in p0.children) {
                         val data = i.getValue(LabelData::class.java)
                         list.add(data!!)
                     }
-                    Log.i("here", " here3 + ${list.toString()}")
+//                    Log.i("here", " here3 + ${list.toString()}")
                     holder.recyclerViewInner.visibility = View.VISIBLE
                     holder.recyclerViewInner.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                     holder.recyclerViewInner.adapter = AddLabelAdapterSmallerTextSize(list)

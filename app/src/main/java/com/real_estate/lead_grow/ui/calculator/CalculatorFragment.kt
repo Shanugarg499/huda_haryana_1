@@ -25,7 +25,6 @@ class CalculatorFragment : Fragment() {
 
         binding.apply {
             //Number listeners
-            btn00.setOnClickListener { appendOnClick(true, "00") }
             btn0.setOnClickListener { appendOnClick(true, "0") }
             btn1.setOnClickListener { appendOnClick(true, "1") }
             btn2.setOnClickListener { appendOnClick(true, "2") }
@@ -52,9 +51,9 @@ class CalculatorFragment : Fragment() {
                 clear()
             }
 
-//            btnEqual.setOnClickListener {
-//                calculate()
-//            }
+            btnEqual.setOnClickListener {
+                calculateToSet()
+            }
 
         }
 
@@ -62,6 +61,11 @@ class CalculatorFragment : Fragment() {
 
 
         return binding.root
+    }
+
+    private fun calculateToSet() {
+        binding.tvInput.text =  binding.tvOutput.text
+        binding.tvOutput.text = ""
     }
 
 
@@ -92,6 +96,7 @@ class CalculatorFragment : Fragment() {
             }
 
         } catch (e: Exception) {
+            binding.tvOutput.text = ""
 //            Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
         }
     }
