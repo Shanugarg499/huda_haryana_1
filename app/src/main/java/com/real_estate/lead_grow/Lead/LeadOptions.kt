@@ -131,6 +131,19 @@ class LeadOptions : AppCompatActivity() {
 
         })
         val typeref = FirebaseDatabase.getInstance().getReference("User").child(acct.id!!).child("Leads").child(id).child("Type")
+        typeref.addValueEventListener(object :ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                if(p0.exists()){
+                    val data=p0.getValue(TypeData::class.java)!!
+                    binding.displayType.setText(data.type+"\n"+data.second_type+"\n" +data.subtype+"\n"+data.second_sub)
+                }
+            }
+
+        })
         val alertDialog = AlertDialog.Builder(this)
         val alert2 = AlertDialog.Builder(this)
         val alert3 = AlertDialog.Builder(this)

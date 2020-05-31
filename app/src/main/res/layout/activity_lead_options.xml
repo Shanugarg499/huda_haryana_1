@@ -2,259 +2,279 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Lead.LeadOptions"
-    android:orientation="vertical">
-    <androidx.appcompat.widget.Toolbar
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:id="@+id/toolbar_leadoptions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/arrow_back_white"
-        app:titleTextColor="#fff" />
-<LinearLayout
-    android:background="@color/colorPrimary"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/leadoption_name_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="ANUBHAV"
-        android:textColor="#fff"
-        android:textSize="19sp"
-        android:textStyle="bold" />
-<LinearLayout
-    android:layout_marginBottom="10dp"
-    android:layout_marginTop="10dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-    <TextView
-        android:id="@+id/call_option"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:drawableTop="@drawable/phone_call"
-        android:gravity="center"
-        android:text="Call"
-        android:textColor="#FFF" />
-
-    <TextView
-        android:id="@+id/message_option"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:drawableTop="@drawable/message"
-        android:gravity="center"
-        android:text="Message"
-        android:textColor="#FFF" />
-
-    <TextView
-        android:id="@+id/mail_option"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:drawableTop="@drawable/leadoption_email"
-        android:gravity="center"
-        android:text="Email"
-        android:textColor="#FFF" />
-
-    <TextView
-        android:id="@+id/navigate_option"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:drawableTop="@drawable/ic_navigation_black_24dp"
-        android:gravity="center"
-        android:text="Navigate"
-        android:textColor="#FFF" />
-
-
-</LinearLayout>
-</LinearLayout>
 
     <LinearLayout
-        android:background="?android:attr/selectableItemBackground"
-        android:id="@+id/leadptions_addlabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:orientation="vertical"
+        tools:context=".Lead.LeadOptions">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/addlabel_back"
-            android:padding="13dp"
-            android:src="@drawable/addperson" />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-        <TextView
-
-            android:id="@+id/add_label_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:gravity="center_vertical"
-            android:text="ADD LABELS"
-            android:textSize="16sp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:id="@+id/hor_recycler_lead_option"
-            android:layout_height="wrap_content"
-            android:scrollbars="horizontal"
-            android:layout_marginStart="16dp"/>
-    </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/leadoptions_addtask"
-        android:background="?android:attr/selectableItemBackground"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/leadoption_taskback"
-            android:padding="13dp"
-            android:src="@drawable/notifications" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="20dp"
-            android:gravity="center"
-            android:text="ADD FOLLOW-UP/TASK"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:background="?android:attr/selectableItemBackground"
-        android:id="@+id/leadoption_addnote"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/leadoption_noteback"
-            android:padding="13dp"
-            android:src="@drawable/leadoption_note" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="20dp"
-            android:gravity="center"
-            android:text="ADD NOTES"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:background="?android:attr/selectableItemBackground"
-        android:layout_width="match_parent"
-        android:id="@+id/leadoption_addbudget"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/leadoptions_residentback"
-            android:padding="13dp"
-            android:src="@drawable/leadopttions_resident" />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:gravity="center"
-            android:text="ADD BUDGET"
-            android:textSize="16sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/budget_view"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"/>
-</LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:background="?android:attr/selectableItemBackground"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:id="@+id/leadoption_addtype"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/leadoptions_residentback"
-            android:padding="13dp"
-            android:src="@drawable/leadopttions_resident" />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-        <TextView
-
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_leadoptions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="ADD PROPERTY TYPE"
-            android:textSize="16sp" />
+            android:background="@color/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/arrow_back_white"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:titleTextColor="#fff" />
 
-    <TextView
-        android:layout_marginStart="20dp"
-        android:id="@+id/display_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/leadoption_name_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="ANUBHAV"
+                android:textColor="#fff"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/call_option"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/phone_call"
+                    android:gravity="center"
+                    android:text="Call"
+                    android:textColor="#FFF" />
+
+                <TextView
+                    android:id="@+id/message_option"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/message"
+                    android:gravity="center"
+                    android:text="Message"
+                    android:textColor="#FFF" />
+
+                <TextView
+                    android:id="@+id/mail_option"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/leadoption_email"
+                    android:gravity="center"
+                    android:text="Email"
+                    android:textColor="#FFF" />
+
+                <TextView
+                    android:id="@+id/navigate_option"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ic_navigation_black_24dp"
+                    android:gravity="center"
+                    android:text="Navigate"
+                    android:textColor="#FFF" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/leadptions_addlabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/addlabel_back"
+                        android:padding="13dp"
+                        android:src="@drawable/addperson" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+
+                            android:id="@+id/add_label_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:gravity="center_vertical"
+                            android:text="ADD LABELS"
+                            android:textSize="16sp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/hor_recycler_lead_option"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:scrollbars="horizontal" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/leadoptions_addtask"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/leadoption_taskback"
+                        android:padding="13dp"
+                        android:src="@drawable/notifications" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
+                        android:gravity="center"
+                        android:text="ADD FOLLOW-UP/TASK"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/leadoption_addnote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/leadoption_noteback"
+                        android:padding="13dp"
+                        android:src="@drawable/leadoption_note" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
+                        android:gravity="center"
+                        android:text="ADD NOTES"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/leadoption_addbudget"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/leadoptions_residentback"
+                        android:padding="13dp"
+                        android:src="@drawable/leadopttions_resident" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:gravity="center"
+                            android:text="ADD BUDGET"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/budget_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/leadoption_addtype"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/leadoptions_residentback"
+                        android:padding="13dp"
+                        android:src="@drawable/leadopttions_resident" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:text="ADD PROPERTY TYPE"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/display_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
-    </ScrollView>
 </layout>
