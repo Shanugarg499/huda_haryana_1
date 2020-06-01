@@ -139,11 +139,12 @@ class LeadOptions : AppCompatActivity() {
             override fun onDataChange(p0: DataSnapshot) {
                 if(p0.exists()){
                     val data=p0.getValue(TypeData::class.java)!!
-                    binding.displayType.setText(data.type+"\n"+data.second_type+"\n" +data.subtype+"\n"+data.second_sub)
+                    binding.displayType.setText(data.type+"\n"+data.subtype+"\n"+data.second_sub)
                 }
             }
 
         })
+        val propref = FirebaseDatabase.getInstance().getReference("User").child(acct.id!!).child("Leads").child(id).child("Allproperties").child("Value")
         val alertDialog = AlertDialog.Builder(this)
         val alert2 = AlertDialog.Builder(this)
         val alert3 = AlertDialog.Builder(this)
@@ -154,38 +155,47 @@ class LeadOptions : AppCompatActivity() {
         val item3 = arrayListOf<String>("SHOPS", "SCO", "SCF", "Other")
         val adapter3 = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, item3)
         val alert5 = AlertDialog.Builder(this)
-        val items5 = arrayListOf<String>("60sq. Yards", "100sq. Yards", "160sq. Yards", "250sq. Yards", "500sq. yards", "1000sq. yards")
+        val items5 = arrayListOf<String>("36sq. Yards","60sq. Yards", "100sq. Yards", "160sq. Yards", "250sq. Yards","350sq. Yards","500sq. yards", "1000sq. yards","Others")
         val adapter5 = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items5)
         alert5.setAdapter(adapter5, object : DialogInterface.OnClickListener {
             override fun onClick(dialog: DialogInterface?, which: Int) {
                 when (which) {
-                    0 -> {
-                        second_sub = "60sq. Yards"
+                    0->{
+                        second_sub="36sq. Yards"
                     }
                     1 -> {
-                        second_sub = "100sq. Yards"
+                        second_sub = "60sq. Yards"
                     }
                     2 -> {
-                        second_sub = "160sq. Yards"
+                        second_sub = "100sq. Yards"
                     }
                     3 -> {
-                        second_sub = "250sq. Yards"
+                        second_sub = "160sq. Yards"
                     }
                     4 -> {
+                        second_sub = "250sq. Yards"
+                    }
+                    5->{
+                        second_sub="350sq. Yards"
+                    }
+                    6 -> {
                         second_sub = "500sq. Yards"
                     }
-                    5 -> {
+                    7 -> {
                         second_sub = "1000sq. Yards"
+                    }
+                    8->{
+                        second_sub="Others"
                     }
 
                 }
-                typeref.setValue(TypeData(type, second_type, subtype, second_sub))
+                typeref.setValue(TypeData(type, subtype, second_sub))
                 dialog?.dismiss()
             }
 
         })
         val alert6 = AlertDialog.Builder(this)
-        val items6 = arrayListOf<String>("Studio Apartment", "1BHK", "2BHK", "2+1 BHK", "3BHK", "3+1 BHK", "4BHK", "PentHouse")
+        val items6 = arrayListOf<String>("Studio Apartment", "1BHK", "2BHK", "2+1 BHK", "3BHK", "3+1 BHK", "4BHK", "PentHouse","Others")
         val adapter6 = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items6)
         alert6.setAdapter(adapter6, object : DialogInterface.OnClickListener {
             override fun onClick(dialog: DialogInterface?, which: Int) {
@@ -215,8 +225,11 @@ class LeadOptions : AppCompatActivity() {
                     7 -> {
                         second_sub = "PentHouse"
                     }
+                    8->{
+                        second_sub="Others"
+                    }
                 }
-                typeref.setValue(TypeData(type, second_type, subtype, second_sub))
+                typeref.setValue(TypeData(type, subtype, second_sub))
                 dialog?.dismiss()
             }
 
@@ -249,8 +262,23 @@ class LeadOptions : AppCompatActivity() {
                         subtype = "Other"
                     }
                 }
-                typeref.setValue(TypeData(type, second_type, subtype))
+                typeref.setValue(TypeData(type,  subtype))
                 dialog?.dismiss()
+            }
+
+        })
+        binding.leadoptionAllprop.setOnClickListener {
+            alert2.show()
+        }
+        propref.addValueEventListener(object :ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                if(p0.exists()){
+                    binding.displayAllprop.setText(p0.getValue().toString())
+                }
             }
 
         })
@@ -267,10 +295,7 @@ class LeadOptions : AppCompatActivity() {
                         second_type = "RENT"
                     }
                 }
-                if (type == "COMMERCIAL")
-                    alert3.show()
-                if (type == "RESIDENTIAL")
-                    alert4.show()
+                propref.setValue(second_type)
                 dialog?.dismiss()
             }
 
@@ -292,7 +317,7 @@ class LeadOptions : AppCompatActivity() {
                         subtype = "Other"
                     }
                 }
-                typeref.setValue(TypeData(type, second_type, subtype))
+                typeref.setValue(TypeData(type, subtype))
                 dialog?.dismiss()
 
             }
@@ -303,14 +328,16 @@ class LeadOptions : AppCompatActivity() {
         }
         alertDialog.setAdapter(adapter, object : DialogInterface.OnClickListener {
             override fun onClick(dialog: DialogInterface?, which: Int) {
-                alert2.show()
                 when (which) {
                     0 -> {
                         type = "RESIDENTIAL"
+                        dialog?.dismiss()
+                        alert4.show()
                     }
                     1 -> {
-
                         type = "COMMERCIAL"
+                        dialog?.dismiss()
+                        alert3.show()
                     }
                 }
                 dialog?.dismiss()

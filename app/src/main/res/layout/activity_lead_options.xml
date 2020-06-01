@@ -273,6 +273,45 @@
                     </LinearLayout>
 
                 </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/leadoption_allprop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/leadoptions_residentback"
+                        android:padding="13dp"
+                        android:src="@drawable/leadopttions_resident" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:text="ALL PROPERTIES"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/display_allprop"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
 
             </LinearLayout>
         </ScrollView>
