@@ -293,7 +293,6 @@ class LeadOptions : AppCompatActivity() {
                 alert2.show()
                 when (which) {
                     0 -> {
-
                         type = "RESIDENTIAL"
                     }
                     1 -> {
