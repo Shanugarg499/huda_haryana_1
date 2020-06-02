@@ -209,9 +209,9 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/leadoptions_residentback"
+                        android:background="@drawable/add_budget_back"
                         android:padding="13dp"
-                        android:src="@drawable/leadopttions_resident" />
+                        android:src="@drawable/add_money" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -286,7 +286,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/leadoptions_residentback"
+                        android:background="@drawable/add_property_back"
                         android:padding="13dp"
                         android:src="@drawable/leadopttions_resident" />
 
