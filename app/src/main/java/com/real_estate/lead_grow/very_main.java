@@ -118,7 +118,10 @@ public class very_main extends AppCompatActivity {
 
         findViewById(R.id.register_txt).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { startActivity(new Intent(getApplicationContext(), Signupcode.class)); }});
+            public void onClick(View v) {
+               Toast.makeText(getApplicationContext(),"Please use Google sign method",Toast.LENGTH_SHORT).show();
+
+            }});
 
     }
 
@@ -127,6 +130,7 @@ public class very_main extends AppCompatActivity {
         super.onStart();
         if (mAuth.getCurrentUser() != null) {
             startActivity(new Intent(this, MainActivity.class));
+            finish();
             Toast.makeText(getApplicationContext(), "You Signed in as " + mAuth.getCurrentUser().getDisplayName().toString(), Toast.LENGTH_SHORT).show();
         }
     }
