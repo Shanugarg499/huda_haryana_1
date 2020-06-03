@@ -186,7 +186,7 @@ public class ask_details extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                if(!t4.getText().toString().equals("--Select--") && !t1.getText().toString().equals("") && !t6.getText().toString().equals("") && !t7.getText().toString().equals(""))
+                if(!t4.getText().toString().equals("--Select--") && !t1.getText().toString().equals("") && !t6.getText().toString().equals(""))
                 {
                     String txt = t2.getText().toString()+"."+t4.getText().toString()+"."+
                             t5.getText().toString()+"."+t6.getText().toString()+"."+t7.getText().toString()+"."+t8.getText().toString()+"."+

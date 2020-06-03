@@ -124,6 +124,14 @@ public class very_main extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (mAuth.getCurrentUser() != null) {
+            startActivity(new Intent(this, MainActivity.class));
+            Toast.makeText(getApplicationContext(), "You Signed in as " + mAuth.getCurrentUser().getDisplayName().toString(), Toast.LENGTH_SHORT).show();
+        }
+    }
 
     private void signin() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -144,21 +152,13 @@ public class very_main extends AppCompatActivity {
         }
     }
 
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acc) {
+    private void firebaseAuthWithGoogle(final GoogleSignInAccount acc) {
         AuthCredential credential = GoogleAuthProvider.getCredential(acc.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            // FirebaseUser user = mAuth.getCurrentUser();
-                        } else {
-                            // If sign in fails, display a message to the user.
-//                            Snackbar.make(mBinding.mainLayout, "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
-                        }
-
-                        // ...
+                       updateUI(acc);
                     }
                 });
     }
@@ -198,7 +198,7 @@ public class very_main extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        callbackManager.onActivityResult(requestCode, resultCode, data);
+//        callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
