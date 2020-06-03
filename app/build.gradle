@@ -11,7 +11,7 @@ android {
     buildToolsVersion "29.0.2"
 
     defaultConfig {
-        applicationId "com.example.huda_haryana"
+        applicationId "com.real_estate.lead_grow"
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
