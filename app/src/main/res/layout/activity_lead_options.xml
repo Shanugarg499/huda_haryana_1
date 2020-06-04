@@ -236,7 +236,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/leadoption_addtype"
+                    android:id="@+id/leadoption_allprop"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?android:attr/selectableItemBackground"
@@ -262,19 +262,25 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
-                            android:text="ADD PROPERTY TYPE"
+                            android:text="ALL PROPERTIES"
                             android:textSize="16sp" />
 
                         <TextView
-                            android:id="@+id/display_type"
+                            android:id="@+id/display_allprop"
+                            android:textColor="#FFF"
+                            android:layout_marginStart="20dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp" />
+                           android:background="#AD1457"
+                            android:textSize="11sp"
+                            android:padding="4dp" />
                     </LinearLayout>
 
                 </LinearLayout>
+
+
                 <LinearLayout
-                    android:id="@+id/leadoption_allprop"
+                    android:id="@+id/leadoption_addtype"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?android:attr/selectableItemBackground"
@@ -287,6 +293,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/add_property_back"
+
                         android:padding="13dp"
                         android:src="@drawable/leadopttions_resident" />
 
@@ -300,18 +307,42 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
-                            android:text="ALL PROPERTIES"
+                            android:text="ADD PROPERTY TYPE"
                             android:textSize="16sp" />
 
                         <TextView
-                            android:id="@+id/display_allprop"
+                            android:id="@+id/display_type1"
+                            android:textColor="#FFF"
+                            android:background="#006064"
+                            android:layout_marginStart="20dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp" />
+                            android:textSize="11sp"
+                            android:padding="4dp" />
+                        <TextView
+                            android:id="@+id/display_type2"
+                            android:textColor="#FFF"
+                            android:layout_marginStart="20dp"
+                            android:background="#D84315"
+                            android:layout_marginTop="2dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="11sp"
+                            android:padding="4dp" />
+                        <TextView
+                            android:id="@+id/display_type3"
+                            android:textColor="#FFF"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="20dp"
+                            android:background="#AC731D"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="11sp"
+                            android:padding="4dp" />
                     </LinearLayout>
 
                 </LinearLayout>
-
 
             </LinearLayout>
         </ScrollView>

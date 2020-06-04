@@ -6,6 +6,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -130,6 +131,9 @@ class LeadOptions : AppCompatActivity() {
             }
 
         })
+        binding.displayType1.visibility=View.GONE
+        binding.displayType2.visibility=View.GONE
+        binding.displayType3.visibility=View.GONE
         val typeref = FirebaseDatabase.getInstance().getReference("User").child(acct.id!!).child("Leads").child(id).child("Type")
         typeref.addValueEventListener(object :ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
@@ -139,7 +143,29 @@ class LeadOptions : AppCompatActivity() {
             override fun onDataChange(p0: DataSnapshot) {
                 if(p0.exists()){
                     val data=p0.getValue(TypeData::class.java)!!
-                    binding.displayType.setText(data.type+"\n"+data.subtype+"\n"+data.second_sub)
+                    binding.displayType1.visibility=View.VISIBLE
+                    binding.displayType2.visibility=View.VISIBLE
+                    binding.displayType1.setText(data.type)
+                    binding.displayType2.setText(data.subtype)
+//                    if(data.type==""){
+//                        binding.displayType1.visibility= View.GONE
+//                    }
+//                    else{
+//                        binding.displayType1.visibility=View.VISIBLE
+//
+//                    }
+//                    if(data.subtype==""){
+//                        binding.displayType2.visibility= View.GONE
+//                    }
+//                    else{
+//                        binding.displayType2.visibility=View.VISIBLE
+//
+//                    }
+                    if(data.second_sub!="") {
+                        binding.displayType3.visibility = View.VISIBLE
+                    }
+                    binding.displayType3.setText(data.second_sub)
+
                 }
             }
 
@@ -270,6 +296,7 @@ class LeadOptions : AppCompatActivity() {
         binding.leadoptionAllprop.setOnClickListener {
             alert2.show()
         }
+        binding.displayAllprop.visibility=View.GONE
         propref.addValueEventListener(object :ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
 
@@ -277,6 +304,7 @@ class LeadOptions : AppCompatActivity() {
 
             override fun onDataChange(p0: DataSnapshot) {
                 if(p0.exists()){
+                    binding.displayAllprop.visibility=View.VISIBLE
                     binding.displayAllprop.setText(p0.getValue().toString())
                 }
             }
