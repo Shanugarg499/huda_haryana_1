@@ -9,26 +9,26 @@
         android:icon="@drawable/ic_menu_camera"
         android:title="@string/menu_home"
         />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_slideshow" />
-        <item
-            android:id="@+id/nav_calculator"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_calculator" />
+<!--        <item-->
+<!--            android:id="@+id/nav_gallery"-->
+<!--            android:icon="@drawable/ic_menu_gallery"-->
+<!--            android:title="@string/menu_gallery" />-->
+<!--        <item-->
+<!--            android:id="@+id/nav_slideshow"-->
+<!--            android:icon="@drawable/ic_menu_camera"-->
+<!--            android:title="@string/menu_slideshow" />-->
+<!--        <item-->
+<!--            android:id="@+id/nav_calculator"-->
+<!--            android:icon="@drawable/ic_menu_camera"-->
+<!--            android:title="@string/menu_calculator" />-->
         <item
             android:id="@+id/nav_loan_calculator"
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/menu_loan_calculator" />
-        <item
-            android:id="@+id/nav_legal_lawyers"
-            android:icon="@drawable/ic_menu_share"
-            android:title="@string/menu_legal_lawyers" />
+<!--        <item-->
+<!--            android:id="@+id/nav_legal_lawyers"-->
+<!--            android:icon="@drawable/ic_menu_share"-->
+<!--            android:title="@string/menu_legal_lawyers" />-->
         <item
             android:id="@+id/nav_conversion_value_tables"
             android:icon="@drawable/ic_menu_send"
