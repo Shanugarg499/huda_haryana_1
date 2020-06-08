@@ -135,7 +135,13 @@ class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>)
 //                Toast.makeText(context,"UnPinned",Toast.LENGTH_SHORT).show()
                 data[pos].isPin = !data[pos].isPin
                 mref.child("pin").setValue(data[pos].isPin)
-                LeadsPageUpdated().sortAndNotify(data)
+//                LeadsPageUpdated().sortAndNotify(data)
+            val message = if(data[pos].isPin)"Pinned " else "Unpinned "
+                Toast.makeText(
+                        context,
+                        message+data[pos].name,
+                        Toast.LENGTH_LONG
+                ) .show()
         }
 
     }

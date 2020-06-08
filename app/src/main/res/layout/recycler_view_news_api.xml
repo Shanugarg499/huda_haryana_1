@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/base_news"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,21 +53,20 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
             android:text="Source"
+            android:textSize="12sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/source"
             app:layout_constraintStart_toStartOf="@+id/source"
-            app:layout_constraintTop_toBottomOf="@+id/newsImage"
+            app:layout_constraintTop_toBottomOf="@+id/details_news"
             app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/source"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
             android:text="Magic Bricks"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />

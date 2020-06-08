@@ -104,9 +104,9 @@ class StringDateComparator : Comparator<order_to_database?> {
             return (date.parse(l!!.date!!).compareTo(date.parse(r.date!!))) * -1
         } else {
             return if (l.isPin) {
-                1
-            } else {
                 -1
+            } else {
+                1
             }
         }
 
