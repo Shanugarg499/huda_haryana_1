@@ -193,7 +193,7 @@ public class ask_details extends AppCompatActivity {
                     String t = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
                     dbr.child(t).setValue(new order_to_database(t1.getText().toString(), t2.getText().toString(),
                             t3.getText().toString(), t4.getText().toString(), t5.getText().toString(), t6.getText().toString(),
-                            t7.getText().toString(), t8.getText().toString(), t9.getText().toString(), t,new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault()).format(new Date()),  t));
+                            t7.getText().toString(), t8.getText().toString(), t9.getText().toString(), t,new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault()).format(new Date()),  t, false));
                     Toast.makeText(ask_details.this, "Recorded successfully!", Toast.LENGTH_SHORT).show();
                     finish();
                 }
