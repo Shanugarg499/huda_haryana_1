@@ -2,7 +2,6 @@ package com.real_estate.lead_grow.fragments_bottom.ab
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +21,6 @@ import com.real_estate.lead_grow.databinding.LeadsPageUpdatedFragmentBinding
 import com.real_estate.lead_grow.order_to_database
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.Comparator
 import kotlin.collections.ArrayList
 
 
@@ -60,7 +58,7 @@ class LeadsPageUpdated : Fragment() {
                                 data_lead.add(oneLead!!)
                             }
 
-                            Collections.sort( data_lead , StringDateComparator() )
+                            Collections.sort(data_lead, StringDateComparator())
 
                             binding.recyclerViewLeadsUpdated.adapter = context?.let { LeadsAdpater(it, data_lead) }
                         }
@@ -75,6 +73,12 @@ class LeadsPageUpdated : Fragment() {
         }
         return binding.root
     }
+
+    fun sortAndNotify(data:ArrayList<order_to_database>){
+        Collections.sort(data , StringDateComparator())
+        binding.recyclerViewLeadsUpdated.adapter = LeadsAdpater(requireContext() , data )
+    }
+
 }
 
 class StringDateComparator : Comparator<order_to_database?> {
@@ -83,11 +87,29 @@ class StringDateComparator : Comparator<order_to_database?> {
 
     override fun compare(l: order_to_database?, r: order_to_database?): Int {
 
-        Log.i("date",date.parse(l!!.date!!).toString())
+//        Log.i("date",date.parse(l!!.date!!).toString())
 
-        if(l!!.date!! == r!!.date!!){
-            return (l?.time.compareTo(r?.time))*-1
+        if (l!!.isPin && r!!.isPin) {
+
+            if (l.date!! == r.date!!) {
+                return (l.time.compareTo(r.time)) * -1
+            }
+            return (date.parse(l!!.date!!).compareTo(date.parse(r.date!!))) * -1
+
+        } else if (!l.isPin && !r!!.isPin) {
+
+            if (l.date!! == r.date!!) {
+                return (l.time.compareTo(r.time)) * -1
+            }
+            return (date.parse(l!!.date!!).compareTo(date.parse(r.date!!))) * -1
+        } else {
+            return if (l.isPin) {
+                1
+            } else {
+                -1
+            }
         }
-        return (date.parse(l!!.date!!).compareTo(date.parse(r?.date!!) ))*-1
+
+
     }
 }
