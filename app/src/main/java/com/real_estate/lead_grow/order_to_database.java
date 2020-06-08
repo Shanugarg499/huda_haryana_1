@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 public class order_to_database implements Serializable {
         String Name, location, R_C, subtype, figures, Number, Email, address, event, time, date, key;
+        boolean pin;
         public order_to_database(){}
 
-    public order_to_database(String name, String location, String r_C, String subtype, String figures, String number, String email, String address, String event, String time, String date, String key) {
-            this.key = key;
+    public order_to_database(String name, String location, String r_C, String subtype, String figures, String number, String email, String address, String event, String time, String date, String key, boolean pin) {
         Name = name;
         this.location = location;
         R_C = r_C;
@@ -19,6 +19,16 @@ public class order_to_database implements Serializable {
         this.event = event;
         this.time = time;
         this.date = date;
+        this.key = key;
+        this.pin = pin;
+    }
+
+    public boolean isPin() {
+        return pin;
+    }
+
+    public void setPin(boolean pin) {
+        this.pin = pin;
     }
 
     public String getKey() {
