@@ -9,16 +9,20 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.real_estate.lead_grow.R
-import com.real_estate.lead_grow.ask_details
-import com.real_estate.lead_grow.databinding.LeadsPageUpdatedFragmentBinding
-import com.real_estate.lead_grow.order_to_database
 import com.facebook.FacebookSdk.getApplicationContext
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.real_estate.lead_grow.R
+import com.real_estate.lead_grow.ask_details
+import com.real_estate.lead_grow.databinding.LeadsPageUpdatedFragmentBinding
+import com.real_estate.lead_grow.order_to_database
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
+
 
 lateinit var data_lead: ArrayList<order_to_database>
 
@@ -53,6 +57,9 @@ class LeadsPageUpdated : Fragment() {
                                 val oneLead = eachLead.getValue(order_to_database::class.java)
                                 data_lead.add(oneLead!!)
                             }
+
+                            Collections.sort(data_lead, StringDateComparator())
+
                             binding.recyclerViewLeadsUpdated.adapter = context?.let { LeadsAdpater(it, data_lead) }
                         }
                     }
@@ -64,11 +71,45 @@ class LeadsPageUpdated : Fragment() {
             val intent = Intent(activity, ask_details::class.java)
             startActivity(intent)
         }
-
-
-
         return binding.root
     }
 
+    fun sortAndNotify(data:ArrayList<order_to_database>){
+        Collections.sort(data , StringDateComparator())
+        binding.recyclerViewLeadsUpdated.adapter = LeadsAdpater(requireContext() , data )
+    }
 
+}
+
+class StringDateComparator : Comparator<order_to_database?> {
+
+    val date = SimpleDateFormat("dd-MMM-yyy")
+
+    override fun compare(l: order_to_database?, r: order_to_database?): Int {
+
+//        Log.i("date",date.parse(l!!.date!!).toString())
+
+        if (l!!.isPin && r!!.isPin) {
+
+            if (l.date!! == r.date!!) {
+                return (l.time.compareTo(r.time)) * -1
+            }
+            return (date.parse(l!!.date!!).compareTo(date.parse(r.date!!))) * -1
+
+        } else if (!l.isPin && !r!!.isPin) {
+
+            if (l.date!! == r.date!!) {
+                return (l.time.compareTo(r.time)) * -1
+            }
+            return (date.parse(l!!.date!!).compareTo(date.parse(r.date!!))) * -1
+        } else {
+            return if (l.isPin) {
+                -1
+            } else {
+                1
+            }
+        }
+
+
+    }
 }

@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,6 +32,7 @@ class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>)
 
     class MyViewModel(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        val pin: ImageView = itemView.findViewById(R.id.imageViewPin)
         val menuButton: ImageView = itemView.findViewById(R.id.leadIdRecyclerView)
         val optionLayout: LinearLayout = itemView.findViewById(R.id.option_layout)
         val nameTextView: TextView = itemView.findViewById(R.id.nameLeadRecyclerview)
@@ -76,9 +78,7 @@ class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>)
         }
 
         val accnt = GoogleSignIn.getLastSignedInAccount(context)
-//        Log.i("h",data[pos].key)
-//        Log.i("u",accnt?.id!!)
-        val mref = FirebaseDatabase.getInstance().getReference("User").child(accnt?.id!!).child("Leads").child(data[pos].key).child("Labels").child("list")
+        val mref = FirebaseDatabase.getInstance().getReference("User").child(accnt?.id!!).child("Leads").child(data[pos].key)
         mref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
 
@@ -86,18 +86,25 @@ class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>)
 
             override fun onDataChange(p0: DataSnapshot) {
                 val list = mutableListOf<LabelData>()
-//                Log.i("here", " here1")
-                if (p0.exists()) {
-//                    Log.i("here", " here2")
-                    for (i in p0.children) {
+                if (p0.child("Labels").child("list").exists()) {
+                    for (i in p0.child("Labels").child("list").children) {
                         val data = i.getValue(LabelData::class.java)
                         list.add(data!!)
                     }
-//                    Log.i("here", " here3 + ${list.toString()}")
-                    holder.recyclerViewInner.visibility = View.VISIBLE
-                    holder.recyclerViewInner.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                    holder.recyclerViewInner.adapter = AddLabelAdapterSmallerTextSize(list)
                 }
+                if(p0.child("Type").child("type").exists()){
+                    val type = p0.child("Type").child("type").value.toString()
+                    list.add(LabelData(labelname =  type , labelcolor = "006064"))
+                }
+
+                if(p0.child("Allproperties").child("Value").exists()){
+                    val propType = p0.child("Allproperties").child("Value").value.toString()
+                    list.add(LabelData(labelname =  propType , labelcolor = "AD1457"))
+                }
+                list.reverse()
+                holder.recyclerViewInner.visibility = View.VISIBLE
+                holder.recyclerViewInner.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                holder.recyclerViewInner.adapter = AddLabelAdapterSmallerTextSize(list)
             }
 
         })
@@ -116,14 +123,25 @@ class LeadsAdpater(val context: Context, val data: ArrayList<order_to_database>)
                     .setPositiveButton("Cancel") { dialogInterface, i ->
                         //do nothing
                     }.setNegativeButton("Delete") { dialogInterface, i ->
-//                        data.removeAt(pos)
-//                        notifyDataSetChanged()
-//                        mDb.child("leads").setValue(data)
                         ref.removeValue()
                         data.removeAt(pos)
                         notifyDataSetChanged()
                     }.setIcon(R.drawable.delete_lead)
                     .show()
+        }
+
+        holder.pin.setOnClickListener {
+
+//                Toast.makeText(context,"UnPinned",Toast.LENGTH_SHORT).show()
+                data[pos].isPin = !data[pos].isPin
+                mref.child("pin").setValue(data[pos].isPin)
+//                LeadsPageUpdated().sortAndNotify(data)
+            val message = if(data[pos].isPin)"Pinned " else "Unpinned "
+                Toast.makeText(
+                        context,
+                        message+data[pos].name,
+                        Toast.LENGTH_LONG
+                ) .show()
         }
 
     }

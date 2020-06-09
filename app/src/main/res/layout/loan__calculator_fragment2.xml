@@ -20,12 +20,11 @@
                 android:id="@+id/textView14"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_marginStart="16dp"
                 android:gravity="center"
                 android:text="Loan Amount"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@+id/loanAmount"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/radioGroup"
                 app:layout_constraintTop_toTopOf="@+id/loanAmount" />
 
             <TextView
@@ -237,6 +236,30 @@
 
 
             </LinearLayout>
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView16"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView14">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginBottom="28dp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RadioGroup>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
