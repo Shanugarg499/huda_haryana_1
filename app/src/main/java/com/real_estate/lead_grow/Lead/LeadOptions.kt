@@ -102,7 +102,21 @@ class LeadOptions : AppCompatActivity() {
             dia.findViewById<EditText>(R.id.details_et)
             dia.show()
         }
-        val budgetref = FirebaseDatabase.getInstance().getReference("User").child(acct.id!!).child("Leads").child(id).child("Budget").child("Budgetvalue")
+        val r_Cref = FirebaseDatabase.getInstance().getReference("User").child(acct.id!!).child("Leads").child(id).child("r_C")
+        r_Cref.addValueEventListener(object :ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                if(p0.exists()){
+                    val data=p0.value
+                    binding.displayType1.setText(data.toString())
+                }
+            }
+
+        })
+        val budgetref = FirebaseDatabase.getInstance().getReference("User").child(acct.id!!).child("Leads").child(id).child("figures")
 
         dia.findViewById<Button>(R.id.ok).setOnClickListener {
 
@@ -145,7 +159,7 @@ class LeadOptions : AppCompatActivity() {
                     val data=p0.getValue(TypeData::class.java)!!
                     binding.displayType1.visibility=View.VISIBLE
                     binding.displayType2.visibility=View.VISIBLE
-                    binding.displayType1.setText(data.type)
+                    //binding.displayType1.setText(data.type)
                     binding.displayType2.setText(data.subtype)
 //                    if(data.type==""){
 //                        binding.displayType1.visibility= View.GONE
@@ -359,11 +373,13 @@ class LeadOptions : AppCompatActivity() {
                 when (which) {
                     0 -> {
                         type = "RESIDENTIAL"
+                        r_Cref.setValue(type)
                         dialog?.dismiss()
                         alert4.show()
                     }
                     1 -> {
                         type = "COMMERCIAL"
+                        r_Cref.setValue(type)
                         dialog?.dismiss()
                         alert3.show()
                     }
