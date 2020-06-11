@@ -104,14 +104,6 @@ class LabelFrag : Fragment() {
                             referral++
                         }
 
-//                        binding.onlineCus.setText(online.toString() + " Customers")
-//                        binding.referralCus.setText(referral.toString() + " Customers")
-//                        binding.directCus.setText(direct.toString() + " Customers")
-//                        binding.smsCus.setText(sms_campaign.toString() + " Customers")
-//                        binding.newsCus.setText(newspaper.toString() + " Customers")
-//                        binding.pamphletCus.setText(pamphlet.toString() + " Customers")
-//                        binding.radioCus.setText(radio.toString() + " Customers")
-//                        binding.telecallingCus.setText(telecalling.toString() + " Customers")
                     }
                     var index=0
 
@@ -176,137 +168,137 @@ class LabelFrag : Fragment() {
             }
 
         })
-        pieChart.setOnChartValueSelectedListener(object :OnChartValueSelectedListener{
-            override fun onNothingSelected() {
-
-            }
-
-            override fun onValueSelected(e: Entry?, dataSetIndex: Int, h: Highlight?) {
-                if(e?.xIndex==online_index){
-
-                    list_sent = mutableListOf<String>()
-                    if (list == null) {
-                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
-                        return
-                    }
-                    for (i in list!!) {
-                        if (i.online) {
-                            list_sent.add(i.key)
-                        }
-                    }
-                    val intent = Intent(context, LabelSelectedLead::class.java)
-                    startActivity(intent)
-                }
-                if(e?.xIndex==sms_index){
-
-                    list_sent = mutableListOf<String>()
-                    if (list == null) {
-                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
-                        return
-                    }
-                    for (i in list!!) {
-                        if (i.sms) {
-                            list_sent.add(i.key)
-                        }
-                    }
-                    val intent = Intent(context, LabelSelectedLead::class.java)
-                    startActivity(intent)
-                }
-                if(e?.xIndex==direct_index){
-
-                    list_sent = mutableListOf<String>()
-                    if (list == null) {
-                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
-                        return
-                    }
-                    for (i in list!!) {
-                        if (i.direct) {
-                            list_sent.add(i.key)
-                        }
-                    }
-
-
-                    val intent = Intent(context, LabelSelectedLead::class.java)
-                    startActivity(intent)
-                }
-                if(e?.xIndex==pamphlet_index){
-
-                    list_sent = mutableListOf<String>()
-                    if (list == null) {
-                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
-                        return
-                    }
-                    for (i in list!!) {
-                        if (i.pamphlet) {
-                            list_sent.add(i.key)
-                        }
-                    }
-                    val intent = Intent(context, LabelSelectedLead::class.java)
-                    startActivity(intent)
-                }
-                if(e?.xIndex==newspaper_index){
-
-                    list_sent = mutableListOf<String>()
-                    if (list == null) {
-                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
-                        return
-                    }
-                    for (i in list!!) {
-                        if (i.newspaper) {
-                            list_sent.add(i.key)
-                        }
-                    }
-                    val intent = Intent(context, LabelSelectedLead::class.java)
-                    startActivity(intent)
-                }
-                if(e?.xIndex==referral_index){
-
-                    list_sent = mutableListOf<String>()
-                    if (list == null) {
-                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
-                        return
-                    }
-                    for (i in list!!) {
-                        if (i.referral) {
-                            list_sent.add(i.key)
-                        }
-                    }
-                    val intent = Intent(context, LabelSelectedLead::class.java)
-                    startActivity(intent)
-                }
-                if(e?.xIndex==radio_index){
-
-                    list_sent = mutableListOf<String>()
-                    if (list == null) {
-                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
-                        return
-                    }
-                    for (i in list!!) {
-                        if (i.radio) {
-                            list_sent.add(i.key)
-                        }
-                    }
-                    val intent = Intent(context, LabelSelectedLead::class.java)
-                    startActivity(intent)
-                }
-                if(e?.xIndex==tele_index){
-
-                    list_sent = mutableListOf<String>()
-                    if (list == null) {
-                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
-                        return
-                    }
-                    for (i in list!!) {
-                        if (i.telecalling) {
-                            list_sent.add(i.key)
-                        }
-                    }
-                    val intent = Intent(context, LabelSelectedLead::class.java)
-                    startActivity(intent)
-                }
-            }
-
-        })
+//        pieChart.setOnChartValueSelectedListener(object :OnChartValueSelectedListener{
+//            override fun onNothingSelected() {
+//
+//            }
+//
+//            override fun onValueSelected(e: Entry?, dataSetIndex: Int, h: Highlight?) {
+//                if(e?.xIndex==online_index){
+//
+//                    list_sent = mutableListOf<String>()
+//                    if (list == null) {
+//                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
+//                        return
+//                    }
+//                    for (i in list!!) {
+//                        if (i.online) {
+//                            list_sent.add(i.key)
+//                        }
+//                    }
+//                    val intent = Intent(context, LabelSelectedLead::class.java)
+//                    startActivity(intent)
+//                }
+//                if(e?.xIndex==sms_index){
+//
+//                    list_sent = mutableListOf<String>()
+//                    if (list == null) {
+//                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
+//                        return
+//                    }
+//                    for (i in list!!) {
+//                        if (i.sms) {
+//                            list_sent.add(i.key)
+//                        }
+//                    }
+//                    val intent = Intent(context, LabelSelectedLead::class.java)
+//                    startActivity(intent)
+//                }
+//                if(e?.xIndex==direct_index){
+//
+//                    list_sent = mutableListOf<String>()
+//                    if (list == null) {
+//                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
+//                        return
+//                    }
+//                    for (i in list!!) {
+//                        if (i.direct) {
+//                            list_sent.add(i.key)
+//                        }
+//                    }
+//
+//
+//                    val intent = Intent(context, LabelSelectedLead::class.java)
+//                    startActivity(intent)
+//                }
+//                if(e?.xIndex==pamphlet_index){
+//
+//                    list_sent = mutableListOf<String>()
+//                    if (list == null) {
+//                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
+//                        return
+//                    }
+//                    for (i in list!!) {
+//                        if (i.pamphlet) {
+//                            list_sent.add(i.key)
+//                        }
+//                    }
+//                    val intent = Intent(context, LabelSelectedLead::class.java)
+//                    startActivity(intent)
+//                }
+//                if(e?.xIndex==newspaper_index){
+//
+//                    list_sent = mutableListOf<String>()
+//                    if (list == null) {
+//                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
+//                        return
+//                    }
+//                    for (i in list!!) {
+//                        if (i.newspaper) {
+//                            list_sent.add(i.key)
+//                        }
+//                    }
+//                    val intent = Intent(context, LabelSelectedLead::class.java)
+//                    startActivity(intent)
+//                }
+//                if(e?.xIndex==referral_index){
+//
+//                    list_sent = mutableListOf<String>()
+//                    if (list == null) {
+//                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
+//                        return
+//                    }
+//                    for (i in list!!) {
+//                        if (i.referral) {
+//                            list_sent.add(i.key)
+//                        }
+//                    }
+//                    val intent = Intent(context, LabelSelectedLead::class.java)
+//                    startActivity(intent)
+//                }
+//                if(e?.xIndex==radio_index){
+//
+//                    list_sent = mutableListOf<String>()
+//                    if (list == null) {
+//                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
+//                        return
+//                    }
+//                    for (i in list!!) {
+//                        if (i.radio) {
+//                            list_sent.add(i.key)
+//                        }
+//                    }
+//                    val intent = Intent(context, LabelSelectedLead::class.java)
+//                    startActivity(intent)
+//                }
+//                if(e?.xIndex==tele_index){
+//
+//                    list_sent = mutableListOf<String>()
+//                    if (list == null) {
+//                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
+//                        return
+//                    }
+//                    for (i in list!!) {
+//                        if (i.telecalling) {
+//                            list_sent.add(i.key)
+//                        }
+//                    }
+//                    val intent = Intent(context, LabelSelectedLead::class.java)
+//                    startActivity(intent)
+//                }
+//            }
+//
+//        })
 //        binding.online.setOnClickListener {
 //            list_sent = mutableListOf<String>()
 //            if(list==null){
