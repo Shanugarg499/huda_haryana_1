@@ -38,10 +38,11 @@ class LabelFrag : Fragment() {
         pieChart.setDescription("No. of Customers")
         pieChart.setDescriptionTextSize(14f)
         pieChart.setHoleColor(Color.WHITE)
-        pieChart.holeRadius = 8f
+        pieChart.holeRadius = 34f
+        pieChart.centerText="Month"
         pieChart.transparentCircleRadius = 10f
         binding.noLabelTxt.visibility=View.VISIBLE
-        binding.pieChart.visibility=View.GONE
+        binding.mainLayout.visibility=View.GONE
 
         val accnt = GoogleSignIn.getLastSignedInAccount(context)
         val ref = FirebaseDatabase.getInstance().getReference("User").child(accnt?.id!!).child("LabelLead")
@@ -76,7 +77,7 @@ class LabelFrag : Fragment() {
                     var telecalling = 0
                     for (i in list!!) {
                         if(i.online||i.telecalling||i.sms||i.pamphlet||i.radio||i.referral||i.newspaper||i.direct){
-                            binding.pieChart.visibility=View.VISIBLE
+                            binding.mainLayout.visibility=View.VISIBLE
                             binding.noLabelTxt.visibility=View.GONE
                         }
                         if (i.online) {
@@ -103,6 +104,14 @@ class LabelFrag : Fragment() {
                         if (i.referral) {
                             referral++
                         }
+                        binding.onlineCus.setText(online.toString() + " Customers")
+                        binding.referralCus.setText(referral.toString() + " Customers")
+                        binding.directCus.setText(direct.toString() + " Customers")
+                        binding.smsCus.setText(sms_campaign.toString() + " Customers")
+                        binding.newsCus.setText(newspaper.toString() + " Customers")
+                        binding.pamphletCus.setText(pamphlet.toString() + " Customers")
+                        binding.radioCus.setText(radio.toString() + " Customers")
+                        binding.telecallingCus.setText(telecalling.toString() + " Customers")
 
                     }
                     var index=0
@@ -156,7 +165,7 @@ class LabelFrag : Fragment() {
                         index+=1
                     }
                     val pieDataSet = PieDataSet(pientries, "")
-                    pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS)
+                    pieDataSet.setColors(arrayListOf(Color.parseColor("#c65b39"),Color.parseColor("#738b28"),Color.parseColor("#a239c6"),Color.parseColor("#daa520"),Color.parseColor("#b22222"),Color.parseColor("#ff1493"),Color.parseColor("#228b22"),Color.parseColor("#483d8b")))
                     val piedata = PieData(xval, pieDataSet)
                     piedata.setValueTextColor(Color.WHITE)
                     pieDataSet.sliceSpace = 3f
@@ -168,252 +177,252 @@ class LabelFrag : Fragment() {
             }
 
         })
-//        pieChart.setOnChartValueSelectedListener(object :OnChartValueSelectedListener{
-//            override fun onNothingSelected() {
-//
-//            }
-//
-//            override fun onValueSelected(e: Entry?, dataSetIndex: Int, h: Highlight?) {
-//                if(e?.xIndex==online_index){
-//
-//                    list_sent = mutableListOf<String>()
-//                    if (list == null) {
-//                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
-//                        return
-//                    }
-//                    for (i in list!!) {
-//                        if (i.online) {
-//                            list_sent.add(i.key)
-//                        }
-//                    }
-//                    val intent = Intent(context, LabelSelectedLead::class.java)
-//                    startActivity(intent)
-//                }
-//                if(e?.xIndex==sms_index){
-//
-//                    list_sent = mutableListOf<String>()
-//                    if (list == null) {
-//                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
-//                        return
-//                    }
-//                    for (i in list!!) {
-//                        if (i.sms) {
-//                            list_sent.add(i.key)
-//                        }
-//                    }
-//                    val intent = Intent(context, LabelSelectedLead::class.java)
-//                    startActivity(intent)
-//                }
-//                if(e?.xIndex==direct_index){
-//
-//                    list_sent = mutableListOf<String>()
-//                    if (list == null) {
-//                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
-//                        return
-//                    }
-//                    for (i in list!!) {
-//                        if (i.direct) {
-//                            list_sent.add(i.key)
-//                        }
-//                    }
-//
-//
-//                    val intent = Intent(context, LabelSelectedLead::class.java)
-//                    startActivity(intent)
-//                }
-//                if(e?.xIndex==pamphlet_index){
-//
-//                    list_sent = mutableListOf<String>()
-//                    if (list == null) {
-//                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
-//                        return
-//                    }
-//                    for (i in list!!) {
-//                        if (i.pamphlet) {
-//                            list_sent.add(i.key)
-//                        }
-//                    }
-//                    val intent = Intent(context, LabelSelectedLead::class.java)
-//                    startActivity(intent)
-//                }
-//                if(e?.xIndex==newspaper_index){
-//
-//                    list_sent = mutableListOf<String>()
-//                    if (list == null) {
-//                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
-//                        return
-//                    }
-//                    for (i in list!!) {
-//                        if (i.newspaper) {
-//                            list_sent.add(i.key)
-//                        }
-//                    }
-//                    val intent = Intent(context, LabelSelectedLead::class.java)
-//                    startActivity(intent)
-//                }
-//                if(e?.xIndex==referral_index){
-//
-//                    list_sent = mutableListOf<String>()
-//                    if (list == null) {
-//                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
-//                        return
-//                    }
-//                    for (i in list!!) {
-//                        if (i.referral) {
-//                            list_sent.add(i.key)
-//                        }
-//                    }
-//                    val intent = Intent(context, LabelSelectedLead::class.java)
-//                    startActivity(intent)
-//                }
-//                if(e?.xIndex==radio_index){
-//
-//                    list_sent = mutableListOf<String>()
-//                    if (list == null) {
-//                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
-//                        return
-//                    }
-//                    for (i in list!!) {
-//                        if (i.radio) {
-//                            list_sent.add(i.key)
-//                        }
-//                    }
-//                    val intent = Intent(context, LabelSelectedLead::class.java)
-//                    startActivity(intent)
-//                }
-//                if(e?.xIndex==tele_index){
-//
-//                    list_sent = mutableListOf<String>()
-//                    if (list == null) {
-//                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
-//                        return
-//                    }
-//                    for (i in list!!) {
-//                        if (i.telecalling) {
-//                            list_sent.add(i.key)
-//                        }
-//                    }
-//                    val intent = Intent(context, LabelSelectedLead::class.java)
-//                    startActivity(intent)
-//                }
-//            }
-//
-//        })
-//        binding.online.setOnClickListener {
-//            list_sent = mutableListOf<String>()
-//            if(list==null){
-//                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
-//                return@setOnClickListener
-//            }
-//            for (i in list!!) {
-//                if (i.online) {
-//                    list_sent.add(i.key)
-//                }
-//            }
-//            val intent = Intent(context, LabelSelectedLead::class.java)
-//            startActivity(intent)
-//        }
-//        binding.radioTel.setOnClickListener {
-//            list_sent = mutableListOf<String>()
-//            if(list==null){
-//                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
-//                return@setOnClickListener
-//            }
-//            for (i in list!!) {
-//                if (i.radio) {
-//                    list_sent.add(i.key)
-//                }
-//            }
-//            val intent = Intent(context, LabelSelectedLead::class.java)
-//            startActivity(intent)
-//        }
-//        binding.newspaperCheck.setOnClickListener {
-//            list_sent = mutableListOf<String>()
-//            if(list==null){
-//                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
-//                return@setOnClickListener
-//            }
-//            for (i in list!!) {
-//                if (i.newspaper) {
-//                    list_sent.add(i.key)
-//                }
-//            }
-//            val intent = Intent(context, LabelSelectedLead::class.java)
-//            startActivity(intent)
-//        }
-//        binding.directLabel.setOnClickListener {
-//            list_sent = mutableListOf<String>()
-//            if(list==null){
-//                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
-//                return@setOnClickListener
-//            }
-//            for (i in list!!) {
-//                if (i.direct) {
-//                    list_sent.add(i.key)
-//                }
-//            }
-//
-//
-//            val intent = Intent(context, LabelSelectedLead::class.java)
-//            startActivity(intent)
-//        }
-//        binding.referrals.setOnClickListener {
-//            list_sent = mutableListOf<String>()
-//            if(list==null){
-//                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
-//                return@setOnClickListener
-//            }
-//            for (i in list!!) {
-//                if (i.referral) {
-//                    list_sent.add(i.key)
-//                }
-//            }
-//            val intent = Intent(context, LabelSelectedLead::class.java)
-//            startActivity(intent)
-//        }
-//
-//        binding.telecalling.setOnClickListener {
-//            list_sent = mutableListOf<String>()
-//            if(list==null){
-//                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
-//                return@setOnClickListener
-//            }
-//            for (i in list!!) {
-//                if (i.telecalling) {
-//                    list_sent.add(i.key)
-//                }
-//            }
-//            val intent = Intent(context, LabelSelectedLead::class.java)
-//            startActivity(intent)
-//        }
-//        binding.smsCampaign.setOnClickListener {
-//            list_sent = mutableListOf<String>()
-//            if(list==null){
-//                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
-//                return@setOnClickListener
-//            }
-//            for (i in list!!) {
-//                if (i.sms) {
-//                    list_sent.add(i.key)
-//                }
-//            }
-//            val intent = Intent(context, LabelSelectedLead::class.java)
-//            startActivity(intent)
-//        }
-//        binding.pamphlets.setOnClickListener {
-//            list_sent = mutableListOf<String>()
-//            if(list==null){
-//                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
-//                return@setOnClickListener
-//            }
-//            for (i in list!!) {
-//                if (i.pamphlet) {
-//                    list_sent.add(i.key)
-//                }
-//            }
-//            val intent = Intent(context, LabelSelectedLead::class.java)
-//            startActivity(intent)
-//        }
+        pieChart.setOnChartValueSelectedListener(object :OnChartValueSelectedListener{
+            override fun onNothingSelected() {
+
+            }
+
+            override fun onValueSelected(e: Entry?, dataSetIndex: Int, h: Highlight?) {
+                if(e?.xIndex==online_index){
+
+                    list_sent = mutableListOf<String>()
+                    if (list == null) {
+                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
+                        return
+                    }
+                    for (i in list!!) {
+                        if (i.online) {
+                            list_sent.add(i.key)
+                        }
+                    }
+                    val intent = Intent(context, LabelSelectedLead::class.java)
+                    startActivity(intent)
+                }
+                if(e?.xIndex==sms_index){
+
+                    list_sent = mutableListOf<String>()
+                    if (list == null) {
+                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
+                        return
+                    }
+                    for (i in list!!) {
+                        if (i.sms) {
+                            list_sent.add(i.key)
+                        }
+                    }
+                    val intent = Intent(context, LabelSelectedLead::class.java)
+                    startActivity(intent)
+                }
+                if(e?.xIndex==direct_index){
+
+                    list_sent = mutableListOf<String>()
+                    if (list == null) {
+                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
+                        return
+                    }
+                    for (i in list!!) {
+                        if (i.direct) {
+                            list_sent.add(i.key)
+                        }
+                    }
+
+
+                    val intent = Intent(context, LabelSelectedLead::class.java)
+                    startActivity(intent)
+                }
+                if(e?.xIndex==pamphlet_index){
+
+                    list_sent = mutableListOf<String>()
+                    if (list == null) {
+                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
+                        return
+                    }
+                    for (i in list!!) {
+                        if (i.pamphlet) {
+                            list_sent.add(i.key)
+                        }
+                    }
+                    val intent = Intent(context, LabelSelectedLead::class.java)
+                    startActivity(intent)
+                }
+                if(e?.xIndex==newspaper_index){
+
+                    list_sent = mutableListOf<String>()
+                    if (list == null) {
+                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
+                        return
+                    }
+                    for (i in list!!) {
+                        if (i.newspaper) {
+                            list_sent.add(i.key)
+                        }
+                    }
+                    val intent = Intent(context, LabelSelectedLead::class.java)
+                    startActivity(intent)
+                }
+                if(e?.xIndex==referral_index){
+
+                    list_sent = mutableListOf<String>()
+                    if (list == null) {
+                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
+                        return
+                    }
+                    for (i in list!!) {
+                        if (i.referral) {
+                            list_sent.add(i.key)
+                        }
+                    }
+                    val intent = Intent(context, LabelSelectedLead::class.java)
+                    startActivity(intent)
+                }
+                if(e?.xIndex==radio_index){
+
+                    list_sent = mutableListOf<String>()
+                    if (list == null) {
+                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
+                        return
+                    }
+                    for (i in list!!) {
+                        if (i.radio) {
+                            list_sent.add(i.key)
+                        }
+                    }
+                    val intent = Intent(context, LabelSelectedLead::class.java)
+                    startActivity(intent)
+                }
+                if(e?.xIndex==tele_index){
+
+                    list_sent = mutableListOf<String>()
+                    if (list == null) {
+                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
+                        return
+                    }
+                    for (i in list!!) {
+                        if (i.telecalling) {
+                            list_sent.add(i.key)
+                        }
+                    }
+                    val intent = Intent(context, LabelSelectedLead::class.java)
+                    startActivity(intent)
+                }
+            }
+
+        })
+        binding.online.setOnClickListener {
+            list_sent = mutableListOf<String>()
+            if(list==null){
+                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            for (i in list!!) {
+                if (i.online) {
+                    list_sent.add(i.key)
+                }
+            }
+            val intent = Intent(context, LabelSelectedLead::class.java)
+            startActivity(intent)
+        }
+        binding.radioTel.setOnClickListener {
+            list_sent = mutableListOf<String>()
+            if(list==null){
+                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            for (i in list!!) {
+                if (i.radio) {
+                    list_sent.add(i.key)
+                }
+            }
+            val intent = Intent(context, LabelSelectedLead::class.java)
+            startActivity(intent)
+        }
+        binding.newspaperCheck.setOnClickListener {
+            list_sent = mutableListOf<String>()
+            if(list==null){
+                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            for (i in list!!) {
+                if (i.newspaper) {
+                    list_sent.add(i.key)
+                }
+            }
+            val intent = Intent(context, LabelSelectedLead::class.java)
+            startActivity(intent)
+        }
+        binding.directLabel.setOnClickListener {
+            list_sent = mutableListOf<String>()
+            if(list==null){
+                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            for (i in list!!) {
+                if (i.direct) {
+                    list_sent.add(i.key)
+                }
+            }
+
+
+            val intent = Intent(context, LabelSelectedLead::class.java)
+            startActivity(intent)
+        }
+        binding.referrals.setOnClickListener {
+            list_sent = mutableListOf<String>()
+            if(list==null){
+                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            for (i in list!!) {
+                if (i.referral) {
+                    list_sent.add(i.key)
+                }
+            }
+            val intent = Intent(context, LabelSelectedLead::class.java)
+            startActivity(intent)
+        }
+
+        binding.telecalling.setOnClickListener {
+            list_sent = mutableListOf<String>()
+            if(list==null){
+                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            for (i in list!!) {
+                if (i.telecalling) {
+                    list_sent.add(i.key)
+                }
+            }
+            val intent = Intent(context, LabelSelectedLead::class.java)
+            startActivity(intent)
+        }
+        binding.smsCampaign.setOnClickListener {
+            list_sent = mutableListOf<String>()
+            if(list==null){
+                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            for (i in list!!) {
+                if (i.sms) {
+                    list_sent.add(i.key)
+                }
+            }
+            val intent = Intent(context, LabelSelectedLead::class.java)
+            startActivity(intent)
+        }
+        binding.pamphlets.setOnClickListener {
+            list_sent = mutableListOf<String>()
+            if(list==null){
+                Toast.makeText(context,"No Data",Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            for (i in list!!) {
+                if (i.pamphlet) {
+                    list_sent.add(i.key)
+                }
+            }
+            val intent = Intent(context, LabelSelectedLead::class.java)
+            startActivity(intent)
+        }
 
 
         return binding.root
