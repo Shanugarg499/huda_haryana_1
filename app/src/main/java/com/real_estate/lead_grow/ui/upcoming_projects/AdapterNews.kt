@@ -1,6 +1,7 @@
 package com.real_estate.lead_grow.ui.upcoming_projects
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.real_estate.lead_grow.Lead.LeadNote
 import com.real_estate.lead_grow.R
 import com.squareup.picasso.Picasso
 
@@ -37,6 +39,14 @@ class AdapterNews(val context: Context, val data: ArrayList<NewsData>) : Recycle
         holder.heading.text = data[pos].heading
         holder.description.text = data[pos].description
         Picasso.get().load(data[pos].imageUrl).into(holder.image)
+
+        holder.base.setOnClickListener{
+            val intent = Intent(it.context, Detailed::class.java)
+                    .putExtra("heading",data[pos].heading)
+                    .putExtra("description",data[pos].description)
+                    .putExtra("image",data[pos].imageUrl)
+            it.context.startActivity(intent)
+        }
 
     }
 

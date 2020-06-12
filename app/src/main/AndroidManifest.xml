@@ -16,8 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.real_estate.lead_grow.LabelsFrag.LabelSelectedLead"
-            android:theme="@style/business"/>
+        <activity android:name=".ui.upcoming_projects.Detailed"></activity>
+        <activity
+            android:name=".LabelsFrag.LabelSelectedLead"
+            android:theme="@style/business" />
 
         <receiver android:name="com.allyants.notifyme.NotificationPublisher" />
         <receiver android:name="com.allyants.notifyme.BootNotifyMe">
@@ -29,34 +31,34 @@
         </receiver>
 
         <activity
-            android:name="com.real_estate.lead_grow.Lead.SetTask"
+            android:name=".Lead.SetTask"
             android:theme="@style/business" />
         <activity
-            android:name="com.real_estate.lead_grow.Lead.AddTask"
+            android:name=".Lead.AddTask"
             android:theme="@style/business" />
-        <activity android:name="com.real_estate.lead_grow.login" />
+        <activity android:name=".login" />
         <activity
-            android:name="com.real_estate.lead_grow.Lead.AddLabels"
-            android:theme="@style/business" />
-        <activity
-            android:name="com.real_estate.lead_grow.Lead.LeadNote"
+            android:name=".Lead.AddLabels"
             android:theme="@style/business" />
         <activity
-            android:name="com.real_estate.lead_grow.Lead.LeadOptions"
-            android:theme="@style/business" />
-        <activity android:name="com.real_estate.lead_grow.Registeractivity" />
-        <activity android:name="com.real_estate.lead_grow.phone_login" />
-        <activity
-            android:name="com.real_estate.lead_grow.mybusiness.NewNote"
+            android:name=".Lead.LeadNote"
             android:theme="@style/business" />
         <activity
-            android:name="com.real_estate.lead_grow.mybusiness.EditDetails"
+            android:name=".Lead.LeadOptions"
+            android:theme="@style/business" />
+        <activity android:name=".Registeractivity" />
+        <activity android:name=".phone_login" />
+        <activity
+            android:name=".mybusiness.NewNote"
             android:theme="@style/business" />
         <activity
-            android:name="com.real_estate.lead_grow.mybusiness.NotesActivity"
+            android:name=".mybusiness.EditDetails"
             android:theme="@style/business" />
         <activity
-            android:name="com.real_estate.lead_grow.SplashActivity"
+            android:name=".mybusiness.NotesActivity"
+            android:theme="@style/business" />
+        <activity
+            android:name=".SplashActivity"
             android:theme="@style/splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -66,14 +68,14 @@
         </activity>
         <activity android:name=".mybusiness.BusinessActivity" />
         <activity
-            android:name="com.real_estate.lead_grow.Signupcode"
+            android:name=".Signupcode"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.real_estate.lead_grow.ask_details" />
-        <activity android:name="com.real_estate.lead_grow.MainActivity"></activity>
+        <activity android:name=".ask_details" />
+        <activity android:name=".MainActivity" />
         <activity
-            android:name="com.real_estate.lead_grow.very_main"
+            android:name=".very_main"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
