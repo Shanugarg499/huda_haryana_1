@@ -16,4 +16,9 @@
     <color name="colorGray">#7C7C80</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorPurple">#738DEF</color>
+    <color name="one">#c65b39</color>
+    <color name="two">#738b28</color>
+    <color name="three">#a239c6</color>
+    <color name="four">#daa520</color>
+    <color name="five"></color>
 </resources>
