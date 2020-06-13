@@ -35,7 +35,7 @@ class LabelFrag : Fragment() {
         val pieChart = binding.pieChart
         val pientries = ArrayList<Entry>()
         val xval = ArrayList<String>()
-        pieChart.setDescription("No. of Customers")
+        pieChart.setDescription("")
         pieChart.setDescriptionTextSize(14f)
         pieChart.setHoleColor(Color.WHITE)
         pieChart.holeRadius = 34f
@@ -122,6 +122,7 @@ class LabelFrag : Fragment() {
                         xval.add(index, "Online")
                         index += 1
                     }
+
                     if (telecalling > 0) {
                         tele_index=index
                         pientries.add(Entry(telecalling.toFloat(), index))
