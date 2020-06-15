@@ -23,6 +23,9 @@ import com.google.firebase.database.ValueEventListener
 import com.real_estate.lead_grow.Lead.LabelLeadData
 import com.real_estate.lead_grow.R
 import com.real_estate.lead_grow.databinding.FragmentLabelsBinding
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 lateinit var list_sent: MutableList<String>
 
@@ -39,13 +42,18 @@ class LabelFrag : Fragment() {
         pieChart.setDescriptionTextSize(14f)
         pieChart.setHoleColor(Color.WHITE)
         pieChart.holeRadius = 34f
-        pieChart.centerText="Month"
+        val date=Calendar.getInstance().time
+        val dateformat=SimpleDateFormat("MMM-yyyy")
+        val m=dateformat.format(date)
+        pieChart.centerText=m
         pieChart.transparentCircleRadius = 10f
         binding.noLabelTxt.visibility=View.VISIBLE
         binding.mainLayout.visibility=View.GONE
 
         val accnt = GoogleSignIn.getLastSignedInAccount(context)
-        val ref = FirebaseDatabase.getInstance().getReference("User").child(accnt?.id!!).child("LabelLead")
+        val c = Calendar.getInstance()
+        val month = c.get(Calendar.MONTH).toString()
+        val ref = FirebaseDatabase.getInstance().getReference("User").child(accnt?.id!!).child("LabelLead").child(month)
         var online_index=-1
         var tele_index=-1
         var referral_index=-1
