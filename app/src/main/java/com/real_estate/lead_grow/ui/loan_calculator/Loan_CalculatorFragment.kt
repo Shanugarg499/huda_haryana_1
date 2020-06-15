@@ -1,5 +1,6 @@
 package com.real_estate.lead_grow.ui.loan_calculator
 
+import android.graphics.Color
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
 
 import com.real_estate.lead_grow.R
 import com.real_estate.lead_grow.databinding.LoanCalculatorFragment2Binding
@@ -31,6 +35,7 @@ class Loan_CalculatorFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater , R.layout.loan__calculator_fragment2, container, false)
         viewModel = ViewModelProviders.of(this).get(LoanCalculatorViewModel::class.java)
 
+        val pieChart = binding.pieChart
 
         binding.resetFields.setOnClickListener {
             binding.loanAmount.text.clear()
@@ -40,6 +45,7 @@ class Loan_CalculatorFragment : Fragment() {
             binding.EMIShow.text = "-"
             binding.IntrestShow.text = "-"
             binding.totalAmountShow.text = "-"
+            pieChart.visibility = View.INVISIBLE
         }
 
 
@@ -62,6 +68,32 @@ class Loan_CalculatorFragment : Fragment() {
                 binding.EMIShow.text =  String.format("%.2f", getEMI(principal , intrest/12 , time) )
                 binding.IntrestShow.text = String.format("%.2f", getIntrest() )
                 binding.totalAmountShow.text = String.format("%.2f", getTotalAmt() )
+
+
+                val pientries = ArrayList<Entry>()
+                val xval = ArrayList<String>()
+
+                pieChart.setDescription("")
+                pieChart.setDescriptionTextSize(14f)
+                pieChart.setHoleColor(Color.WHITE)
+                pieChart.holeRadius = 34f
+                pieChart.centerText="Amount"
+                pieChart.transparentCircleRadius = 10f
+
+                pientries.add(Entry(getTotalAmt().toFloat(), 0))
+                pientries.add(Entry(getIntrest().toFloat(), 1))
+                xval.add(0, "Total Amount")
+                xval.add(1, "Interest")
+
+                val pieDataSet = PieDataSet(pientries, "")
+                pieDataSet.colors = arrayListOf(Color.parseColor("#c65b39"),Color.parseColor("#738b28"))
+                val piedata = PieData(xval, pieDataSet)
+                piedata.setValueTextColor(Color.WHITE)
+                piedata.setValueTextSize(13f)
+                pieChart.data = piedata
+                pieDataSet.sliceSpace = 2f
+                pieChart.invalidate()
+                pieChart.visibility = View.VISIBLE
             }
 
 
