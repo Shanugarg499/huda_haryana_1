@@ -1,0 +1,115 @@
+package com.leadgrow.estate.fragments_bottom.ab
+
+import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.facebook.FacebookSdk.getApplicationContext
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.leadgrow.estate.R
+import com.leadgrow.estate.ask_details
+import com.leadgrow.estate.databinding.LeadsPageUpdatedFragmentBinding
+import com.leadgrow.estate.order_to_database
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
+
+
+lateinit var data_lead: ArrayList<order_to_database>
+
+class LeadsPageUpdated : Fragment() {
+
+    private lateinit var viewModel: LeadsPageUpdatedViewModel
+    private lateinit var binding: LeadsPageUpdatedFragmentBinding
+
+    private lateinit var adapter: LeadsAdpater
+    var personFamilyName = ""
+    var personName = ""
+    var personGivenName = ""
+
+    private var mDb = FirebaseDatabase.getInstance().getReference("User")
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        binding = DataBindingUtil.inflate(inflater, R.layout.leads_page_updated_fragment, container, false)
+        viewModel = ViewModelProviders.of(this).get(LeadsPageUpdatedViewModel::class.java)
+
+        binding.recyclerViewLeadsUpdated.layoutManager = LinearLayoutManager(requireContext())
+        val acct = GoogleSignIn.getLastSignedInAccount(getApplicationContext())
+        mDb.child(acct?.id!!).child("Leads").addValueEventListener(
+
+                object : ValueEventListener {
+                    override fun onCancelled(p0: DatabaseError) {}
+
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            data_lead = ArrayList()
+                            for (eachLead in dataSnapshot.children) {
+                                val oneLead = eachLead.getValue(order_to_database::class.java)
+                                data_lead.add(oneLead!!)
+                            }
+
+                            Collections.sort(data_lead, StringDateComparator())
+
+                            binding.recyclerViewLeadsUpdated.adapter = context?.let { LeadsAdpater(it, data_lead) }
+                        }
+                    }
+
+                }
+        )
+
+        binding.mFab.setOnClickListener {
+            val intent = Intent(activity, ask_details::class.java)
+            startActivity(intent)
+        }
+        return binding.root
+    }
+
+    fun sortAndNotify(data:ArrayList<order_to_database>){
+        Collections.sort(data , StringDateComparator())
+        binding.recyclerViewLeadsUpdated.adapter = LeadsAdpater(requireContext() , data )
+    }
+
+}
+
+class StringDateComparator : Comparator<order_to_database?> {
+
+    val date = SimpleDateFormat("dd-MMM-yyy")
+
+    override fun compare(l: order_to_database?, r: order_to_database?): Int {
+
+//        Log.i("date",date.parse(l!!.date!!).toString())
+
+        if (l!!.isPin && r!!.isPin) {
+
+            if (l.date!! == r.date!!) {
+                return (l.time.compareTo(r.time)) * -1
+            }
+            return (date.parse(l!!.date!!).compareTo(date.parse(r.date!!))) * -1
+
+        } else if (!l.isPin && !r!!.isPin) {
+
+            if (l.date!! == r.date!!) {
+                return (l.time.compareTo(r.time)) * -1
+            }
+            return (date.parse(l!!.date!!).compareTo(date.parse(r.date!!))) * -1
+        } else {
+            return if (l.isPin) {
+                -1
+            } else {
+                1
+            }
+        }
+
+
+    }
+}

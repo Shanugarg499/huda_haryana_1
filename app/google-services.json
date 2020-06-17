@@ -61,12 +61,65 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:276212624115:android:ee8755f852cc033d7a6586",
+        "android_client_info": {
+          "package_name": "com.leadgrow.estate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "276212624115-rbd3q5u56qlqoneu15359fo114oh748k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.leadgrow.estate",
+            "certificate_hash": "a832d85147a70da3f1eba3a41a5e4a4bbc8d4fa7"
+          }
+        },
+        {
+          "client_id": "276212624115-cpulnkgabt6vu4k3p0363q80fufq7lod.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhKLzO6D8UW4Y8AdOaUMUengf48BXnnBw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "276212624115-cpulnkgabt6vu4k3p0363q80fufq7lod.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:276212624115:android:8817543b42bef89f7a6586",
         "android_client_info": {
           "package_name": "com.real_estate.lead_grow"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "276212624115-k8iveh78soa5mtg5b38ealcckkbo8fii.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.real_estate.lead_grow",
+            "certificate_hash": "f0b6c8b4a5c9ddf7bb412bf42988f73a91bb65bf"
+          }
+        },
+        {
+          "client_id": "276212624115-j5p0qnc4rj66f6d0imemba8up56keoqv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.real_estate.lead_grow",
+            "certificate_hash": "c4b90e2bf9f981e69cc3490b716609aaebf0b3e5"
+          }
+        },
         {
           "client_id": "276212624115-3vmr7pmbc1u2e8id1e3li9eecsrsr59q.apps.googleusercontent.com",
           "client_type": 1,

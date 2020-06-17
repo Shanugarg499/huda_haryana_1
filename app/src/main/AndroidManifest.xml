@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.real_estate.lead_grow">
+    package="com.leadgrow.estate">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -16,9 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.upcoming_projects.Detailed"></activity>
+        <activity android:name="com.leadgrow.estate.ui.upcoming_projects.Detailed"></activity>
         <activity
-            android:name=".LabelsFrag.LabelSelectedLead"
+            android:name="com.leadgrow.estate.LabelsFrag.LabelSelectedLead"
             android:theme="@style/business" />
 
         <receiver android:name="com.allyants.notifyme.NotificationPublisher" />
@@ -31,34 +31,34 @@
         </receiver>
 
         <activity
-            android:name=".Lead.SetTask"
+            android:name="com.leadgrow.estate.Lead.SetTask"
             android:theme="@style/business" />
         <activity
-            android:name=".Lead.AddTask"
+            android:name="com.leadgrow.estate.Lead.AddTask"
             android:theme="@style/business" />
-        <activity android:name=".login" />
+        <activity android:name="com.leadgrow.estate.login" />
         <activity
-            android:name=".Lead.AddLabels"
-            android:theme="@style/business" />
-        <activity
-            android:name=".Lead.LeadNote"
+            android:name="com.leadgrow.estate.Lead.AddLabels"
             android:theme="@style/business" />
         <activity
-            android:name=".Lead.LeadOptions"
-            android:theme="@style/business" />
-        <activity android:name=".Registeractivity" />
-        <activity android:name=".phone_login" />
-        <activity
-            android:name=".mybusiness.NewNote"
+            android:name="com.leadgrow.estate.Lead.LeadNote"
             android:theme="@style/business" />
         <activity
-            android:name=".mybusiness.EditDetails"
+            android:name="com.leadgrow.estate.Lead.LeadOptions"
+            android:theme="@style/business" />
+        <activity android:name="com.leadgrow.estate.Registeractivity" />
+        <activity android:name="com.leadgrow.estate.phone_login" />
+        <activity
+            android:name="com.leadgrow.estate.mybusiness.NewNote"
             android:theme="@style/business" />
         <activity
-            android:name=".mybusiness.NotesActivity"
+            android:name="com.leadgrow.estate.mybusiness.EditDetails"
             android:theme="@style/business" />
         <activity
-            android:name=".SplashActivity"
+            android:name="com.leadgrow.estate.mybusiness.NotesActivity"
+            android:theme="@style/business" />
+        <activity
+            android:name="com.leadgrow.estate.SplashActivity"
             android:theme="@style/splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -68,12 +68,12 @@
         </activity>
         <activity android:name=".mybusiness.BusinessActivity" />
         <activity
-            android:name=".Signupcode"
+            android:name="com.leadgrow.estate.Signupcode"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ask_details" />
-        <activity android:name=".MainActivity" />
+        <activity android:name="com.leadgrow.estate.ask_details" />
+        <activity android:name="com.leadgrow.estate.MainActivity" />
         <activity
-            android:name=".very_main"
+            android:name="com.leadgrow.estate.very_main"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
