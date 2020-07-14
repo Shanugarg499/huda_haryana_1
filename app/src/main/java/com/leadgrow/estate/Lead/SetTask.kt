@@ -96,8 +96,8 @@ class SetTask : AppCompatActivity() {
                         .time(d2)
                         .key(mainkey)
                         .addAction(Intent(this, AddTask::class.java), "DONE")
-                        .large_icon(R.drawable.small_logo)
-                        .small_icon(R.drawable.small_logo)
+                        .large_icon(R.drawable.mainicon)
+                        .small_icon(R.drawable.mainicon)
                         .build()
                 onBackPressed()
             }
